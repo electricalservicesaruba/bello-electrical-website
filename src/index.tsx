@@ -405,10 +405,10 @@ ${navbar('/')}
 
       <div class="team-staff-card">
         <div class="team-staff-photo">
-          <img src="/static/images/person-genesis.jpg" alt="Genesis – Project Administrator" loading="lazy">
+          <img src="/static/images/person-genesis.jpg" alt="Genesis Nunez Monsalve – Project Administrator" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Genesis</h4>
+          <h4>Genesis Nunez Monsalve</h4>
           <span class="team-role-sm">Project Administrator</span>
           <p>Handles scheduling, invoicing, and client communication — the backbone that keeps every project on track.</p>
         </div>
@@ -416,10 +416,10 @@ ${navbar('/')}
 
       <div class="team-staff-card">
         <div class="team-staff-photo">
-          <img src="/static/images/person-andric.jpg" alt="Andric – Electrical Design & Project Technician" loading="lazy">
+          <img src="/static/images/person-andric.jpg" alt="Andric Feliciano – Electrical Design & Project Technician" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Andric</h4>
+          <h4>Andric Feliciano</h4>
           <span class="team-role-sm">Electrical Design &amp; Project Technician</span>
           <p>Plans and designs electrical systems for commercial and residential projects, ensuring every installation is efficient and compliant.</p>
         </div>
@@ -438,21 +438,21 @@ ${navbar('/')}
 
       <div class="team-staff-card">
         <div class="team-staff-photo">
-          <img src="/static/images/person-micheal.jpg" alt="Micheal Osborne – Electrical Assistant Solar & Installation" loading="lazy">
+          <img src="/static/images/person-michael.jpg" alt="Michael Osborne – Electrical Assistant Solar & Installation" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Micheal Osborne</h4>
+          <h4>Michael Osborne</h4>
           <span class="team-role-sm">Electrical Assistant — Solar &amp; Installation</span>
           <p>Supports solar panel installations and electrical fit-outs, bringing energy and precision to every rooftop and site job.</p>
         </div>
       </div>
 
-      <div class="team-staff-card team-staff-intern">
-        <div class="team-staff-photo team-staff-photo-placeholder">
-          <div class="team-placeholder-avatar"><i class="fas fa-hard-hat"></i></div>
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-myron.jpg" alt="Myron Saladin – Intern" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Myron</h4>
+          <h4>Myron Saladin</h4>
           <span class="team-role-sm">Intern</span>
           <p>Learning the trade hands-on alongside BES's experienced team — building skills, discipline, and a future in electrical work.</p>
         </div>
@@ -1024,10 +1024,10 @@ ${navbar('/about')}
 
       <div class="team-staff-card">
         <div class="team-staff-photo">
-          <img src="/static/images/person-genesis.jpg" alt="Genesis – Project Administrator" loading="lazy">
+          <img src="/static/images/person-genesis.jpg" alt="Genesis Nunez Monsalve – Project Administrator" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Genesis</h4>
+          <h4>Genesis Nunez Monsalve</h4>
           <span class="team-role-sm">Project Administrator</span>
           <p>Manages scheduling, invoicing, and all client communications — the organizational force that keeps every BES project on time and clients fully informed.</p>
         </div>
@@ -1035,10 +1035,10 @@ ${navbar('/about')}
 
       <div class="team-staff-card">
         <div class="team-staff-photo">
-          <img src="/static/images/person-andric.jpg" alt="Andric – Electrical Design & Project Technician" loading="lazy">
+          <img src="/static/images/person-andric.jpg" alt="Andric Feliciano – Electrical Design & Project Technician" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Andric</h4>
+          <h4>Andric Feliciano</h4>
           <span class="team-role-sm">Electrical Design &amp; Project Technician</span>
           <p>Responsible for electrical system design and project technical execution. Translates client needs into safe, efficient, and compliant electrical plans.</p>
         </div>
@@ -1057,21 +1057,21 @@ ${navbar('/about')}
 
       <div class="team-staff-card">
         <div class="team-staff-photo">
-          <img src="/static/images/person-micheal.jpg" alt="Micheal Osborne – Electrical Assistant Solar & Installation" loading="lazy">
+          <img src="/static/images/person-michael.jpg" alt="Michael Osborne – Electrical Assistant Solar & Installation" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Micheal Osborne</h4>
+          <h4>Michael Osborne</h4>
           <span class="team-role-sm">Electrical Assistant — Solar &amp; Installation</span>
           <p>Supports solar PV installations and electrical fit-outs across Aruba. Brings enthusiasm and skill to every rooftop and on-site installation project.</p>
         </div>
       </div>
 
-      <div class="team-staff-card team-staff-intern">
-        <div class="team-staff-photo team-staff-photo-placeholder">
-          <div class="team-placeholder-avatar"><i class="fas fa-hard-hat"></i></div>
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-myron.jpg" alt="Myron Saladin – Intern" loading="lazy">
         </div>
         <div class="team-staff-info">
-          <h4>Myron</h4>
+          <h4>Myron Saladin</h4>
           <span class="team-role-sm">Intern</span>
           <p>Learning the trade hands-on alongside BES's certified team — developing skills in electrical work, safety protocols, and professional standards.</p>
         </div>
