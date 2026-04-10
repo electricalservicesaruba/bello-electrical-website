@@ -382,7 +382,7 @@ ${navbar('/')}
   <div class="container">
     <div class="reviews-header-row">
       <div class="section-header" style="margin-bottom:0;text-align:left;">
-        <div class="section-tag">Client Reviews</div>
+        <div class="section-tag">Google Reviews</div>
         <h2 class="section-title" style="margin-bottom:0;">What Our Clients<br><span>Say About Us</span></h2>
       </div>
       <div class="google-rating-badge">
@@ -394,99 +394,63 @@ ${navbar('/')}
           <div class="google-stars-row">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <span class="google-review-count">5-star rated on Google</span>
+          <span class="google-review-count">Verified 5-star reviews on Google</span>
         </div>
       </div>
     </div>
     <div class="reviews-grid">
+
+      <!-- Real Review 1 — 5★ -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
-          <div class="reviewer-avatar" style="background:#0B0B5A;">M</div>
+          <div class="reviewer-avatar" style="background:#4285F4;">B</div>
           <div class="reviewer-info">
-            <h4>Michelle A.</h4>
-            <span>Restaurant Owner, Aruba</span>
+            <h4>Google Reviewer</h4>
+            <span>11 weeks ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">BES upgraded the entire electrical system in my restaurant. They were on time, communicated clearly throughout, and the work was clean and professional. I felt confident the whole time. Highly recommended!</p>
+        <p class="review-text">Bello Electrical is a very professional and reliable company. They solved our electrical problem the same day, which was a huge relief. The team not only fixed the issue quickly, but also recommended smart upgrades and pointed out necessary repairs to prevent future problems. Their communication was excellent, the work was efficient, and everything was handled in a very organized and professional way. They even coordinated directly with ELMAR when needed, which made the whole process completely stress-free for us. Fast, reliable, and trustworthy service. I highly recommend their team.</p>
       </div>
+
+      <!-- Real Review 2 — 5★ -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
-          <div class="reviewer-avatar" style="background:#E30613;">R</div>
+          <div class="reviewer-avatar" style="background:#34A853;">G</div>
           <div class="reviewer-info">
-            <h4>Ricardo S.</h4>
-            <span>Property Manager, Aruba</span>
+            <h4>Google Reviewer</h4>
+            <span>1 year ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">We manage several commercial properties and BES handles all our electrical maintenance. Fast response, certified team, and they always keep us updated. Exactly what a property manager needs.</p>
+        <p class="review-text">Exceptional Service and Professionalism! Bello Electrical exceeded my expectations in every way. Their work was carried out with outstanding neatness and professionalism, ensuring a top-quality result. What truly stood out, however, was their commitment to educating me as a client — taking the time to explain the electrical requirements for my appliances clearly. My only regret? Not hiring them first when I began my renovation project! I highly recommend Bello Electrical for their expertise, attention to detail, and exceptional customer service.</p>
       </div>
-      <div class="review-card">
+
+      <!-- Review CTA card -->
+      <div class="review-card review-cta-card">
         <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#34A853;">C</div>
-          <div class="reviewer-info">
-            <h4>Carlos V.</h4>
-            <span>Construction Developer, Aruba</span>
+        <div class="review-cta-inner">
+          <div class="google-stars-row" style="justify-content:center;margin-bottom:1rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
+          <h4 style="color:var(--navy);font-family:'Montserrat',sans-serif;font-size:1.05rem;margin-bottom:0.5rem;">Happy with our work?</h4>
+          <p style="color:#555;font-size:0.875rem;margin-bottom:1.5rem;">Share your experience on Google and help other businesses in Aruba find a reliable electrical partner.</p>
+          <a href="${GOOGLE_BIZ}" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:0.875rem;padding:0.65rem 1.5rem;">
+            <i class="fab fa-google"></i>&nbsp; Leave a Review
+          </a>
         </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">Luis and his team installed the complete electrical system for our new commercial building. Professional from start to finish — NEN 1010 compliant, on budget, and on time. We'll use BES for every future project.</p>
       </div>
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#FBBC05;color:#0B0B5A;">S</div>
-          <div class="reviewer-info">
-            <h4>Sandra B.</h4>
-            <span>Office Building Owner, Aruba</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">Had an electrical fault that was causing problems for our tenants. BES responded quickly, diagnosed the issue the same day, and fixed it properly. No guesswork — just reliable, quality work.</p>
-      </div>
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#4285F4;">J</div>
-          <div class="reviewer-info">
-            <h4>Johan M.</h4>
-            <span>Retail Store Owner, Aruba</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">BES installed solar panels and an EV charging station for my retail store. The ROI is already showing. They explained every step, the installation was clean, and everything has worked perfectly since day one.</p>
-      </div>
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#EA4335;">L</div>
-          <div class="reviewer-info">
-            <h4>Laura D.</h4>
-            <span>Hotel Manager, Aruba</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">We needed an emergency generator installed urgently. BES came through — professional, efficient, and they knew exactly what they were doing. Our hotel stayed operational. Trustworthy team, great branding, even better work.</p>
-      </div>
+
     </div>
     <div class="reviews-cta-row">
       <a href="${GOOGLE_BIZ}" target="_blank" rel="noopener">
-        <i class="fab fa-google"></i> View All Reviews on Google
+        <i class="fab fa-google"></i> View All Our Google Reviews
       </a>
     </div>
   </div>

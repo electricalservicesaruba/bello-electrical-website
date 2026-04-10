@@ -211,11 +211,14 @@ p  { color: var(--gray-600); line-height: 1.75; }
 .nav-logo { display: flex; align-items: center; }
 .logo-img {
   height: 52px;
-  width: auto;
-  max-width: 200px;
+  width: 52px;
   object-fit: contain;
+  border-radius: 10px;
+  background: white;
+  padding: 4px;
   filter: none;
   transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 .navbar.scrolled .logo-img { filter: none; }
 
@@ -914,7 +917,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   padding-bottom: 3rem;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.footer-logo { height: 56px; width: auto; max-width: 200px; object-fit: contain; margin-bottom: 1rem; filter: none; }
+.footer-logo { height: 60px; width: 60px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px; background: white; padding: 4px; filter: none; }
 .footer-tagline { color: var(--yellow); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.75rem; }
 .footer-description { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 1.25rem; }
 .footer-social { display: flex; gap: 0.65rem; }
@@ -1177,6 +1180,16 @@ p  { color: var(--gray-600); line-height: 1.75; }
   transition: var(--transition);
 }
 .reviews-cta-row a:hover { background: #4285F4; color: white; }
+
+.review-cta-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f4ff 0%, #fff8e1 100%);
+  border: 2px dashed #c5cde8;
+  text-align: center;
+}
+.review-cta-inner { padding: 0.5rem; }
 
 @media (max-width: 900px) {
   .reviews-grid { grid-template-columns: 1fr 1fr; }
