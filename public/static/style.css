@@ -1066,6 +1066,183 @@ p  { color: var(--gray-600); line-height: 1.75; }
 ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
 
 /* ===========================
+   TEAM CARDS — NEW LAYOUT
+   =========================== */
+
+/* Leadership 2-col cards */
+.team-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+.team-card-leader {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(11,11,90,0.1);
+  border: 1px solid #e8edf5;
+  transition: var(--transition);
+}
+.team-card-leader:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11,11,90,0.15);
+}
+.team-card-photo {
+  position: relative;
+  overflow: hidden;
+}
+.team-card-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  object-position: center 20%;  /* show face, not sky */
+  display: block;
+}
+.team-card-info {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.team-card-info h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+.team-role {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--navy);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.875rem;
+}
+.team-card-info p {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.team-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.team-badges span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #eef1f9;
+  border-radius: 20px;
+  padding: 0.25rem 0.65rem;
+}
+.team-badges span i { color: var(--red); font-size: 0.65rem; }
+
+/* Staff 4-col grid */
+.team-staff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.team-staff-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 16px rgba(11,11,90,0.08);
+  border: 1px solid #e8edf5;
+  transition: var(--transition);
+}
+.team-staff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(11,11,90,0.14);
+}
+.team-staff-photo {
+  position: relative;
+  overflow: hidden;
+  height: 260px;
+}
+.team-staff-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;  /* pull down to show face, avoid sky */
+  display: block;
+  transition: transform 0.4s ease;
+}
+.team-staff-card:hover .team-staff-photo img {
+  transform: scale(1.04);
+}
+/* Placeholder for Myron (no photo yet) */
+.team-staff-photo-placeholder {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3a8a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.team-placeholder-avatar {
+  font-size: 4rem;
+  color: rgba(255,255,255,0.3);
+}
+.team-staff-info {
+  padding: 1.25rem;
+}
+.team-staff-info h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.team-role-sm {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.team-staff-info p {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .team-staff-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .team-cards-grid { grid-template-columns: 1fr; }
+  .team-card-leader { grid-template-columns: 180px 1fr; }
+  .team-card-photo img { min-height: 220px; }
+}
+@media (max-width: 600px) {
+  .team-card-leader { grid-template-columns: 1fr; }
+  .team-card-photo img { min-height: 280px; height: 280px; }
+  .team-staff-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .team-staff-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
    GOOGLE REVIEWS SECTION
    =========================== */
 .reviews-section { background: #f8f9fc; }

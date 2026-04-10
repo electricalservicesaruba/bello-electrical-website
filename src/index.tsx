@@ -357,22 +357,110 @@ ${navbar('/')}
 </section>
 
 <!-- TEAM TEASER -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
-    <div class="team-teaser-inner">
-      <div class="team-teaser-content">
-        <div class="section-tag">Our People</div>
-        <h2 class="section-title">A Team You Can<br><span>Rely On</span></h2>
-        <p>Led by founder Luis Bello — a certified electrician with over 20 years of experience — the BES team is made up of highly trained electricians, installers, and supervisors committed to delivering quality on every project, large or small.</p>
-        <a href="/about#team" class="btn btn-primary">Meet the Team</a>
-      </div>
-      <div class="team-photo-collage">
-        <img src="/static/images/team-full-van.jpg" alt="Full BES team in Aruba" class="team-main-photo" loading="lazy">
-        <div class="team-sub-photos">
-          <img src="/static/images/office-lady1.jpg" alt="BES team member" loading="lazy">
-          <img src="/static/images/tech-van-smiling1.jpg" alt="BES field technician" loading="lazy">
+    <div class="section-header">
+      <div class="section-tag">Our People</div>
+      <h2 class="section-title">The Team Behind<br><span>Every Project</span></h2>
+      <p class="section-subtitle">From management to the field — every BES team member is trained, certified, and committed to delivering quality work on every job in Aruba.</p>
+    </div>
+    <div class="team-cards-grid">
+
+      <!-- Leadership row -->
+      <div class="team-card team-card-leader">
+        <div class="team-card-photo">
+          <img src="/static/images/person-luis-bello.jpg" alt="Luis Bello – Director of Operations" loading="lazy">
+        </div>
+        <div class="team-card-info">
+          <h3>Luis Bello</h3>
+          <span class="team-role">Director of Operations</span>
+          <p>Founder &amp; certified electrician with 20+ years of experience. Oversees all projects, ensures NEN 1010 compliance, and drives BES's growth across Aruba &amp; Bonaire.</p>
+          <div class="team-badges">
+            <span><i class="fas fa-certificate"></i> Certified Electrician</span>
+            <span><i class="fas fa-plane"></i> Private Pilot</span>
+            <span><i class="fas fa-hard-hat"></i> 20+ Yrs Experience</span>
+          </div>
         </div>
       </div>
+
+      <div class="team-card team-card-leader">
+        <div class="team-card-photo">
+          <img src="/static/images/person-eliseth.jpg" alt="Eliseth Bello – Managing Director" loading="lazy">
+        </div>
+        <div class="team-card-info">
+          <h3>Eliseth Bello</h3>
+          <span class="team-role">Managing Director</span>
+          <p>Business partner and co-founder who manages the overall direction, strategy, and operations of BES. Keeps the company running efficiently and professionally every day.</p>
+          <div class="team-badges">
+            <span><i class="fas fa-briefcase"></i> Business Management</span>
+            <span><i class="fas fa-chart-line"></i> Strategy &amp; Growth</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Staff grid -->
+    <div class="team-staff-grid">
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-genesis.jpg" alt="Genesis – Project Administrator" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Genesis</h4>
+          <span class="team-role-sm">Project Administrator</span>
+          <p>Handles scheduling, invoicing, and client communication — the backbone that keeps every project on track.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-andric.jpg" alt="Andric – Electrical Design & Project Technician" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Andric</h4>
+          <span class="team-role-sm">Electrical Design &amp; Project Technician</span>
+          <p>Plans and designs electrical systems for commercial and residential projects, ensuring every installation is efficient and compliant.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-steven.jpg" alt="Steven Croes – Electrician" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Steven Croes</h4>
+          <span class="team-role-sm">Electrician</span>
+          <p>Certified field electrician with hands-on experience in commercial wiring, panel upgrades, and electrical maintenance.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-micheal.jpg" alt="Micheal Osborne – Electrical Assistant Solar & Installation" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Micheal Osborne</h4>
+          <span class="team-role-sm">Electrical Assistant — Solar &amp; Installation</span>
+          <p>Supports solar panel installations and electrical fit-outs, bringing energy and precision to every rooftop and site job.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card team-staff-intern">
+        <div class="team-staff-photo team-staff-photo-placeholder">
+          <div class="team-placeholder-avatar"><i class="fas fa-hard-hat"></i></div>
+        </div>
+        <div class="team-staff-info">
+          <h4>Myron</h4>
+          <span class="team-role-sm">Intern</span>
+          <p>Learning the trade hands-on alongside BES's experienced team — building skills, discipline, and a future in electrical work.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="section-cta">
+      <a href="/about#team" class="btn btn-primary">Learn More About Our Team</a>
     </div>
   </div>
 </section>
@@ -882,41 +970,113 @@ ${navbar('/about')}
     <div class="section-header">
       <div class="section-tag">Our Team</div>
       <h2 class="section-title">The People Behind <span>Every Project</span></h2>
-      <p class="section-subtitle">Highly trained electricians, installers, supervisors, and support staff — united by a commitment to excellence.</p>
+      <p class="section-subtitle">Highly trained electricians, designers, administrators, and field technicians — united by a commitment to quality and safety on every job.</p>
     </div>
-    <div class="team-photos-grid">
-      <div class="team-photo-full">
-        <img src="/static/images/team-full-van.jpg" alt="Bello Electrical Services full team" loading="lazy">
-        <div class="team-photo-caption">The BES Team — Aruba &amp; Bonaire</div>
-      </div>
-      <div class="team-photos-row">
-        <div class="team-photo-item">
-          <img src="/static/images/office-lady1.jpg" alt="BES office coordinator" loading="lazy">
-          <div class="team-member-info"><h4>Office &amp; Administration</h4><p>Client relations &amp; project coordination</p></div>
+
+    <!-- Full team photo -->
+    <div class="team-photo-full" style="margin-bottom:3rem;">
+      <img src="/static/images/team-full-van.jpg" alt="Bello Electrical Services full team" loading="lazy">
+      <div class="team-photo-caption">The BES Team — Aruba &amp; Bonaire</div>
+    </div>
+
+    <!-- Leadership cards -->
+    <div class="section-tag" style="margin-bottom:1.5rem;">Leadership</div>
+    <div class="team-cards-grid" style="margin-bottom:3rem;">
+
+      <div class="team-card team-card-leader">
+        <div class="team-card-photo">
+          <img src="/static/images/person-luis-bello.jpg" alt="Luis Bello – Director of Operations" loading="lazy">
         </div>
-        <div class="team-photo-item">
-          <img src="/static/images/office-lady2.jpg" alt="BES project manager" loading="lazy">
-          <div class="team-member-info"><h4>Project Management</h4><p>Planning &amp; scheduling all field work</p></div>
-        </div>
-        <div class="team-photo-item">
-          <img src="/static/images/office-man.jpg" alt="BES operations" loading="lazy">
-          <div class="team-member-info"><h4>Operations</h4><p>Keeping everything running smoothly</p></div>
-        </div>
-      </div>
-      <div class="team-photos-row">
-        <div class="team-photo-item">
-          <img src="/static/images/tech-van-smiling2.jpg" alt="BES field electrician" loading="lazy">
-          <div class="team-member-info"><h4>Field Electricians</h4><p>Certified installation &amp; maintenance</p></div>
-        </div>
-        <div class="team-photo-item">
-          <img src="/static/images/tech-solar-standing.jpg" alt="BES solar specialist" loading="lazy">
-          <div class="team-member-info"><h4>Solar Specialists</h4><p>PV system installation &amp; commissioning</p></div>
-        </div>
-        <div class="team-photo-item">
-          <img src="/static/images/team-solar-thumbsup.jpg" alt="BES installation crew" loading="lazy">
-          <div class="team-member-info"><h4>Installation Crew</h4><p>Large-scale project execution</p></div>
+        <div class="team-card-info">
+          <h3>Luis Bello</h3>
+          <span class="team-role">Director of Operations</span>
+          <p>Founder &amp; certified electrician with 20+ years of industry experience. Leads all project operations, maintains NEN 1010 standards, and drives BES's expansion across Aruba &amp; Bonaire. Also a certified Private Pilot and aviation school owner.</p>
+          <div class="team-badges">
+            <span><i class="fas fa-certificate"></i> Certified Electrician</span>
+            <span><i class="fas fa-plane"></i> Private Pilot</span>
+            <span><i class="fas fa-hard-hat"></i> 20+ Yrs</span>
+            <span><i class="fas fa-shield-alt"></i> NEN 1010</span>
+          </div>
         </div>
       </div>
+
+      <div class="team-card team-card-leader">
+        <div class="team-card-photo">
+          <img src="/static/images/person-eliseth.jpg" alt="Eliseth Bello – Managing Director" loading="lazy">
+        </div>
+        <div class="team-card-info">
+          <h3>Eliseth Bello</h3>
+          <span class="team-role">Managing Director</span>
+          <p>Co-founder and business partner who oversees the company's strategic direction, daily operations, and team management. Her leadership ensures BES consistently delivers professional, client-first service on every engagement.</p>
+          <div class="team-badges">
+            <span><i class="fas fa-briefcase"></i> Business Management</span>
+            <span><i class="fas fa-users"></i> Team Leadership</span>
+            <span><i class="fas fa-chart-line"></i> Strategy</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Staff grid -->
+    <div class="section-tag" style="margin-bottom:1.5rem;">Our Team</div>
+    <div class="team-staff-grid">
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-genesis.jpg" alt="Genesis – Project Administrator" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Genesis</h4>
+          <span class="team-role-sm">Project Administrator</span>
+          <p>Manages scheduling, invoicing, and all client communications — the organizational force that keeps every BES project on time and clients fully informed.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-andric.jpg" alt="Andric – Electrical Design & Project Technician" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Andric</h4>
+          <span class="team-role-sm">Electrical Design &amp; Project Technician</span>
+          <p>Responsible for electrical system design and project technical execution. Translates client needs into safe, efficient, and compliant electrical plans.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-steven.jpg" alt="Steven Croes – Electrician" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Steven Croes</h4>
+          <span class="team-role-sm">Electrician</span>
+          <p>Certified field electrician specializing in commercial wiring, distribution panel work, and electrical maintenance. Known for precision and clean installation work.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card">
+        <div class="team-staff-photo">
+          <img src="/static/images/person-micheal.jpg" alt="Micheal Osborne – Electrical Assistant Solar & Installation" loading="lazy">
+        </div>
+        <div class="team-staff-info">
+          <h4>Micheal Osborne</h4>
+          <span class="team-role-sm">Electrical Assistant — Solar &amp; Installation</span>
+          <p>Supports solar PV installations and electrical fit-outs across Aruba. Brings enthusiasm and skill to every rooftop and on-site installation project.</p>
+        </div>
+      </div>
+
+      <div class="team-staff-card team-staff-intern">
+        <div class="team-staff-photo team-staff-photo-placeholder">
+          <div class="team-placeholder-avatar"><i class="fas fa-hard-hat"></i></div>
+        </div>
+        <div class="team-staff-info">
+          <h4>Myron</h4>
+          <span class="team-role-sm">Intern</span>
+          <p>Learning the trade hands-on alongside BES's certified team — developing skills in electrical work, safety protocols, and professional standards.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
