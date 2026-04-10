@@ -681,7 +681,6 @@ ${navbar('/services')}
           <li><i class="fas fa-check-circle"></i> Rooftop &amp; ground-mount PV systems</li>
           <li><i class="fas fa-check-circle"></i> Grid-tied &amp; off-grid configurations</li>
           <li><i class="fas fa-check-circle"></i> Inverter selection &amp; installation</li>
-          <li><i class="fas fa-check-circle"></i> WEB Aruba grid connection support</li>
           <li><i class="fas fa-check-circle"></i> System commissioning &amp; monitoring</li>
           <li><i class="fas fa-check-circle"></i> Post-installation maintenance</li>
         </ul>
