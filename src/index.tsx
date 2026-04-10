@@ -941,7 +941,7 @@ ${navbar('/about')}
         <h2>Luis Bello</h2>
         <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection — giving him a comprehensive view of every project from design to delivery.</p>
         <p>In 2013, Luis expanded his entrepreneurial spirit by opening an aviation school in Aruba. By 2017, he had become a certified Private Pilot — demonstrating the precision, discipline, and commitment to safety that he brings to every electrical project.</p>
-        <p>Together with Eliseth Bello as Managing Director, they have built BES into one of Aruba's most trusted electrical contractors — with a shared commitment to quality, reliability, and modern electrical solutions.</p>
+        <p>Together with Eliseth Bello as Business Partner, they have built BES into one of Aruba's most trusted electrical contractors — with a shared commitment to quality, reliability, and modern electrical solutions.</p>
         <p>"I started BES because I saw businesses struggling to find a reliable, communicative, professional electrical contractor. That's what we built — and that's what we deliver, every day."</p>
         <div class="founder-credentials">
           <span class="credential-badge"><i class="fas fa-certificate"></i> Certified Electrician</span>
