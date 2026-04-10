@@ -163,7 +163,7 @@ ${navbar('/')}
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="https://www.genspark.ai/api/files/s/bqLIkGQ3" alt="Bello Electrical Services" class="hero-bg-img">
+    <img src="/static/images/tech-panel-portrait.jpg" alt="Bello Electrical Services" class="hero-bg-img">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
@@ -174,7 +174,7 @@ ${navbar('/')}
     </h1>
     <p class="hero-subtitle">
       From small repairs to full commercial installations and solar systems —
-      BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality.
+      BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality — backed by more than 20 years of hands-on experience.
     </p>
     <div class="hero-actions">
       <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Free Quote</a>
@@ -182,8 +182,8 @@ ${navbar('/')}
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="stat-number">5+</span>
-        <span class="stat-label">Years in Aruba</span>
+        <span class="stat-number">20+</span>
+        <span class="stat-label">Years Experience</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
@@ -287,10 +287,10 @@ ${navbar('/')}
     <div class="why-us-inner">
       <div class="why-us-images">
         <div class="why-img-main">
-          <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="BES team on solar installation in Aruba" loading="lazy">
+          <img src="/static/images/team-solar-thumbsup.jpg" alt="BES team on solar installation in Aruba" loading="lazy">
         </div>
         <div class="why-img-secondary">
-          <img src="https://www.genspark.ai/api/files/s/w21o6yEm" alt="BES installing solar panels" loading="lazy">
+          <img src="/static/images/team-solar-install.jpg" alt="BES installing solar panels" loading="lazy">
         </div>
         <div class="why-img-badge">
           <span class="badge-number">2019</span>
@@ -367,10 +367,10 @@ ${navbar('/')}
         <a href="/about#team" class="btn btn-primary">Meet the Team</a>
       </div>
       <div class="team-photo-collage">
-        <img src="https://www.genspark.ai/api/files/s/twhZVmUv" alt="Full BES team in Aruba" class="team-main-photo" loading="lazy">
+        <img src="/static/images/team-full-van.jpg" alt="Full BES team in Aruba" class="team-main-photo" loading="lazy">
         <div class="team-sub-photos">
-          <img src="https://www.genspark.ai/api/files/s/8R9X6aUI" alt="BES team member" loading="lazy">
-          <img src="https://www.genspark.ai/api/files/s/wvwYeDRZ" alt="BES field technician" loading="lazy">
+          <img src="/static/images/office-lady1.jpg" alt="BES team member" loading="lazy">
+          <img src="/static/images/tech-van-smiling1.jpg" alt="BES field technician" loading="lazy">
         </div>
       </div>
     </div>
@@ -408,7 +408,7 @@ ${navbar('/services')}
 
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://www.genspark.ai/api/files/s/girPnj3G" alt="BES panel work" class="page-hero-img">
+    <img src="/static/images/tech-panel-testing.jpg" alt="BES electrical panel work" class="page-hero-img">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="page-hero-content">
@@ -441,7 +441,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/FsJDhHTt" alt="Electrical installation Aruba" loading="lazy">
+        <img src="/static/images/tech-walking-tools.jpg" alt="Electrical installation Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">01</div>
@@ -469,7 +469,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/Da7x516z" alt="Solar panel installation Aruba" loading="lazy">
+        <img src="/static/images/tech-solar-standing.jpg" alt="Solar panel installation Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">02</div>
@@ -497,7 +497,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/girPnj3G" alt="Electrical maintenance Aruba" loading="lazy">
+        <img src="/static/images/tech-panel-testing.jpg" alt="Electrical maintenance Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">03</div>
@@ -524,7 +524,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/bqLIkGQ3" alt="Electrical troubleshooting Aruba" loading="lazy">
+        <img src="/static/images/tech-panel-portrait.jpg" alt="Electrical troubleshooting Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">04</div>
@@ -551,7 +551,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/LJASeQUs" alt="EV charging station installation" loading="lazy">
+        <img src="/static/images/tech-solar-drill.jpg" alt="EV charging station installation" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">05</div>
@@ -578,7 +578,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/w21o6yEm" alt="Energy efficiency audit Aruba" loading="lazy">
+        <img src="/static/images/team-solar-install.jpg" alt="Energy efficiency audit Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">06</div>
@@ -605,7 +605,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="Battery storage systems Aruba" loading="lazy">
+        <img src="/static/images/team-solar-thumbsup.jpg" alt="Battery storage systems Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">07</div>
@@ -632,7 +632,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="Emergency power systems Aruba" loading="lazy">
+        <img src="/static/images/team-5-van.jpg" alt="Emergency power systems Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">08</div>
@@ -687,7 +687,7 @@ ${navbar('/about')}
 
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://www.genspark.ai/api/files/s/rcYkUkQ2" alt="BES full team Aruba" class="page-hero-img">
+    <img src="/static/images/team-full-van2.jpg" alt="BES full team Aruba" class="page-hero-img">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="page-hero-content">
@@ -713,9 +713,9 @@ ${navbar('/about')}
         </div>
       </div>
       <div class="about-story-image">
-        <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="BES team at work in Aruba" loading="lazy">
+        <img src="/static/images/team-5-van.jpg" alt="BES team at work in Aruba" loading="lazy">
         <div class="about-img-accent">
-          <img src="https://www.genspark.ai/api/files/s/P9PpnwhD" alt="BES office team" loading="lazy">
+          <img src="/static/images/office-lady2.jpg" alt="BES office team" loading="lazy">
         </div>
       </div>
     </div>
@@ -731,7 +731,7 @@ ${navbar('/about')}
     </div>
     <div class="founder-card">
       <div class="founder-image">
-        <img src="https://www.genspark.ai/api/files/s/wvwYeDRZ" alt="Luis Bello - Founder BES" loading="lazy">
+        <img src="/static/images/tech-van-smiling1.jpg" alt="Luis Bello - Founder BES" loading="lazy">
         <div class="founder-image-overlay">
           <span class="founder-name">Luis Bello</span>
           <span class="founder-role">Founder &amp; Lead Electrician, BES</span>
@@ -807,34 +807,34 @@ ${navbar('/about')}
     </div>
     <div class="team-photos-grid">
       <div class="team-photo-full">
-        <img src="https://www.genspark.ai/api/files/s/twhZVmUv" alt="Bello Electrical Services full team" loading="lazy">
+        <img src="/static/images/team-full-van.jpg" alt="Bello Electrical Services full team" loading="lazy">
         <div class="team-photo-caption">The BES Team — Aruba &amp; Bonaire</div>
       </div>
       <div class="team-photos-row">
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/8R9X6aUI" alt="BES office coordinator" loading="lazy">
+          <img src="/static/images/office-lady1.jpg" alt="BES office coordinator" loading="lazy">
           <div class="team-member-info"><h4>Office &amp; Administration</h4><p>Client relations &amp; project coordination</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/P9PpnwhD" alt="BES project manager" loading="lazy">
+          <img src="/static/images/office-lady2.jpg" alt="BES project manager" loading="lazy">
           <div class="team-member-info"><h4>Project Management</h4><p>Planning &amp; scheduling all field work</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/NLorPAc3" alt="BES operations" loading="lazy">
+          <img src="/static/images/office-man.jpg" alt="BES operations" loading="lazy">
           <div class="team-member-info"><h4>Operations</h4><p>Keeping everything running smoothly</p></div>
         </div>
       </div>
       <div class="team-photos-row">
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/lW2yqxHU" alt="BES field electrician" loading="lazy">
+          <img src="/static/images/tech-van-smiling2.jpg" alt="BES field electrician" loading="lazy">
           <div class="team-member-info"><h4>Field Electricians</h4><p>Certified installation &amp; maintenance</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/Da7x516z" alt="BES solar specialist" loading="lazy">
+          <img src="/static/images/tech-solar-standing.jpg" alt="BES solar specialist" loading="lazy">
           <div class="team-member-info"><h4>Solar Specialists</h4><p>PV system installation &amp; commissioning</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="BES installation crew" loading="lazy">
+          <img src="/static/images/team-solar-thumbsup.jpg" alt="BES installation crew" loading="lazy">
           <div class="team-member-info"><h4>Installation Crew</h4><p>Large-scale project execution</p></div>
         </div>
       </div>
@@ -1025,7 +1025,7 @@ ${navbar('/contact')}
           </div>
         </div>
         <div class="contact-team-img">
-          <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="BES team ready to help" loading="lazy">
+          <img src="/static/images/team-5-van.jpg" alt="BES team ready to help" loading="lazy">
           <div class="contact-team-caption">
             <i class="fas fa-hard-hat"></i>
             <span>Our team is ready to help — call, WhatsApp, or email us</span>
