@@ -3,193 +3,197 @@ import { serveStatic } from 'hono/cloudflare-workers'
 
 const app = new Hono()
 
-// Serve static files
 app.use('/static/*', serveStatic({ root: './' }))
 
-// Contact form handler
+// Contact form API
 app.post('/api/contact', async (c) => {
   const body = await c.req.json()
   const { name, email, phone, service, message } = body
-
   if (!name || !email || !message) {
     return c.json({ success: false, error: 'Please fill in all required fields.' }, 400)
   }
-
-  // In production, you would send this to an email service
-  // For now, we return success
   console.log('Contact form submission:', { name, email, phone, service, message })
-
   return c.json({
     success: true,
     message: 'Thank you for your message! We will contact you within 24 hours.'
   })
 })
 
-// Main website route
-app.get('/', (c) => {
-  return c.html(renderHomePage())
-})
+app.get('/',        (c) => c.html(homePage()))
+app.get('/services',(c) => c.html(servicesPage()))
+app.get('/about',   (c) => c.html(aboutPage()))
+app.get('/contact', (c) => c.html(contactPage()))
+app.notFound((c)   => c.html(`<!DOCTYPE html><html><body><h1>Page not found</h1><a href="/">Go Home</a></body></html>`, 404))
 
-app.get('/services', (c) => {
-  return c.html(renderServicesPage())
-})
+/* ==============================
+   SHARED HELPERS
+============================== */
+const PHONE       = '+297 594 1089'
+const PHONE_LINK  = 'tel:+2975941089'
+const WHATSAPP    = 'https://wa.me/2975941089'
+const EMAIL       = 'info@electricalservicesaruba.com'
+const WEBSITE     = 'www.electricalservicesaruba.com'
+const FACEBOOK    = 'https://www.facebook.com/belloelectricalaruba'
+const INSTAGRAM   = 'https://www.instagram.com/electricalservicesaruba'
+const GOOGLE_BIZ  = 'https://share.google/acyUf0XCSQZBAJiIp'
 
-app.get('/about', (c) => {
-  return c.html(renderAboutPage())
-})
-
-app.get('/contact', (c) => {
-  return c.html(renderContactPage())
-})
-
-// 404
-app.notFound((c) => {
-  return c.html(`<!DOCTYPE html><html><body><h1>Page not found</h1><a href="/">Go Home</a></body></html>`, 404)
-})
-
-function getHead(title: string, description: string) {
+function head(title: string, desc: string) {
   return `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} | Bello Electrical Services</title>
-    <meta name="description" content="${description}">
-    <meta name="keywords" content="electrical services Aruba, electrician Aruba, commercial electrical, solar installation Aruba">
+    <title>${title} — Bello Electrical Services</title>
+    <meta name="description" content="${desc}">
+    <meta name="keywords" content="electrician Aruba, electrical services Aruba, commercial electrician, solar panel installation Aruba, NEN 1010, BES Aruba">
+    <meta property="og:title" content="${title} — Bello Electrical Services">
+    <meta property="og:description" content="${desc}">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="icon" type="image/png" href="/static/logo-transparent.png">
   `
 }
 
-function getNavbar(activePage: string) {
+function navbar(active: string) {
   const links = [
-    { href: '/', label: 'Home' },
+    { href: '/',         label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/about', label: 'About Us' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/about',    label: 'About Us' },
+    { href: '/contact',  label: 'Contact' },
   ]
   return `
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img src="/static/logo.png" alt="Bello Electrical Services" class="logo-img">
+        <img src="/static/logo-transparent.png" alt="Bello Electrical Services" class="logo-img">
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu" id="navMenu">
-        ${links.map(l => `<li><a href="${l.href}" class="nav-link${activePage === l.href ? ' active' : ''}">${l.label}</a></li>`).join('')}
-        <li><a href="/contact" class="nav-cta">Get a Quote</a></li>
+        ${links.map(l => `<li><a href="${l.href}" class="nav-link${active === l.href ? ' active' : ''}">${l.label}</a></li>`).join('')}
+        <li><a href="/contact#quote" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
   </nav>`
 }
 
-function getFooter() {
+function footer() {
   return `
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/static/logo-white.png" alt="Bello Electrical Services" class="footer-logo">
+          <img src="/static/logo-transparent.png" alt="Bello Electrical Services" class="footer-logo">
           <p class="footer-tagline">Ridiculously Good. Exactly What You Need.</p>
-          <p class="footer-description">Reliable electrical installation and maintenance for businesses in Aruba since 2015.</p>
+          <p class="footer-description">Licensed, certified &amp; insured electrical contractor serving Aruba since 2019. NEN 1010 compliant work on every project.</p>
           <div class="footer-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="${FACEBOOK}"   target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="${INSTAGRAM}"  target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="${WHATSAPP}"   target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="${GOOGLE_BIZ}" target="_blank" rel="noopener" aria-label="Google Business"><i class="fab fa-google"></i></a>
           </div>
         </div>
         <div class="footer-links">
           <h4>Services</h4>
           <ul>
-            <li><a href="/services#installations">Commercial Installations</a></li>
+            <li><a href="/services#installation">Electrical Installation</a></li>
+            <li><a href="/services#solar">Solar Panel Installation</a></li>
             <li><a href="/services#maintenance">Preventive Maintenance</a></li>
-            <li><a href="/services#solar">Solar Energy</a></li>
-            <li><a href="/services#panels">Panel Upgrades</a></li>
-            <li><a href="/services#emergency">Emergency Support</a></li>
-            <li><a href="/services#lighting">Lighting Systems</a></li>
+            <li><a href="/services#ev">EV Charging Stations</a></li>
+            <li><a href="/services#battery">Battery Storage Systems</a></li>
+            <li><a href="/services#emergency">Emergency Power Systems</a></li>
           </ul>
         </div>
         <div class="footer-links">
           <h4>Company</h4>
           <ul>
             <li><a href="/about">About Us</a></li>
+            <li><a href="/about#founder">Our Founder</a></li>
             <li><a href="/about#team">Our Team</a></li>
-            <li><a href="/services">Our Services</a></li>
+            <li><a href="/services">All Services</a></li>
             <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/contact#quote">Get a Quote</a></li>
+            <li><a href="/contact#quote">Free Quote</a></li>
           </ul>
         </div>
         <div class="footer-contact">
-          <h4>Contact Us</h4>
+          <h4>Contact</h4>
           <ul class="footer-contact-list">
-            <li><i class="fas fa-map-marker-alt"></i><span>Aruba</span></li>
-            <li><i class="fas fa-phone"></i><a href="tel:+2975001234">+297 500-1234</a></li>
-            <li><i class="fas fa-envelope"></i><a href="mailto:info@electricalservicesaruba.com">info@electricalservicesaruba.com</a></li>
-            <li><i class="fas fa-globe"></i><a href="https://www.electricalservicesaruba.com" target="_blank">electricalservicesaruba.com</a></li>
+            <li><i class="fas fa-map-marker-alt"></i><span>Aruba, ABC Islands</span></li>
+            <li><i class="fas fa-phone"></i><a href="${PHONE_LINK}">${PHONE}</a></li>
+            <li><i class="fab fa-whatsapp"></i><a href="${WHATSAPP}" target="_blank">WhatsApp Us</a></li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:${EMAIL}">${EMAIL}</a></li>
+            <li><i class="fas fa-globe"></i><a href="https://${WEBSITE}" target="_blank">${WEBSITE}</a></li>
           </ul>
           <div class="footer-hours">
             <h5>Business Hours</h5>
             <p>Mon – Fri: 7:00 AM – 5:00 PM</p>
-            <p>Emergency: 24/7 Available</p>
+            <p>Emergency Support: 24/7</p>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; ${new Date().getFullYear()} Bello Electrical Services. All rights reserved.</p>
-        <p>Licensed & Insured | Serving Aruba Since 2015</p>
+        <p>&copy; ${new Date().getFullYear()} Bello Electrical Services and More. All rights reserved.</p>
+        <p>Licensed &amp; Insured &bull; NEN 1010 Compliant &bull; Serving Aruba &amp; Bonaire</p>
       </div>
     </div>
   </footer>
-  <script src="/static/main.js"></script>
-  `
+
+  <!-- WhatsApp Float Button -->
+  <a href="${WHATSAPP}" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-float-tooltip">Chat on WhatsApp</span>
+  </a>
+
+  <script src="/static/main.js"></script>`
 }
 
-function renderHomePage() {
+/* ==============================
+   HOME PAGE
+============================== */
+function homePage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${getHead('Home', 'Bello Electrical Services – Reliable commercial electrical installation and maintenance in Aruba. Safe, code-compliant work with fast response times.')}</head>
+<head>${head('Home', 'Bello Electrical Services – Licensed, certified & insured electrical contractor in Aruba. Commercial & residential electrical, solar, EV charging. NEN 1010 compliant.')}</head>
 <body>
-${getNavbar('/')}
+${navbar('/')}
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="https://www.genspark.ai/api/files/s/bqLIkGQ3" alt="Bello Electrical Services team" class="hero-bg-img">
+    <img src="https://www.genspark.ai/api/files/s/bqLIkGQ3" alt="Bello Electrical Services" class="hero-bg-img">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge"><i class="fas fa-bolt"></i> Aruba's Trusted Electrical Partner</div>
+    <div class="hero-badge"><i class="fas fa-certificate"></i>&nbsp; Licensed &bull; Certified &bull; Insured &bull; Aruba</div>
     <h1 class="hero-title">
-      Ridiculously Good.<br>
-      <span class="hero-highlight">Exactly What You Need.</span>
+      Reliable Electrical<br>
+      <span class="hero-highlight">Services in Aruba.</span>
     </h1>
     <p class="hero-subtitle">
-      Professional electrical installation and maintenance for businesses across Aruba.
-      Safe, code-compliant, and built to last.
+      From small repairs to full commercial installations and solar systems —
+      BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality.
     </p>
     <div class="hero-actions">
-      <a href="/contact" class="btn btn-primary btn-lg"><i class="fas fa-file-alt"></i> Get a Free Quote</a>
-      <a href="/services" class="btn btn-outline btn-lg"><i class="fas fa-bolt"></i> Our Services</a>
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Free Quote</a>
+      <a href="${WHATSAPP}" target="_blank" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Years Experience</span>
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Years in Aruba</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
         <span class="stat-number">500+</span>
-        <span class="stat-label">Projects Completed</span>
+        <span class="stat-label">Projects Done</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Code Compliant</span>
+        <span class="stat-number">NEN</span>
+        <span class="stat-label">1010 Compliant</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
@@ -198,77 +202,77 @@ ${getNavbar('/')}
       </div>
     </div>
   </div>
-  <a href="#services" class="hero-scroll"><i class="fas fa-chevron-down"></i></a>
+  <a href="#trust" class="hero-scroll"><i class="fas fa-chevron-down"></i></a>
 </section>
 
 <!-- TRUST BAR -->
-<section class="trust-bar">
+<section class="trust-bar" id="trust">
   <div class="trust-container">
-    <div class="trust-item"><i class="fas fa-certificate"></i><span>Licensed & Insured</span></div>
-    <div class="trust-item"><i class="fas fa-shield-alt"></i><span>Code Compliant Work</span></div>
+    <div class="trust-item"><i class="fas fa-certificate"></i><span>Registered &amp; Licensed</span></div>
+    <div class="trust-item"><i class="fas fa-shield-alt"></i><span>NEN 1010 Compliant</span></div>
     <div class="trust-item"><i class="fas fa-clock"></i><span>Fast Response Times</span></div>
+    <div class="trust-item"><i class="fas fa-hard-hat"></i><span>Certified Electricians</span></div>
     <div class="trust-item"><i class="fas fa-handshake"></i><span>Long-Term Partnerships</span></div>
-    <div class="trust-item"><i class="fas fa-star"></i><span>Quality Guaranteed</span></div>
   </div>
 </section>
 
 <!-- SERVICES OVERVIEW -->
-<section class="section services-overview" id="services">
+<section class="section" id="services">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-title">Complete Electrical Solutions<br><span>for Your Business</span></h2>
-      <p class="section-subtitle">From planning to execution, we handle all your commercial electrical needs with precision and professionalism.</p>
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Everything Electrical,<br><span>Done Right.</span></h2>
+      <p class="section-subtitle">From installation to maintenance, solar to EV charging — BES handles it all for residential and commercial clients across Aruba.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-building"></i></div>
-        <h3>Commercial Installations</h3>
-        <p>Full electrical installations for commercial spaces, from initial design to final hookup and testing.</p>
-        <a href="/services#installations" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-tools"></i></div>
-        <h3>Upgrades & Renovations</h3>
-        <p>Modernize your electrical systems to meet current codes and handle today's power demands.</p>
-        <a href="/services#upgrades" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-icon"><i class="fas fa-plug"></i></div>
+        <h3>Electrical Installation</h3>
+        <p>Complete wiring, distribution boards, switches, and sockets for new builds and renovations.</p>
+        <a href="/services#installation" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card featured">
-        <div class="service-badge">Most Popular</div>
-        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
-        <h3>Preventive Maintenance</h3>
-        <p>Regular inspections and maintenance to prevent costly downtime and ensure system reliability.</p>
-        <a href="/services#maintenance" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="service-card">
+        <div class="service-badge">Popular</div>
         <div class="service-icon"><i class="fas fa-solar-panel"></i></div>
-        <h3>Solar Energy Systems</h3>
-        <p>Professional solar panel installation and integration for energy efficiency and cost savings.</p>
+        <h3>Solar Panel Installation</h3>
+        <p>Grid-tied and off-grid PV systems designed and installed for maximum energy savings in Aruba's sun.</p>
         <a href="/services#solar" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-bolt"></i></div>
-        <h3>Panel Installation</h3>
-        <p>Main panel upgrades and sub-panel installations for increased capacity and safety.</p>
-        <a href="/services#panels" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Preventive Maintenance</h3>
+        <p>Scheduled inspections, testing, and servicing to keep systems running safely and efficiently.</p>
+        <a href="/services#maintenance" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3>Lighting Systems</h3>
-        <p>Indoor and outdoor lighting design and installation for commercial properties.</p>
-        <a href="/services#lighting" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-icon"><i class="fas fa-search"></i></div>
+        <h3>Troubleshooting &amp; Repair</h3>
+        <p>Systematic diagnosis and fast repair of electrical faults, outages, and equipment failures.</p>
+        <a href="/services#troubleshooting" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-exclamation-triangle"></i></div>
-        <h3>Emergency Support</h3>
-        <p>24/7 emergency electrical support to minimize downtime for your business operations.</p>
-        <a href="/services#emergency" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <div class="service-icon"><i class="fas fa-car-battery"></i></div>
+        <h3>EV Charging Stations</h3>
+        <p>Installation of Level 2 and DC fast charging stations for residential, commercial &amp; public sites.</p>
+        <a href="/services#ev" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-leaf"></i></div>
-        <h3>Energy Efficiency</h3>
-        <p>Comprehensive energy audits and improvements to reduce your electricity costs.</p>
-        <a href="/services#energy" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        <h3>Energy Efficiency Audits</h3>
+        <p>Thorough assessments and practical upgrades to reduce your energy bills and carbon footprint.</p>
+        <a href="/services#audit" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-battery-full"></i></div>
+        <h3>Battery Storage Systems</h3>
+        <p>Design and installation of battery systems for energy independence and backup power.</p>
+        <a href="/services#battery" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Emergency Power Systems</h3>
+        <p>UPS systems and backup generators to ensure continuity during outages for critical operations.</p>
+        <a href="/services#emergency" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
     <div class="section-cta">
@@ -277,379 +281,419 @@ ${getNavbar('/')}
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
+<!-- WHY CHOOSE BES -->
 <section class="section why-us">
   <div class="container">
     <div class="why-us-inner">
       <div class="why-us-images">
         <div class="why-img-main">
-          <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="Bello team on solar project in Aruba" loading="lazy">
+          <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="BES team on solar installation in Aruba" loading="lazy">
         </div>
         <div class="why-img-secondary">
-          <img src="https://www.genspark.ai/api/files/s/w21o6yEm" alt="Bello team installing solar panels" loading="lazy">
+          <img src="https://www.genspark.ai/api/files/s/w21o6yEm" alt="BES installing solar panels" loading="lazy">
         </div>
         <div class="why-img-badge">
-          <span class="badge-number">10+</span>
-          <span class="badge-text">Years in Aruba</span>
+          <span class="badge-number">2019</span>
+          <span class="badge-text">Founded in Aruba</span>
         </div>
       </div>
       <div class="why-us-content">
-        <div class="section-tag">Why Bello?</div>
-        <h2 class="section-title">The Electrical Partner<br><span>You Can Count On</span></h2>
-        <p class="section-subtitle">We don't just fix electrical problems — we build long-term partnerships with businesses across Aruba based on trust, quality, and reliability.</p>
+        <div class="section-tag">Why Choose BES?</div>
+        <h2 class="section-title">The Electrical Partner<br><span>Businesses Trust</span></h2>
+        <p class="section-subtitle" style="text-align:left;max-width:none;">While competitors compete on price, BES stands apart through fast response, clean work, clear communication, and strong branding. We don't just complete jobs — we build lasting relationships.</p>
         <div class="why-features">
           <div class="why-feature">
-            <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="feature-icon"><i class="fas fa-certificate"></i></div>
             <div class="feature-content">
-              <h4>Code-Compliant Work</h4>
-              <p>All work meets or exceeds Aruba's electrical codes and safety standards.</p>
+              <h4>Certified &amp; Insured</h4>
+              <p>Registered electrical contractor with 20+ years of industry experience. Fully insured on every job.</p>
             </div>
           </div>
           <div class="why-feature">
-            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
             <div class="feature-content">
-              <h4>Certified Professionals</h4>
-              <p>Our team of certified electricians brings expertise to every project, big or small.</p>
+              <h4>NEN 1010 Compliant</h4>
+              <p>All work meets the Dutch NEN 1010 electrical safety standard applied in Aruba — no exceptions.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="feature-icon"><i class="fas fa-comments"></i></div>
+            <div class="feature-content">
+              <h4>Clear Communication</h4>
+              <p>We keep you informed throughout — from quote to completion. No surprises, no excuses.</p>
             </div>
           </div>
           <div class="why-feature">
             <div class="feature-icon"><i class="fas fa-clock"></i></div>
             <div class="feature-content">
-              <h4>On-Time, Every Time</h4>
-              <p>We respect your schedule. Projects are completed on time without cutting corners.</p>
-            </div>
-          </div>
-          <div class="why-feature">
-            <div class="feature-icon"><i class="fas fa-headset"></i></div>
-            <div class="feature-content">
-              <h4>Dedicated Support</h4>
-              <p>From planning to after-service support, we're here when you need us most.</p>
+              <h4>On Time, Every Time</h4>
+              <p>We respect your schedule and your operations. Projects are delivered on time, on budget.</p>
             </div>
           </div>
         </div>
-        <a href="/about" class="btn btn-primary">Learn More About Us</a>
+        <a href="/about" class="btn btn-primary">Learn More About BES</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHO WE SERVE -->
-<section class="section clients-section">
+<section class="section section-alt">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Who We Serve</div>
       <h2 class="section-title">Built for Aruba's<br><span>Business Community</span></h2>
+      <p class="section-subtitle">From small shops to large commercial developments — if it needs electricity, BES has you covered.</p>
     </div>
     <div class="clients-grid">
-      <div class="client-card">
-        <div class="client-icon"><i class="fas fa-utensils"></i></div>
-        <h3>Restaurants</h3>
-        <p>Kitchen power, HVAC systems, and dining area lighting.</p>
-      </div>
-      <div class="client-card">
-        <div class="client-icon"><i class="fas fa-building"></i></div>
-        <h3>Property Managers</h3>
-        <p>Commercial property electrical maintenance and compliance.</p>
-      </div>
-      <div class="client-card">
-        <div class="client-icon"><i class="fas fa-store"></i></div>
-        <h3>Retail Stores</h3>
-        <p>Display lighting, POS power, and storefront electrical.</p>
-      </div>
-      <div class="client-card">
-        <div class="client-icon"><i class="fas fa-office-building"></i></div>
-        <h3>Office Buildings</h3>
-        <p>Complete office electrical systems and smart power solutions.</p>
-      </div>
-      <div class="client-card">
-        <div class="client-icon"><i class="fas fa-hard-hat"></i></div>
-        <h3>Developers</h3>
-        <p>New construction electrical from ground up to handover.</p>
-      </div>
-      <div class="client-card">
-        <div class="client-icon"><i class="fas fa-briefcase"></i></div>
-        <h3>Business Owners</h3>
-        <p>Custom solutions for any commercial electrical need.</p>
-      </div>
+      <div class="client-card"><div class="client-icon"><i class="fas fa-utensils"></i></div><h3>Restaurants</h3><p>Kitchen power, HVAC &amp; dining lighting</p></div>
+      <div class="client-card"><div class="client-icon"><i class="fas fa-building"></i></div><h3>Property Managers</h3><p>Commercial property maintenance &amp; compliance</p></div>
+      <div class="client-card"><div class="client-icon"><i class="fas fa-store"></i></div><h3>Retail Stores</h3><p>Display lighting, POS &amp; storefront power</p></div>
+      <div class="client-card"><div class="client-icon"><i class="fas fa-briefcase"></i></div><h3>Office Buildings</h3><p>Complete electrical systems &amp; smart power</p></div>
+      <div class="client-card"><div class="client-icon"><i class="fas fa-hard-hat"></i></div><h3>Developers</h3><p>New construction from ground up to handover</p></div>
+      <div class="client-card"><div class="client-icon"><i class="fas fa-home"></i></div><h3>Homeowners</h3><p>Residential wiring, solar &amp; EV charging</p></div>
     </div>
   </div>
 </section>
 
-<!-- TEAM SECTION TEASER -->
-<section class="section team-teaser">
+<!-- TEAM TEASER -->
+<section class="section">
   <div class="container">
     <div class="team-teaser-inner">
       <div class="team-teaser-content">
         <div class="section-tag">Our People</div>
-        <h2 class="section-title">A Team You Can<br><span>Trust on the Job</span></h2>
-        <p>Our certified electricians and support staff are committed to delivering excellence on every project. From the office to the field, Bello runs on professionalism, teamwork, and a passion for quality work.</p>
-        <a href="/about#team" class="btn btn-primary">Meet Our Team</a>
+        <h2 class="section-title">A Team You Can<br><span>Rely On</span></h2>
+        <p>Led by founder Luis Bello — a certified electrician with over 20 years of experience — the BES team is made up of highly trained electricians, installers, and supervisors committed to delivering quality on every project, large or small.</p>
+        <a href="/about#team" class="btn btn-primary">Meet the Team</a>
       </div>
       <div class="team-photo-collage">
-        <img src="https://www.genspark.ai/api/files/s/twhZVmUv" alt="Bello Electrical Services full team" class="team-main-photo" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/twhZVmUv" alt="Full BES team in Aruba" class="team-main-photo" loading="lazy">
         <div class="team-sub-photos">
-          <img src="https://www.genspark.ai/api/files/s/8R9X6aUI" alt="Bello team member" loading="lazy">
-          <img src="https://www.genspark.ai/api/files/s/wvwYeDRZ" alt="Bello technician" loading="lazy">
+          <img src="https://www.genspark.ai/api/files/s/8R9X6aUI" alt="BES team member" loading="lazy">
+          <img src="https://www.genspark.ai/api/files/s/wvwYeDRZ" alt="BES field technician" loading="lazy">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA SECTION -->
+<!-- CTA -->
 <section class="cta-section">
-  <div class="cta-overlay"></div>
+  <div class="cta-bg-img"></div>
   <div class="cta-content">
     <h2>Ready to Get Started?</h2>
-    <p>Contact us today for a free consultation and quote. We respond within 24 hours.</p>
+    <p>Send us a message or call now for a site visit and free quote. We respond within 24 hours.</p>
     <div class="cta-actions">
-      <a href="/contact" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> Request a Quote</a>
-      <a href="tel:+2975001234" class="btn btn-white btn-lg"><i class="fas fa-phone"></i> Call Us Now</a>
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
+      <a href="${PHONE_LINK}" class="btn btn-white btn-lg"><i class="fas fa-phone"></i> Call ${PHONE}</a>
     </div>
-    <p class="cta-note"><i class="fas fa-clock"></i> We typically respond within 24 hours</p>
+    <p class="cta-note"><i class="fas fa-clock"></i> Typical response within 24 hours &nbsp;|&nbsp; <i class="fab fa-whatsapp"></i> <a href="${WHATSAPP}" target="_blank" style="color:inherit;">WhatsApp available</a></p>
   </div>
 </section>
 
-${getFooter()}
+${footer()}
 </body>
 </html>`
 }
 
-function renderServicesPage() {
+/* ==============================
+   SERVICES PAGE
+============================== */
+function servicesPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${getHead('Services', 'Full range of commercial electrical services in Aruba – installations, maintenance, solar, panel upgrades, lighting, and emergency support.')}</head>
+<head>${head('Services', 'BES offers 8 electrical services in Aruba: installation, solar panels, preventive maintenance, EV charging, battery storage, energy audits, emergency power & troubleshooting. NEN 1010 compliant.')}</head>
 <body>
-${getNavbar('/services')}
+${navbar('/services')}
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://www.genspark.ai/api/files/s/girPnj3G" alt="Electrical panel work" class="page-hero-img">
+    <img src="https://www.genspark.ai/api/files/s/girPnj3G" alt="BES panel work" class="page-hero-img">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="page-hero-content">
-    <div class="breadcrumb"><a href="/">Home</a> <i class="fas fa-chevron-right"></i> Services</div>
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>Services</div>
     <h1>Our Services</h1>
-    <p>Comprehensive electrical solutions for every commercial need in Aruba</p>
+    <p>8 core electrical services — all NEN 1010 compliant, all delivered with precision</p>
   </div>
 </section>
 
 <!-- SERVICES INTRO -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">What We Offer</div>
-      <h2 class="section-title">Complete Electrical Services<br><span>From Planning to Execution</span></h2>
-      <p class="section-subtitle">Bello Electrical Services handles all phases of commercial electrical work — from initial consultation and design to installation, testing, and ongoing maintenance.</p>
+      <div class="section-tag">BES Services 2024</div>
+      <h2 class="section-title">Electrical Solutions<br><span>From Small to Large</span></h2>
+      <p class="section-subtitle">Whether you're changing a light fixture or installing a full solar system with battery storage — BES has the certification, tools, and team to get it done right in Aruba.</p>
+    </div>
+    <div class="trust-container" style="background:var(--navy);border-radius:16px;padding:1.25rem 2rem;justify-content:space-around;">
+      <div class="trust-item"><i class="fas fa-certificate"></i><span>NEN 1010 Standard</span></div>
+      <div class="trust-item"><i class="fas fa-home"></i><span>Residential</span></div>
+      <div class="trust-item"><i class="fas fa-building"></i><span>Commercial</span></div>
+      <div class="trust-item"><i class="fas fa-industry"></i><span>Industrial</span></div>
+      <div class="trust-item"><i class="fas fa-map-marker-alt"></i><span>Aruba &amp; Bonaire</span></div>
     </div>
   </div>
 </section>
 
-<!-- DETAILED SERVICES -->
-<section class="section services-detail" id="installations">
+<!-- SERVICE 1: ELECTRICAL INSTALLATION -->
+<section class="section" id="installation">
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/FsJDhHTt" alt="Commercial electrical installation" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/FsJDhHTt" alt="Electrical installation Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">01</div>
-        <div class="section-tag">Commercial</div>
-        <h2>Electrical Installations</h2>
-        <p>We provide complete electrical installations for commercial spaces of all sizes. Our team handles everything from load calculations and system design to conduit routing, wiring, panel installation, and final inspection.</p>
+        <div class="service-nen-badge"><i class="fas fa-certificate"></i> NEN 1010 Compliant</div>
+        <div class="section-tag">Core Service</div>
+        <h2>Electrical Installation</h2>
+        <p>Setting up electrical wiring, fixtures, and equipment in buildings and facilities. We install distribution boards, switches, sockets, and all electrical components — ensuring protection against shock, fire hazards, and all electrical risks.</p>
+        <p>We serve new construction, commercial fit-outs, and renovations for both residential and commercial clients across Aruba and Bonaire.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> New construction wiring</li>
-          <li><i class="fas fa-check"></i> Commercial fit-outs</li>
-          <li><i class="fas fa-check"></i> Three-phase power systems</li>
-          <li><i class="fas fa-check"></i> Load balancing & distribution</li>
-          <li><i class="fas fa-check"></i> Full code compliance</li>
+          <li><i class="fas fa-check-circle"></i> Distribution board installation</li>
+          <li><i class="fas fa-check-circle"></i> Full wiring for new builds &amp; renovations</li>
+          <li><i class="fas fa-check-circle"></i> Three-phase commercial systems</li>
+          <li><i class="fas fa-check-circle"></i> Load calculation &amp; system design</li>
+          <li><i class="fas fa-check-circle"></i> GFCI &amp; AFCI protection</li>
+          <li><i class="fas fa-check-circle"></i> Final inspection &amp; compliance sign-off</li>
         </ul>
-        <a href="/contact" class="btn btn-primary">Request a Quote</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section services-detail section-alt" id="maintenance">
+<!-- SERVICE 2: SOLAR -->
+<section class="section section-alt" id="solar">
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/girPnj3G" alt="Preventive maintenance" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/Da7x516z" alt="Solar panel installation Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">02</div>
-        <div class="section-tag">Maintenance</div>
-        <h2>Preventive Maintenance & Inspections</h2>
-        <p>Regular electrical maintenance is the best way to prevent costly failures and protect your business. Our maintenance programs are tailored to your facility's needs and schedule to minimize disruption.</p>
+        <div class="service-nen-badge"><i class="fas fa-sun"></i> Renewable Energy</div>
+        <div class="section-tag">Trending</div>
+        <h2>Solar Panel Installation</h2>
+        <p>Mounting photovoltaic (PV) panels on rooftops and structures to convert Aruba's abundant sunlight into electricity. We design the optimal layout, handle all wiring, install inverters, and commission your system for maximum output.</p>
+        <p>Aruba's sunny climate makes solar an exceptional ROI investment. BES handles both grid-connected and off-grid setups.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> Scheduled maintenance visits</li>
-          <li><i class="fas fa-check"></i> Thermal imaging inspections</li>
-          <li><i class="fas fa-check"></i> Panel testing & cleaning</li>
-          <li><i class="fas fa-check"></i> Grounding system verification</li>
-          <li><i class="fas fa-check"></i> Compliance documentation</li>
+          <li><i class="fas fa-check-circle"></i> Rooftop &amp; ground-mount PV systems</li>
+          <li><i class="fas fa-check-circle"></i> Grid-tied &amp; off-grid configurations</li>
+          <li><i class="fas fa-check-circle"></i> Inverter selection &amp; installation</li>
+          <li><i class="fas fa-check-circle"></i> Net metering &amp; WEB Aruba setup</li>
+          <li><i class="fas fa-check-circle"></i> System commissioning &amp; monitoring</li>
+          <li><i class="fas fa-check-circle"></i> Post-installation maintenance</li>
         </ul>
-        <a href="/contact" class="btn btn-primary">Request a Quote</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section services-detail" id="solar">
+<!-- SERVICE 3: MAINTENANCE -->
+<section class="section" id="maintenance">
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/Da7x516z" alt="Solar panel installation" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/girPnj3G" alt="Electrical maintenance Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">03</div>
-        <div class="section-tag">Renewable Energy</div>
-        <h2>Solar Energy Systems</h2>
-        <p>Aruba's sunny climate makes solar power an excellent investment for businesses. We design, install, and commission solar energy systems that integrate seamlessly with your existing electrical infrastructure.</p>
+        <div class="service-nen-badge"><i class="fas fa-tools"></i> Preventive</div>
+        <div class="section-tag">Most Requested</div>
+        <h2>Preventive Electrical Maintenance</h2>
+        <p>Regular maintenance ensures electrical systems operate efficiently and safely, minimizing costly downtime. BES provides tailored maintenance programs with scheduled visits that work around your business operations.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> Solar panel installation</li>
-          <li><i class="fas fa-check"></i> Grid-tie & off-grid systems</li>
-          <li><i class="fas fa-check"></i> Battery storage solutions</li>
-          <li><i class="fas fa-check"></i> Net metering setup</li>
-          <li><i class="fas fa-check"></i> System monitoring & maintenance</li>
+          <li><i class="fas fa-check-circle"></i> Scheduled inspection visits</li>
+          <li><i class="fas fa-check-circle"></i> Component cleaning &amp; testing</li>
+          <li><i class="fas fa-check-circle"></i> Connection tightening &amp; verification</li>
+          <li><i class="fas fa-check-circle"></i> Earth fault circuit breaker servicing</li>
+          <li><i class="fas fa-check-circle"></i> Thermal imaging inspections</li>
+          <li><i class="fas fa-check-circle"></i> Compliance documentation</li>
         </ul>
-        <a href="/contact" class="btn btn-primary">Request a Quote</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section services-detail section-alt" id="panels">
+<!-- SERVICE 4: TROUBLESHOOTING -->
+<section class="section section-alt" id="troubleshooting">
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/bqLIkGQ3" alt="Panel installation" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/bqLIkGQ3" alt="Electrical troubleshooting Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">04</div>
-        <div class="section-tag">Power Distribution</div>
-        <h2>Panel Installation & Upgrades</h2>
-        <p>Outdated panels are a safety and performance risk. We install, upgrade, and replace electrical panels to ensure your business has reliable, properly protected power distribution that meets today's demands.</p>
+        <div class="service-nen-badge"><i class="fas fa-search"></i> Diagnostics</div>
+        <div class="section-tag">Fast Response</div>
+        <h2>Troubleshooting &amp; Repairs</h2>
+        <p>Systematic diagnosis of root causes for power outages, equipment malfunctions, and energy losses. Our certified team uses advanced diagnostic tools to locate faults quickly and execute precise repairs to restore your operations.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> Main panel replacements</li>
-          <li><i class="fas fa-check"></i> Sub-panel additions</li>
-          <li><i class="fas fa-check"></i> Capacity upgrades</li>
-          <li><i class="fas fa-check"></i> AFCI/GFCI protection</li>
-          <li><i class="fas fa-check"></i> Surge protection systems</li>
+          <li><i class="fas fa-check-circle"></i> Power outage diagnosis &amp; repair</li>
+          <li><i class="fas fa-check-circle"></i> Equipment malfunction analysis</li>
+          <li><i class="fas fa-check-circle"></i> Short circuit &amp; overload resolution</li>
+          <li><i class="fas fa-check-circle"></i> Ground fault testing</li>
+          <li><i class="fas fa-check-circle"></i> Wiring fault location &amp; repair</li>
+          <li><i class="fas fa-check-circle"></i> Post-repair testing &amp; verification</li>
         </ul>
-        <a href="/contact" class="btn btn-primary">Request a Quote</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section services-detail" id="lighting">
+<!-- SERVICE 5: EV CHARGING -->
+<section class="section" id="ev">
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/FsJDhHTt" alt="Commercial lighting" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/LJASeQUs" alt="EV charging station installation" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">05</div>
-        <div class="section-tag">Lighting</div>
-        <h2>Lighting Systems – Indoor & Outdoor</h2>
-        <p>Effective lighting improves safety, productivity, and ambience. We design and install custom lighting solutions for commercial interiors, parking areas, signage, and building exteriors.</p>
+        <div class="service-nen-badge"><i class="fas fa-car-battery"></i> EV Infrastructure</div>
+        <div class="section-tag">Growing Demand</div>
+        <h2>EV Charging Station Installation</h2>
+        <p>As electric vehicles grow in Aruba, businesses and homeowners need reliable charging infrastructure. BES installs Level 2 and DC fast charging stations at residential, commercial, and public locations, fully compliant with NEN 1010.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> LED lighting design</li>
-          <li><i class="fas fa-check"></i> Parking & security lighting</li>
-          <li><i class="fas fa-check"></i> Architectural lighting</li>
-          <li><i class="fas fa-check"></i> Emergency exit lighting</li>
-          <li><i class="fas fa-check"></i> Smart lighting controls</li>
+          <li><i class="fas fa-check-circle"></i> Site assessment &amp; load calculation</li>
+          <li><i class="fas fa-check-circle"></i> Level 1, Level 2 &amp; DC fast charging</li>
+          <li><i class="fas fa-check-circle"></i> Residential &amp; commercial installations</li>
+          <li><i class="fas fa-check-circle"></i> Smart charging systems</li>
+          <li><i class="fas fa-check-circle"></i> Fleet charging infrastructure</li>
+          <li><i class="fas fa-check-circle"></i> NEN 1010 safety compliance</li>
         </ul>
-        <a href="/contact" class="btn btn-primary">Request a Quote</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section services-detail section-alt" id="emergency">
+<!-- SERVICE 6: ENERGY AUDIT -->
+<section class="section section-alt" id="audit">
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/w21o6yEm" alt="Emergency electrical support" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/w21o6yEm" alt="Energy efficiency audit Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">06</div>
-        <div class="section-tag">Emergency</div>
-        <h2>Emergency Electrical Support</h2>
-        <p>Electrical emergencies don't follow business hours. Our team is available 24/7 to respond to power outages, tripped breakers, electrical faults, and safety hazards to get your business back online fast.</p>
+        <div class="service-nen-badge"><i class="fas fa-leaf"></i> Sustainability</div>
+        <div class="section-tag">Save Money</div>
+        <h2>Energy Efficiency Audits</h2>
+        <p>A thorough assessment of energy use within your building or facility. We analyze your energy bills, inspect equipment, and provide concrete recommendations — from lighting upgrades to HVAC optimization — to significantly reduce your operating costs.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> 24/7 availability</li>
-          <li><i class="fas fa-check"></i> Rapid response times</li>
-          <li><i class="fas fa-check"></i> Fault diagnosis & repair</li>
-          <li><i class="fas fa-check"></i> Temporary power solutions</li>
-          <li><i class="fas fa-check"></i> Safety assessments</li>
+          <li><i class="fas fa-check-circle"></i> Comprehensive energy consumption analysis</li>
+          <li><i class="fas fa-check-circle"></i> Equipment efficiency assessment</li>
+          <li><i class="fas fa-check-circle"></i> LED lighting upgrade recommendations</li>
+          <li><i class="fas fa-check-circle"></i> HVAC optimization planning</li>
+          <li><i class="fas fa-check-circle"></i> ROI calculation for upgrades</li>
+          <li><i class="fas fa-check-circle"></i> Written report &amp; action plan</li>
         </ul>
-        <a href="tel:+2975001234" class="btn btn-danger"><i class="fas fa-phone"></i> Emergency Line</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section services-detail" id="energy">
+<!-- SERVICE 7: BATTERY STORAGE -->
+<section class="section" id="battery">
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="https://www.genspark.ai/api/files/s/LJASeQUs" alt="Energy efficiency" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="Battery storage systems Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">07</div>
-        <div class="section-tag">Efficiency</div>
-        <h2>Energy Efficiency Improvements</h2>
-        <p>Reducing energy consumption lowers operating costs and environmental impact. We conduct energy audits and implement solutions like LED retrofits, smart controls, and power factor correction.</p>
+        <div class="service-nen-badge"><i class="fas fa-battery-full"></i> Energy Storage</div>
+        <div class="section-tag">Energy Independence</div>
+        <h2>Battery Storage Systems</h2>
+        <p>Store electrical energy generated by solar panels or the grid for later use. BES designs and installs battery systems that enhance your energy security, reduce peak demand charges, and provide backup during outages.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check"></i> Energy consumption audits</li>
-          <li><i class="fas fa-check"></i> LED & fixture upgrades</li>
-          <li><i class="fas fa-check"></i> Power factor correction</li>
-          <li><i class="fas fa-check"></i> Building automation systems</li>
-          <li><i class="fas fa-check"></i> Monitoring & reporting</li>
+          <li><i class="fas fa-check-circle"></i> Solar + battery system integration</li>
+          <li><i class="fas fa-check-circle"></i> Grid-connected storage solutions</li>
+          <li><i class="fas fa-check-circle"></i> Backup power configuration</li>
+          <li><i class="fas fa-check-circle"></i> Peak shaving &amp; load shifting</li>
+          <li><i class="fas fa-check-circle"></i> Battery management systems (BMS)</li>
+          <li><i class="fas fa-check-circle"></i> Remote monitoring setup</li>
         </ul>
-        <a href="/contact" class="btn btn-primary">Request a Quote</a>
+        <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA SECTION -->
-<section class="cta-section">
-  <div class="cta-overlay"></div>
-  <div class="cta-content">
-    <h2>Not Sure What You Need?</h2>
-    <p>Contact us for a free consultation. We'll assess your needs and recommend the best solution.</p>
-    <div class="cta-actions">
-      <a href="/contact" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> Request a Quote</a>
-      <a href="tel:+2975001234" class="btn btn-white btn-lg"><i class="fas fa-phone"></i> Call Us Now</a>
+<!-- SERVICE 8: EMERGENCY POWER -->
+<section class="section section-alt" id="emergency">
+  <div class="container">
+    <div class="service-detail-card reverse">
+      <div class="service-detail-img">
+        <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="Emergency power systems Aruba" loading="lazy">
+      </div>
+      <div class="service-detail-content">
+        <div class="service-number">08</div>
+        <div class="service-nen-badge"><i class="fas fa-bolt"></i> 24/7 Critical</div>
+        <div class="section-tag">Always Ready</div>
+        <h2>Emergency Power Systems</h2>
+        <p>Uninterruptible power supplies (UPS) and backup generators provide continuous power for critical facilities like hospitals, data centers, hotels, and commercial operations that cannot afford downtime.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> UPS system design &amp; installation</li>
+          <li><i class="fas fa-check-circle"></i> Backup generator installation</li>
+          <li><i class="fas fa-check-circle"></i> Automatic transfer switch (ATS)</li>
+          <li><i class="fas fa-check-circle"></i> Load prioritization planning</li>
+          <li><i class="fas fa-check-circle"></i> Regular testing &amp; maintenance</li>
+          <li><i class="fas fa-check-circle"></i> 24/7 emergency response support</li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
+          <a href="${PHONE_LINK}" class="btn btn-danger"><i class="fas fa-phone"></i> Emergency Line</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-${getFooter()}
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg-img"></div>
+  <div class="cta-content">
+    <h2>Not Sure What You Need?</h2>
+    <p>Contact us for a free consultation. We'll assess your needs and recommend the most efficient solution.</p>
+    <div class="cta-actions">
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Get a Free Quote</a>
+      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+${footer()}
 </body>
 </html>`
 }
 
-function renderAboutPage() {
+/* ==============================
+   ABOUT PAGE
+============================== */
+function aboutPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${getHead('About Us', 'Learn about Bello Electrical Services – Aruba\'s trusted commercial electricians since 2015. Meet our team and learn our story.')}</head>
+<head>${head('About Us', 'Learn about Bello Electrical Services – founded in 2019 by Luis Bello in Aruba. 20+ years experience, certified electricians, NEN 1010 compliant.')}</head>
 <body>
-${getNavbar('/about')}
+${navbar('/about')}
 
-<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://www.genspark.ai/api/files/s/rcYkUkQ2" alt="Bello Electrical team" class="page-hero-img">
+    <img src="https://www.genspark.ai/api/files/s/rcYkUkQ2" alt="BES full team Aruba" class="page-hero-img">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="page-hero-content">
-    <div class="breadcrumb"><a href="/">Home</a> <i class="fas fa-chevron-right"></i> About Us</div>
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>About Us</div>
     <h1>About Bello Electrical</h1>
-    <p>Aruba's trusted commercial electrical partner since 2015</p>
+    <p>Aruba's certified electrical contractor — founded 2019, powered by 20+ years of expertise</p>
   </div>
 </section>
 
@@ -659,19 +703,52 @@ ${getNavbar('/about')}
     <div class="about-story">
       <div class="about-story-content">
         <div class="section-tag">Our Story</div>
-        <h2 class="section-title">Built on Trust,<br><span>Driven by Quality</span></h2>
-        <p>Bello Electrical Services was founded with a clear mission: deliver reliable, high-quality electrical solutions to businesses in Aruba. What started as a small team has grown into one of Aruba's most trusted commercial electrical contractors, serving restaurants, offices, retailers, developers, and property managers across the island.</p>
-        <p>We believe in doing things right the first time. Every project — from a simple panel swap to a full commercial installation — receives the same level of care, precision, and professionalism. Our work is safe, code-compliant, and built to last.</p>
-        <p>Our approach is built on long-term client relationships. We don't just complete jobs and move on — we stay connected, respond fast, and support our clients for the life of the system.</p>
+        <h2 class="section-title">Built for Aruba.<br><span>Built to Last.</span></h2>
+        <p>Bello Electrical Services and More (BES) was incorporated on <strong>28 May 2019</strong> by Luis Bello — a certified electrician with over 20 years of hands-on experience in electrical wiring, repair, professional drafting, and inspection.</p>
+        <p>Luis saw a gap in the Aruban market: businesses needed a reliable electrical partner that combined technical excellence with professional communication and consistent quality. BES was built to fill that gap.</p>
+        <p>From small repairs to complex commercial installations and solar systems, BES ensures every client receives exceptional results. The company has since expanded services across Aruba and Bonaire, with plans to serve the wider Caribbean region.</p>
         <div class="about-quote">
-          <blockquote>"Ridiculously Good. Exactly What You Need."</blockquote>
-          <cite>— Bello Electrical Services</cite>
+          <blockquote>"Electricity is our source of energy — and your business is our mission."</blockquote>
+          <cite>— Luis Bello, Founder &amp; Lead Electrician</cite>
         </div>
       </div>
       <div class="about-story-image">
-        <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="Bello team at work in Aruba" loading="lazy">
+        <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="BES team at work in Aruba" loading="lazy">
         <div class="about-img-accent">
-          <img src="https://www.genspark.ai/api/files/s/P9PpnwhD" alt="Bello office team" loading="lazy">
+          <img src="https://www.genspark.ai/api/files/s/P9PpnwhD" alt="BES office team" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section founder-section" id="founder">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Leadership</div>
+      <h2 class="section-title">Meet Our <span>Founder</span></h2>
+    </div>
+    <div class="founder-card">
+      <div class="founder-image">
+        <img src="https://www.genspark.ai/api/files/s/wvwYeDRZ" alt="Luis Bello - Founder BES" loading="lazy">
+        <div class="founder-image-overlay">
+          <span class="founder-name">Luis Bello</span>
+          <span class="founder-role">Founder &amp; Lead Electrician, BES</span>
+        </div>
+      </div>
+      <div class="founder-content">
+        <h2>Luis Bello</h2>
+        <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection — giving him a comprehensive view of every project from design to delivery.</p>
+        <p>In 2013, Luis expanded his entrepreneurial spirit by opening an aviation school in Aruba. By 2017, he had become a certified Private Pilot — demonstrating the precision, discipline, and commitment to safety that he brings to every electrical project.</p>
+        <p>His wife joined as Business Partner and Business Manager, bringing operational excellence to the company. Together, they have built BES into one of Aruba's most trusted electrical contractors, with an eye toward technological advancement and modern electrical needs.</p>
+        <p>"I started BES because I saw businesses struggling to find a reliable, communicative, professional electrical contractor. That's what we built — and that's what we deliver, every day."</p>
+        <div class="founder-credentials">
+          <span class="credential-badge"><i class="fas fa-certificate"></i> Certified Electrician</span>
+          <span class="credential-badge"><i class="fas fa-plane"></i> Certified Private Pilot</span>
+          <span class="credential-badge"><i class="fas fa-hard-hat"></i> 20+ Years Experience</span>
+          <span class="credential-badge"><i class="fas fa-shield-alt"></i> NEN 1010 Specialist</span>
+          <span class="credential-badge"><i class="fas fa-solar-panel"></i> Solar Certified</span>
         </div>
       </div>
     </div>
@@ -679,104 +756,86 @@ ${getNavbar('/about')}
 </section>
 
 <!-- VALUES -->
-<section class="section values-section section-alt">
+<section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">What Drives Us</div>
-      <h2 class="section-title">Our Core Values</h2>
+      <div class="section-tag">Our Values</div>
+      <h2 class="section-title">What Drives <span>Every Project</span></h2>
     </div>
     <div class="values-grid">
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
         <h3>Safety First</h3>
-        <p>Safety is non-negotiable. All our work complies with Aruba's electrical codes and international safety standards.</p>
+        <p>Every job is executed to NEN 1010 safety standards. No shortcuts, no compromises — safety is non-negotiable.</p>
       </div>
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-medal"></i></div>
         <h3>Quality Work</h3>
-        <p>We take pride in every installation. No shortcuts, no compromises — only work we're proud to put our name on.</p>
+        <p>We take pride in clean, professional installations. If it has our name on it, it meets the highest standard.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-clock"></i></div>
+        <h3>On Time</h3>
+        <p>We respect your time and your business operations. Projects are completed on schedule, period.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-comments"></i></div>
+        <h3>Clear Communication</h3>
+        <p>You'll always know what's happening. We give clear updates, honest timelines, and no technical jargon.</p>
       </div>
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-handshake"></i></div>
-        <h3>Client Focus</h3>
-        <p>We build lasting partnerships. Your success is our success, and we stay committed long after the project ends.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><i class="fas fa-bolt"></i></div>
-        <h3>Fast Response</h3>
-        <p>We understand that downtime costs money. Our team responds quickly to keep your business running smoothly.</p>
+        <h3>Trusted Partner</h3>
+        <p>We build long-term relationships. Many of our clients have been with us since we opened in 2019.</p>
       </div>
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
-        <h3>Expertise</h3>
-        <p>Our certified team stays current with the latest technologies and practices in commercial electrical work.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><i class="fas fa-island-tropical"></i></div>
-        <h3>Local Pride</h3>
-        <p>We're proudly Aruban. We understand the local environment, codes, and what businesses here truly need.</p>
+        <h3>Certified Expertise</h3>
+        <p>Our team stays current with the latest technologies — from solar to EV charging to battery storage.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TEAM SECTION -->
+<!-- TEAM -->
 <section class="section" id="team">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">Our People</div>
-      <h2 class="section-title">Meet the Bello Team</h2>
-      <p class="section-subtitle">A team of dedicated professionals committed to excellence in every project.</p>
+      <div class="section-tag">Our Team</div>
+      <h2 class="section-title">The People Behind <span>Every Project</span></h2>
+      <p class="section-subtitle">Highly trained electricians, installers, supervisors, and support staff — united by a commitment to excellence.</p>
     </div>
     <div class="team-photos-grid">
       <div class="team-photo-full">
-        <img src="https://www.genspark.ai/api/files/s/twhZVmUv" alt="Full Bello Electrical Services team" loading="lazy">
-        <div class="team-photo-caption">The Bello Electrical Services Team – Aruba</div>
+        <img src="https://www.genspark.ai/api/files/s/twhZVmUv" alt="Bello Electrical Services full team" loading="lazy">
+        <div class="team-photo-caption">The BES Team — Aruba &amp; Bonaire</div>
       </div>
       <div class="team-photos-row">
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/8R9X6aUI" alt="Bello office staff member" loading="lazy">
-          <div class="team-member-info">
-            <h4>Office & Administration</h4>
-            <p>Coordinating projects and client relations</p>
-          </div>
+          <img src="https://www.genspark.ai/api/files/s/8R9X6aUI" alt="BES office coordinator" loading="lazy">
+          <div class="team-member-info"><h4>Office &amp; Administration</h4><p>Client relations &amp; project coordination</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/P9PpnwhD" alt="Bello project coordinator" loading="lazy">
-          <div class="team-member-info">
-            <h4>Project Coordination</h4>
-            <p>Planning and scheduling all field work</p>
-          </div>
+          <img src="https://www.genspark.ai/api/files/s/P9PpnwhD" alt="BES project manager" loading="lazy">
+          <div class="team-member-info"><h4>Project Management</h4><p>Planning &amp; scheduling all field work</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/NLorPAc3" alt="Bello team member" loading="lazy">
-          <div class="team-member-info">
-            <h4>Operations Team</h4>
-            <p>Keeping everything running smoothly</p>
-          </div>
+          <img src="https://www.genspark.ai/api/files/s/NLorPAc3" alt="BES operations" loading="lazy">
+          <div class="team-member-info"><h4>Operations</h4><p>Keeping everything running smoothly</p></div>
         </div>
       </div>
       <div class="team-photos-row">
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/wvwYeDRZ" alt="Bello field electrician" loading="lazy">
-          <div class="team-member-info">
-            <h4>Field Electricians</h4>
-            <p>Expert installation & maintenance</p>
-          </div>
+          <img src="https://www.genspark.ai/api/files/s/lW2yqxHU" alt="BES field electrician" loading="lazy">
+          <div class="team-member-info"><h4>Field Electricians</h4><p>Certified installation &amp; maintenance</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/lW2yqxHU" alt="Bello technician ready for job" loading="lazy">
-          <div class="team-member-info">
-            <h4>Service Technicians</h4>
-            <p>Ready to respond to any electrical need</p>
-          </div>
+          <img src="https://www.genspark.ai/api/files/s/Da7x516z" alt="BES solar specialist" loading="lazy">
+          <div class="team-member-info"><h4>Solar Specialists</h4><p>PV system installation &amp; commissioning</p></div>
         </div>
         <div class="team-photo-item">
-          <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="Bello solar installation team" loading="lazy">
-          <div class="team-member-info">
-            <h4>Solar Specialists</h4>
-            <p>Certified in renewable energy systems</p>
-          </div>
+          <img src="https://www.genspark.ai/api/files/s/pudKGucK" alt="BES installation crew" loading="lazy">
+          <div class="team-member-info"><h4>Installation Crew</h4><p>Large-scale project execution</p></div>
         </div>
       </div>
     </div>
@@ -789,8 +848,13 @@ ${getNavbar('/about')}
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
-        <div class="stat-number-lg">10+</div>
-        <div class="stat-label-lg">Years in Business</div>
+        <div class="stat-number-lg">2019</div>
+        <div class="stat-label-lg">Founded in Aruba</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-hard-hat"></i></div>
+        <div class="stat-number-lg">20+</div>
+        <div class="stat-label-lg">Years of Experience</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
@@ -798,14 +862,9 @@ ${getNavbar('/about')}
         <div class="stat-label-lg">Projects Completed</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-users"></i></div>
-        <div class="stat-number-lg">200+</div>
-        <div class="stat-label-lg">Happy Clients</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-hard-hat"></i></div>
-        <div class="stat-number-lg">15+</div>
-        <div class="stat-label-lg">Certified Professionals</div>
+        <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="stat-number-lg">2</div>
+        <div class="stat-label-lg">Islands Served</div>
       </div>
     </div>
   </div>
@@ -813,48 +872,49 @@ ${getNavbar('/about')}
 
 <!-- CTA -->
 <section class="cta-section">
-  <div class="cta-overlay"></div>
+  <div class="cta-bg-img"></div>
   <div class="cta-content">
     <h2>Ready to Work Together?</h2>
-    <p>Let's discuss your project and find the right solution for your business.</p>
+    <p>Let's discuss your project and build something reliable, safe, and efficient.</p>
     <div class="cta-actions">
-      <a href="/contact" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> Contact Us</a>
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-envelope"></i> Contact Us Today</a>
       <a href="/services" class="btn btn-white btn-lg"><i class="fas fa-bolt"></i> View Services</a>
     </div>
   </div>
 </section>
 
-${getFooter()}
+${footer()}
 </body>
 </html>`
 }
 
-function renderContactPage() {
+/* ==============================
+   CONTACT PAGE
+============================== */
+function contactPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${getHead('Contact', 'Contact Bello Electrical Services in Aruba. Get a free quote for your commercial electrical project. We respond within 24 hours.')}</head>
+<head>${head('Contact', 'Contact Bello Electrical Services in Aruba. Request a free quote, call us, or WhatsApp for a fast response. We respond within 24 hours.')}</head>
 <body>
-${getNavbar('/contact')}
+${navbar('/contact')}
 
-<!-- PAGE HERO -->
 <section class="page-hero page-hero-short">
   <div class="page-hero-overlay-solid"></div>
   <div class="page-hero-content">
-    <div class="breadcrumb"><a href="/">Home</a> <i class="fas fa-chevron-right"></i> Contact</div>
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>Contact</div>
     <h1>Contact Us</h1>
-    <p>Get a free quote or reach out with any questions</p>
+    <p>Get a free quote or send us a message — we respond within 24 hours</p>
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
 <section class="section contact-section" id="quote">
   <div class="container">
     <div class="contact-grid">
-      <!-- CONTACT FORM -->
+      <!-- FORM -->
       <div class="contact-form-wrapper">
         <div class="form-header">
           <h2>Request a Free Quote</h2>
-          <p>Fill in your details and we'll get back to you within 24 hours.</p>
+          <p>Tell us about your project and we'll get back to you within 24 hours with a clear, detailed quote.</p>
         </div>
         <form class="contact-form" id="contactForm">
           <div class="form-row">
@@ -869,39 +929,39 @@ ${getNavbar('/contact')}
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="phone">Phone Number</label>
+              <label for="phone">Phone / WhatsApp</label>
               <input type="tel" id="phone" name="phone" placeholder="+297 000-0000">
             </div>
             <div class="form-group">
               <label for="company">Company Name</label>
-              <input type="text" id="company" name="company" placeholder="Your company">
+              <input type="text" id="company" name="company" placeholder="Your company (optional)">
             </div>
           </div>
           <div class="form-group">
             <label for="service">Service Needed</label>
             <select id="service" name="service">
               <option value="">Select a service...</option>
-              <option value="installation">Commercial Installation</option>
+              <option value="installation">Electrical Installation</option>
+              <option value="solar">Solar Panel Installation</option>
               <option value="maintenance">Preventive Maintenance</option>
-              <option value="solar">Solar Energy System</option>
-              <option value="panel">Panel Installation/Upgrade</option>
-              <option value="lighting">Lighting System</option>
-              <option value="emergency">Emergency Support</option>
-              <option value="energy">Energy Efficiency</option>
-              <option value="troubleshooting">Troubleshooting & Repair</option>
+              <option value="troubleshooting">Troubleshooting &amp; Repair</option>
+              <option value="ev">EV Charging Station</option>
+              <option value="audit">Energy Efficiency Audit</option>
+              <option value="battery">Battery Storage System</option>
+              <option value="emergency">Emergency Power System</option>
               <option value="other">Other</option>
             </select>
           </div>
           <div class="form-group">
             <label for="message">Project Details *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Describe your project or question in detail..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Describe your project — location, scope, timeline, any specific requirements..." required></textarea>
           </div>
           <div id="formStatus" class="form-status" style="display:none;"></div>
           <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
             <i class="fas fa-paper-plane"></i>
             <span>Send Message</span>
           </button>
-          <p class="form-note"><i class="fas fa-lock"></i> Your information is secure and will never be shared.</p>
+          <p class="form-note"><i class="fas fa-lock"></i> Your information is secure and will never be shared with third parties.</p>
         </form>
       </div>
 
@@ -921,56 +981,54 @@ ${getNavbar('/contact')}
               <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
               <div class="contact-info-content">
                 <h4>Phone</h4>
-                <a href="tel:+2975001234">+297 500-1234</a>
+                <a href="${PHONE_LINK}">${PHONE}</a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fab fa-whatsapp"></i></div>
+              <div class="contact-info-content">
+                <h4>WhatsApp</h4>
+                <a href="${WHATSAPP}" target="_blank">Send a WhatsApp Message</a>
               </div>
             </div>
             <div class="contact-info-item">
               <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
               <div class="contact-info-content">
                 <h4>Email</h4>
-                <a href="mailto:info@electricalservicesaruba.com">info@electricalservicesaruba.com</a>
+                <a href="mailto:${EMAIL}">${EMAIL}</a>
               </div>
             </div>
             <div class="contact-info-item">
               <div class="contact-info-icon"><i class="fas fa-globe"></i></div>
               <div class="contact-info-content">
                 <h4>Website</h4>
-                <a href="https://www.electricalservicesaruba.com">electricalservicesaruba.com</a>
+                <a href="https://${WEBSITE}" target="_blank">${WEBSITE}</a>
               </div>
             </div>
           </div>
           <div class="contact-hours">
             <h4><i class="fas fa-clock"></i> Business Hours</h4>
             <div class="hours-grid">
-              <div class="hours-row">
-                <span>Monday – Friday</span>
-                <span>7:00 AM – 5:00 PM</span>
-              </div>
-              <div class="hours-row">
-                <span>Saturday</span>
-                <span>By Appointment</span>
-              </div>
-              <div class="hours-row emergency">
-                <span>Emergency</span>
-                <span>24/7 Available</span>
-              </div>
+              <div class="hours-row"><span>Monday – Friday</span><span>7:00 AM – 5:00 PM</span></div>
+              <div class="hours-row"><span>Saturday</span><span>By Appointment</span></div>
+              <div class="hours-row emergency"><span>Emergency Line</span><span>24/7 Available</span></div>
             </div>
           </div>
           <div class="contact-social">
-            <h4>Follow Us</h4>
+            <h4>Follow &amp; Connect</h4>
             <div class="social-links">
-              <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" class="social-link whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="${FACEBOOK}"   target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="${INSTAGRAM}"  target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="${WHATSAPP}"   target="_blank" rel="noopener" class="social-link whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="${GOOGLE_BIZ}" target="_blank" rel="noopener" class="social-link google" aria-label="Google Business"><i class="fab fa-google"></i></a>
             </div>
           </div>
         </div>
         <div class="contact-team-img">
-          <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="Bello team ready to help" loading="lazy">
+          <img src="https://www.genspark.ai/api/files/s/QDOLTJji" alt="BES team ready to help" loading="lazy">
           <div class="contact-team-caption">
             <i class="fas fa-hard-hat"></i>
-            <span>Our team is ready to help you</span>
+            <span>Our team is ready to help — call, WhatsApp, or email us</span>
           </div>
         </div>
       </div>
@@ -978,7 +1036,7 @@ ${getNavbar('/contact')}
   </div>
 </section>
 
-${getFooter()}
+${footer()}
 </body>
 </html>`
 }
