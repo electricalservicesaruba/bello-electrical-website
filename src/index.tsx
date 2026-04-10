@@ -668,7 +668,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="/static/images/tech-solar-standing.jpg" alt="Solar panel installation Aruba" loading="lazy">
+        <img src="/static/images/service-solar-install.jpg" alt="Solar panel installation Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">02</div>
@@ -750,7 +750,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="/static/images/tech-solar-drill.jpg" alt="EV charging station installation" loading="lazy">
+        <img src="/static/images/service-ev-charging.jpg" alt="EV charging station installation Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">05</div>
@@ -777,7 +777,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card reverse">
       <div class="service-detail-img">
-        <img src="/static/images/team-solar-install.jpg" alt="Energy efficiency audit Aruba" loading="lazy">
+        <img src="/static/images/service-energy-audit.jpg" alt="Energy efficiency audit Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">06</div>
@@ -804,7 +804,7 @@ ${navbar('/services')}
   <div class="container">
     <div class="service-detail-card">
       <div class="service-detail-img">
-        <img src="/static/images/team-solar-thumbsup.jpg" alt="Battery storage systems Aruba" loading="lazy">
+        <img src="/static/images/service-battery-storage.jpg" alt="Battery storage systems Aruba" loading="lazy">
       </div>
       <div class="service-detail-content">
         <div class="service-number">07</div>
