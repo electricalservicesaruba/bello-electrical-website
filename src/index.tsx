@@ -163,7 +163,7 @@ ${navbar('/')}
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="/static/images/tech-panel-portrait.jpg" alt="Bello Electrical Services" class="hero-bg-img">
+    <img src="/static/images/team-solar-thumbsup.jpg" alt="Bello Electrical Services" class="hero-bg-img">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
@@ -173,8 +173,8 @@ ${navbar('/')}
       <span class="hero-highlight">Services in Aruba.</span>
     </h1>
     <p class="hero-subtitle">
-      From small repairs to full commercial installations and solar systems —
-      BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality — backed by more than 20 years of hands-on experience.
+      From small repairs to full commercial installations and solar systems,
+      BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality. Backed by more than 20 years of hands-on experience.
     </p>
     <div class="hero-actions">
       <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Free Quote</a>
@@ -222,7 +222,7 @@ ${navbar('/')}
     <div class="section-header">
       <div class="section-tag">Our Services</div>
       <h2 class="section-title">Everything Electrical,<br><span>Done Right.</span></h2>
-      <p class="section-subtitle">From installation to maintenance, solar to EV charging — BES handles it all for residential and commercial clients across Aruba.</p>
+      <p class="section-subtitle">From installation to maintenance, solar to EV charging, BES handles it all for residential and commercial clients across Aruba.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
@@ -300,7 +300,7 @@ ${navbar('/')}
       <div class="why-us-content">
         <div class="section-tag">Why Choose BES?</div>
         <h2 class="section-title">The Electrical Partner<br><span>Businesses Trust</span></h2>
-        <p class="section-subtitle" style="text-align:left;max-width:none;">While competitors compete on price, BES stands apart through fast response, clean work, clear communication, and strong branding. We don't just complete jobs — we build lasting relationships.</p>
+        <p class="section-subtitle" style="text-align:left;max-width:none;">While others compete on price, BES stands apart through fast response, clean work and clear communication. We don't just complete jobs. We build lasting relationships.</p>
         <div class="why-features">
           <div class="why-feature">
             <div class="feature-icon"><i class="fas fa-certificate"></i></div>
@@ -313,14 +313,14 @@ ${navbar('/')}
             <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
             <div class="feature-content">
               <h4>NEN 1010 Compliant</h4>
-              <p>All work meets the Dutch NEN 1010 electrical safety standard applied in Aruba — no exceptions.</p>
+              <p>All work meets the Dutch NEN 1010 electrical safety standard applied in Aruba. No exceptions.</p>
             </div>
           </div>
           <div class="why-feature">
             <div class="feature-icon"><i class="fas fa-comments"></i></div>
             <div class="feature-content">
               <h4>Clear Communication</h4>
-              <p>We keep you informed throughout — from quote to completion. No surprises, no excuses.</p>
+              <p>We keep you informed from quote to completion. No surprises, no excuses.</p>
             </div>
           </div>
           <div class="why-feature">
@@ -374,7 +374,7 @@ ${navbar('/')}
         <div class="team-card-info">
           <h3>Luis Bello</h3>
           <span class="team-role">Director of Operations</span>
-          <p>Founder &amp; certified electrician with 20+ years of experience. Oversees all projects, ensures NEN 1010 compliance, and drives BES's growth across Aruba &amp; Bonaire.</p>
+          <p>Founder and certified electrician with 20+ years of experience. He oversees all projects, ensures NEN 1010 compliance, and leads BES's growth across Aruba and Bonaire.</p>
           <div class="team-badges">
             <span><i class="fas fa-certificate"></i> Certified Electrician</span>
             <span><i class="fas fa-plane"></i> Private Pilot</span>
@@ -390,7 +390,7 @@ ${navbar('/')}
         <div class="team-card-info">
           <h3>Eliseth Bello</h3>
           <span class="team-role">Managing Director</span>
-          <p>Managing Director and co-founder who oversees the company's direction, strategy, and day-to-day operations of BES. Keeps the company running efficiently and professionally every day.</p>
+          <p>Co-founder and Managing Director who oversees the company's direction, strategy, and day-to-day operations. She keeps BES running efficiently and professionally every day.</p>
           <div class="team-badges">
             <span><i class="fas fa-briefcase"></i> Business Management</span>
             <span><i class="fas fa-chart-line"></i> Strategy &amp; Growth</span>
@@ -410,7 +410,7 @@ ${navbar('/')}
         <div class="team-staff-info">
           <h4>Genesis Nunez Monsalve</h4>
           <span class="team-role-sm">Project Administrator</span>
-          <p>Handles scheduling, invoicing, and client communication — the backbone that keeps every project on track.</p>
+          <p>Handles scheduling, invoicing, and client communication. She is the backbone that keeps every project on track.</p>
         </div>
       </div>
 
@@ -442,7 +442,7 @@ ${navbar('/')}
         </div>
         <div class="team-staff-info">
           <h4>Michael Osborne</h4>
-          <span class="team-role-sm">Electrical Assistant — Solar &amp; Installation</span>
+          <span class="team-role-sm">Electrical Assistant Solar &amp; Installation</span>
           <p>Supports solar panel installations and electrical fit-outs, bringing energy and precision to every rooftop and site job.</p>
         </div>
       </div>
@@ -454,7 +454,7 @@ ${navbar('/')}
         <div class="team-staff-info">
           <h4>Myron Saladin</h4>
           <span class="team-role-sm">Intern</span>
-          <p>Learning the trade hands-on alongside BES's experienced team — building skills, discipline, and a future in electrical work.</p>
+          <p>Learning the trade hands-on alongside the BES team, building skills and a strong foundation for a future in electrical work.</p>
         </div>
       </div>
 
@@ -479,9 +479,8 @@ ${navbar('/')}
       <div class="founder-home-content">
         <div class="section-tag">Meet the Founder</div>
         <h2 class="section-title">Built on 20+ Years of<br><span>Hands-On Experience</span></h2>
-        <p class="founder-home-lead">"I started BES because I saw businesses struggling to find a reliable, communicative, professional electrical contractor. That's what we built — and that's what we deliver, every day."</p>
-        <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring &amp; repair, professional drafting, and electrical inspection — giving him a full view of every project from design to delivery.</p>
-        <p>In 2013, Luis opened an aviation school in Aruba, and by 2017 became a certified Private Pilot — demonstrating the precision and discipline he brings to every electrical project.</p>
+        <p class="founder-home-lead">"I started BES because I saw businesses struggling to find a reliable, professional electrical contractor. That's what we built and that's what we deliver every single day."</p>
+        <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection, giving him a full view of every project from design to delivery.</p>
         <div class="founder-home-creds">
           <span><i class="fas fa-certificate"></i> Certified Electrician</span>
           <span><i class="fas fa-plane"></i> Private Pilot</span>
@@ -614,7 +613,7 @@ ${navbar('/services')}
   <div class="page-hero-content">
     <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>Services</div>
     <h1>Our Services</h1>
-    <p>8 core electrical services — all NEN 1010 compliant, all delivered with precision</p>
+    <p>8 core electrical services, all NEN 1010 compliant and all delivered with precision</p>
   </div>
 </section>
 
@@ -648,7 +647,7 @@ ${navbar('/services')}
         <div class="service-nen-badge"><i class="fas fa-certificate"></i> NEN 1010 Compliant</div>
         <div class="section-tag">Core Service</div>
         <h2>Electrical Installation</h2>
-        <p>Setting up electrical wiring, fixtures, and equipment in buildings and facilities. We install distribution boards, switches, sockets, and all electrical components — ensuring protection against shock, fire hazards, and all electrical risks.</p>
+        <p>Setting up electrical wiring, fixtures, and equipment in buildings and facilities. We install distribution boards, switches, sockets, and all electrical components while ensuring full protection against shock, fire hazards, and all electrical risks.</p>
         <p>We serve new construction, commercial fit-outs, and renovations for both residential and commercial clients across Aruba and Bonaire.</p>
         <ul class="service-features">
           <li><i class="fas fa-check-circle"></i> Distribution board installation</li>
@@ -785,7 +784,7 @@ ${navbar('/services')}
         <div class="service-nen-badge"><i class="fas fa-leaf"></i> Sustainability</div>
         <div class="section-tag">Save Money</div>
         <h2>Energy Efficiency Audits</h2>
-        <p>A thorough assessment of energy use within your building or facility. We analyze your energy bills, inspect equipment, and provide concrete recommendations — from lighting upgrades to HVAC optimization — to significantly reduce your operating costs.</p>
+        <p>A thorough assessment of energy use within your building or facility. We analyze your energy bills, inspect equipment, and provide concrete recommendations from lighting upgrades to HVAC optimization to significantly reduce your operating costs.</p>
         <ul class="service-features">
           <li><i class="fas fa-check-circle"></i> Comprehensive energy consumption analysis</li>
           <li><i class="fas fa-check-circle"></i> Equipment efficiency assessment</li>
@@ -893,7 +892,7 @@ ${navbar('/about')}
   <div class="page-hero-content">
     <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>About Us</div>
     <h1>About Bello Electrical</h1>
-    <p>Aruba's certified electrical contractor — founded 2019, powered by 20+ years of expertise</p>
+    <p>Aruba's certified electrical contractor, founded in 2019 and powered by 20+ years of expertise</p>
   </div>
 </section>
 
@@ -904,11 +903,11 @@ ${navbar('/about')}
       <div class="about-story-content">
         <div class="section-tag">Our Story</div>
         <h2 class="section-title">Built for Aruba.<br><span>Built to Last.</span></h2>
-        <p>Bello Electrical Services and More (BES) was incorporated on <strong>28 May 2019</strong> by Luis Bello — a certified electrician with over 20 years of hands-on experience in electrical wiring, repair, professional drafting, and inspection.</p>
+        <p>Bello Electrical Services and More (BES) was incorporated on <strong>28 May 2019</strong> by Luis Bello, a certified electrician with over 20 years of hands-on experience in electrical wiring, repair, professional drafting, and inspection.</p>
         <p>Luis saw a gap in the Aruban market: businesses needed a reliable electrical partner that combined technical excellence with professional communication and consistent quality. BES was built to fill that gap.</p>
         <p>From small repairs to complex commercial installations and solar systems, BES ensures every client receives exceptional results. The company has since expanded services across Aruba and Bonaire, with plans to serve the wider Caribbean region.</p>
         <div class="about-quote">
-          <blockquote>"Electricity is our source of energy — and your business is our mission."</blockquote>
+          <blockquote>"Electricity is our source of energy and your business is our mission."</blockquote>
           <cite>— Luis Bello, Founder &amp; Lead Electrician</cite>
         </div>
       </div>
@@ -936,10 +935,9 @@ ${navbar('/about')}
       </div>
       <div class="founder-content">
         <h2>Luis Bello</h2>
-        <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection — giving him a comprehensive view of every project from design to delivery.</p>
-        <p>In 2013, Luis expanded his entrepreneurial spirit by opening an aviation school in Aruba. By 2017, he had become a certified Private Pilot — demonstrating the precision, discipline, and commitment to safety that he brings to every electrical project.</p>
-        <p>Together with Eliseth Bello as Business Partner, they have built BES into one of Aruba's most trusted electrical contractors — with a shared commitment to quality, reliability, and modern electrical solutions.</p>
-        <p>"I started BES because I saw businesses struggling to find a reliable, communicative, professional electrical contractor. That's what we built — and that's what we deliver, every day."</p>
+        <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection, giving him a comprehensive view of every project from design to delivery.</p>
+        <p>Together with Eliseth Bello as Business Partner, they have built BES into one of Aruba's most trusted electrical contractors, with a shared commitment to quality, reliability, and modern electrical solutions.</p>
+        <p>"I started BES because I saw businesses struggling to find a reliable, professional electrical contractor. That's what we built and that's what we deliver every single day."</p>
         <div class="founder-credentials">
           <span class="credential-badge"><i class="fas fa-certificate"></i> Certified Electrician</span>
           <span class="credential-badge"><i class="fas fa-plane"></i> Certified Private Pilot</span>
@@ -963,7 +961,7 @@ ${navbar('/about')}
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
         <h3>Safety First</h3>
-        <p>Every job is executed to NEN 1010 safety standards. No shortcuts, no compromises — safety is non-negotiable.</p>
+        <p>Every job is executed to NEN 1010 safety standards. No shortcuts, no compromises. Safety is non-negotiable.</p>
       </div>
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-medal"></i></div>
@@ -988,7 +986,7 @@ ${navbar('/about')}
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
         <h3>Certified Expertise</h3>
-        <p>Our team stays current with the latest technologies — from solar to EV charging to battery storage.</p>
+        <p>Our team stays current with the latest technologies, from solar to EV charging to battery storage.</p>
       </div>
     </div>
   </div>
@@ -1020,7 +1018,7 @@ ${navbar('/about')}
         <div class="team-card-info">
           <h3>Luis Bello</h3>
           <span class="team-role">Director of Operations</span>
-          <p>Founder &amp; certified electrician with 20+ years of industry experience. Leads all project operations, maintains NEN 1010 standards, and drives BES's expansion across Aruba &amp; Bonaire. Also a certified Private Pilot and aviation school owner.</p>
+          <p>Founder and certified electrician with 20+ years of industry experience. Luis leads all project operations, maintains NEN 1010 standards, and drives BES's expansion across Aruba and Bonaire.</p>
           <div class="team-badges">
             <span><i class="fas fa-certificate"></i> Certified Electrician</span>
             <span><i class="fas fa-plane"></i> Private Pilot</span>
@@ -1037,7 +1035,7 @@ ${navbar('/about')}
         <div class="team-card-info">
           <h3>Eliseth Bello</h3>
           <span class="team-role">Managing Director</span>
-          <p>Managing Director and co-founder who oversees the company's strategic direction, daily operations, and team management. Her leadership ensures BES consistently delivers professional, client-first service on every engagement.</p>
+          <p>Co-founder and Managing Director who oversees the company's strategic direction, daily operations, and team management. Her leadership ensures BES consistently delivers professional, client-first service.</p>
           <div class="team-badges">
             <span><i class="fas fa-briefcase"></i> Business Management</span>
             <span><i class="fas fa-users"></i> Team Leadership</span>
@@ -1059,7 +1057,7 @@ ${navbar('/about')}
         <div class="team-staff-info">
           <h4>Genesis Nunez Monsalve</h4>
           <span class="team-role-sm">Project Administrator</span>
-          <p>Manages scheduling, invoicing, and all client communications — the organizational force that keeps every BES project on time and clients fully informed.</p>
+          <p>Manages scheduling, invoicing, and all client communications. She is the organizational force that keeps every BES project on time and clients fully informed.</p>
         </div>
       </div>
 
@@ -1070,7 +1068,7 @@ ${navbar('/about')}
         <div class="team-staff-info">
           <h4>Andric Feliciano</h4>
           <span class="team-role-sm">Electrical Design &amp; Project Technician</span>
-          <p>Responsible for electrical system design and project technical execution. Translates client needs into safe, efficient, and compliant electrical plans.</p>
+          <p>Responsible for electrical system design and project technical execution. He translates client needs into safe, efficient, and compliant electrical plans.</p>
         </div>
       </div>
 
@@ -1081,7 +1079,7 @@ ${navbar('/about')}
         <div class="team-staff-info">
           <h4>Steven Croes</h4>
           <span class="team-role-sm">Electrician</span>
-          <p>Certified field electrician specializing in commercial wiring, distribution panel work, and electrical maintenance. Known for precision and clean installation work.</p>
+          <p>Certified field electrician specializing in commercial wiring, distribution panel work, and electrical maintenance. Steven is known for his precision and clean installation work.</p>
         </div>
       </div>
 
@@ -1091,8 +1089,8 @@ ${navbar('/about')}
         </div>
         <div class="team-staff-info">
           <h4>Michael Osborne</h4>
-          <span class="team-role-sm">Electrical Assistant — Solar &amp; Installation</span>
-          <p>Supports solar PV installations and electrical fit-outs across Aruba. Brings enthusiasm and skill to every rooftop and on-site installation project.</p>
+          <span class="team-role-sm">Electrical Assistant Solar &amp; Installation</span>
+          <p>Supports solar PV installations and electrical fit-outs across Aruba. Michael brings enthusiasm and skill to every rooftop and on-site installation project.</p>
         </div>
       </div>
 
@@ -1103,7 +1101,7 @@ ${navbar('/about')}
         <div class="team-staff-info">
           <h4>Myron Saladin</h4>
           <span class="team-role-sm">Intern</span>
-          <p>Learning the trade hands-on alongside BES's certified team — developing skills in electrical work, safety protocols, and professional standards.</p>
+          <p>Learning the trade hands-on alongside the BES team, developing skills in electrical work, safety protocols, and professional standards.</p>
         </div>
       </div>
 
@@ -1172,7 +1170,7 @@ ${navbar('/contact')}
   <div class="page-hero-content">
     <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>Contact</div>
     <h1>Contact Us</h1>
-    <p>Get a free quote or send us a message — we respond within 24 hours</p>
+    <p>Get a free quote or send us a message. We respond within 24 hours.</p>
   </div>
 </section>
 
@@ -1223,7 +1221,7 @@ ${navbar('/contact')}
           </div>
           <div class="form-group">
             <label for="message">Project Details *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Describe your project — location, scope, timeline, any specific requirements..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Describe your project: location, scope, timeline and any specific requirements..." required></textarea>
           </div>
           <div id="formStatus" class="form-status" style="display:none;"></div>
           <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
@@ -1297,7 +1295,7 @@ ${navbar('/contact')}
           <img src="/static/images/team-5-van.jpg" alt="BES team ready to help" loading="lazy">
           <div class="contact-team-caption">
             <i class="fas fa-hard-hat"></i>
-            <span>Our team is ready to help — call, WhatsApp, or email us</span>
+            <span>Our team is ready to help. Call, WhatsApp, or email us.</span>
           </div>
         </div>
       </div>
