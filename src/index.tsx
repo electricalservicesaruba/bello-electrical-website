@@ -414,7 +414,7 @@ ${navbar('/')}
         </div>
       </div>
 
-      <div class="team-staff-card">
+      <div class="team-staff-card team-staff-card--andric">
         <div class="team-staff-photo">
           <img src="/static/images/person-andric.jpg" alt="Andric Feliciano – Electrical Design & Project Technician" loading="lazy">
         </div>
@@ -681,7 +681,7 @@ ${navbar('/services')}
           <li><i class="fas fa-check-circle"></i> Rooftop &amp; ground-mount PV systems</li>
           <li><i class="fas fa-check-circle"></i> Grid-tied &amp; off-grid configurations</li>
           <li><i class="fas fa-check-circle"></i> Inverter selection &amp; installation</li>
-          <li><i class="fas fa-check-circle"></i> Net metering &amp; WEB Aruba setup</li>
+          <li><i class="fas fa-check-circle"></i> WEB Aruba grid connection support</li>
           <li><i class="fas fa-check-circle"></i> System commissioning &amp; monitoring</li>
           <li><i class="fas fa-check-circle"></i> Post-installation maintenance</li>
         </ul>
@@ -1061,7 +1061,7 @@ ${navbar('/about')}
         </div>
       </div>
 
-      <div class="team-staff-card">
+      <div class="team-staff-card team-staff-card--andric">
         <div class="team-staff-photo">
           <img src="/static/images/person-andric.jpg" alt="Andric Feliciano – Electrical Design & Project Technician" loading="lazy">
         </div>
