@@ -914,9 +914,6 @@ ${navbar('/about')}
       </div>
       <div class="about-story-image">
         <img src="/static/images/team-5-van.jpg" alt="BES team at work in Aruba" loading="lazy">
-        <div class="about-img-accent">
-          <img src="/static/images/office-lady2.jpg" alt="BES office team" loading="lazy">
-        </div>
       </div>
     </div>
   </div>
