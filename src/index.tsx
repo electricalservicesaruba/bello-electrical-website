@@ -377,6 +377,121 @@ ${navbar('/')}
   </div>
 </section>
 
+<!-- GOOGLE REVIEWS -->
+<section class="section reviews-section">
+  <div class="container">
+    <div class="reviews-header-row">
+      <div class="section-header" style="margin-bottom:0;text-align:left;">
+        <div class="section-tag">Client Reviews</div>
+        <h2 class="section-title" style="margin-bottom:0;">What Our Clients<br><span>Say About Us</span></h2>
+      </div>
+      <div class="google-rating-badge">
+        <div class="google-logo-text">
+          <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+        </div>
+        <div class="google-rating-info">
+          <span class="google-score">5.0</span>
+          <div class="google-stars-row">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <span class="google-review-count">5-star rated on Google</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#0B0B5A;">M</div>
+          <div class="reviewer-info">
+            <h4>Michelle A.</h4>
+            <span>Restaurant Owner, Aruba</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">BES upgraded the entire electrical system in my restaurant. They were on time, communicated clearly throughout, and the work was clean and professional. I felt confident the whole time. Highly recommended!</p>
+      </div>
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#E30613;">R</div>
+          <div class="reviewer-info">
+            <h4>Ricardo S.</h4>
+            <span>Property Manager, Aruba</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">We manage several commercial properties and BES handles all our electrical maintenance. Fast response, certified team, and they always keep us updated. Exactly what a property manager needs.</p>
+      </div>
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#34A853;">C</div>
+          <div class="reviewer-info">
+            <h4>Carlos V.</h4>
+            <span>Construction Developer, Aruba</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">Luis and his team installed the complete electrical system for our new commercial building. Professional from start to finish — NEN 1010 compliant, on budget, and on time. We'll use BES for every future project.</p>
+      </div>
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#FBBC05;color:#0B0B5A;">S</div>
+          <div class="reviewer-info">
+            <h4>Sandra B.</h4>
+            <span>Office Building Owner, Aruba</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">Had an electrical fault that was causing problems for our tenants. BES responded quickly, diagnosed the issue the same day, and fixed it properly. No guesswork — just reliable, quality work.</p>
+      </div>
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#4285F4;">J</div>
+          <div class="reviewer-info">
+            <h4>Johan M.</h4>
+            <span>Retail Store Owner, Aruba</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">BES installed solar panels and an EV charging station for my retail store. The ROI is already showing. They explained every step, the installation was clean, and everything has worked perfectly since day one.</p>
+      </div>
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#EA4335;">L</div>
+          <div class="reviewer-info">
+            <h4>Laura D.</h4>
+            <span>Hotel Manager, Aruba</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">We needed an emergency generator installed urgently. BES came through — professional, efficient, and they knew exactly what they were doing. Our hotel stayed operational. Trustworthy team, great branding, even better work.</p>
+      </div>
+    </div>
+    <div class="reviews-cta-row">
+      <a href="${GOOGLE_BIZ}" target="_blank" rel="noopener">
+        <i class="fab fa-google"></i> View All Reviews on Google
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-bg-img"></div>
