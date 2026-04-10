@@ -465,6 +465,39 @@ ${navbar('/')}
   </div>
 </section>
 
+<!-- MEET THE FOUNDER -->
+<section class="section founder-home-section" id="meet-founder">
+  <div class="container">
+    <div class="founder-home-inner">
+      <div class="founder-home-image">
+        <img src="/static/images/person-luis-bello.jpg" alt="Luis Bello – Founder & Director of Operations, Bello Electrical Services" loading="lazy">
+        <div class="founder-home-badge">
+          <i class="fas fa-star"></i>
+          <span>Founded 2019</span>
+        </div>
+      </div>
+      <div class="founder-home-content">
+        <div class="section-tag">Meet the Founder</div>
+        <h2 class="section-title">Built on 20+ Years of<br><span>Hands-On Experience</span></h2>
+        <p class="founder-home-lead">"I started BES because I saw businesses struggling to find a reliable, communicative, professional electrical contractor. That's what we built — and that's what we deliver, every day."</p>
+        <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring &amp; repair, professional drafting, and electrical inspection — giving him a full view of every project from design to delivery.</p>
+        <p>In 2013, Luis opened an aviation school in Aruba, and by 2017 became a certified Private Pilot — demonstrating the precision and discipline he brings to every electrical project.</p>
+        <div class="founder-home-creds">
+          <span><i class="fas fa-certificate"></i> Certified Electrician</span>
+          <span><i class="fas fa-plane"></i> Private Pilot</span>
+          <span><i class="fas fa-hard-hat"></i> 20+ Yrs Experience</span>
+          <span><i class="fas fa-shield-alt"></i> NEN 1010 Specialist</span>
+          <span><i class="fas fa-solar-panel"></i> Solar Certified</span>
+        </div>
+        <div class="founder-home-actions">
+          <a href="/about#founder" class="btn btn-primary">Full Story</a>
+          <a href="/contact" class="btn btn-outline">Work With Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- GOOGLE REVIEWS -->
 <section class="section reviews-section">
   <div class="container">
@@ -898,7 +931,7 @@ ${navbar('/about')}
     </div>
     <div class="founder-card">
       <div class="founder-image">
-        <img src="/static/images/tech-van-smiling1.jpg" alt="Luis Bello - Founder BES" loading="lazy">
+        <img src="/static/images/person-luis-bello.jpg" alt="Luis Bello - Founder & Director of Operations, BES" loading="lazy">
         <div class="founder-image-overlay">
           <span class="founder-name">Luis Bello</span>
           <span class="founder-role">Founder &amp; Lead Electrician, BES</span>

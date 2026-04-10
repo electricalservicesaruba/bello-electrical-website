@@ -696,7 +696,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   box-shadow: var(--shadow-lg);
 }
 .founder-image { position: relative; }
-.founder-image img { width: 100%; height: 440px; object-fit: cover; object-position: top; }
+.founder-image img { width: 100%; height: 440px; object-fit: cover; object-position: center 35%; }
 .founder-image-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
   background: linear-gradient(transparent, rgba(11,11,90,0.9));
@@ -1101,7 +1101,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   height: 100%;
   min-height: 280px;
   object-fit: cover;
-  object-position: center 20%;  /* show face, not sky */
+  object-position: center 35%;  /* show face, not sky */
   display: block;
 }
 .team-card-info {
@@ -1375,4 +1375,109 @@ p  { color: var(--gray-600); line-height: 1.75; }
 }
 @media (max-width: 560px) {
   .reviews-grid { grid-template-columns: 1fr; }
+}
+
+/* ── MEET THE FOUNDER (Home page) ── */
+.founder-home-section {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d1a4a 100%);
+  color: white;
+}
+.founder-home-section .section-tag {
+  background: rgba(255,193,7,0.15);
+  color: var(--yellow);
+  border-color: rgba(255,193,7,0.3);
+}
+.founder-home-section .section-title { color: white; }
+.founder-home-section .section-title span { color: var(--yellow); }
+.founder-home-inner {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.founder-home-image {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+.founder-home-image img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.founder-home-image:hover img { transform: scale(1.03); }
+.founder-home-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.founder-home-content { padding: 0.5rem 0; }
+.founder-home-lead {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+  border-left: 3px solid var(--yellow);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+.founder-home-content p {
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 0.9rem;
+  line-height: 1.75;
+}
+.founder-home-creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.75rem 0;
+}
+.founder-home-creds span {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.4rem 0.9rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.founder-home-creds span i { color: var(--yellow); }
+.founder-home-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.founder-home-section .btn-outline {
+  border-color: rgba(255,255,255,0.5);
+  color: white;
+}
+.founder-home-section .btn-outline:hover {
+  background: white;
+  color: var(--navy);
+  border-color: white;
+}
+@media (max-width: 1024px) {
+  .founder-home-inner { grid-template-columns: 340px 1fr; gap: 2.5rem; }
+  .founder-home-image img { height: 460px; }
+}
+@media (max-width: 768px) {
+  .founder-home-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .founder-home-image img { height: 380px; }
+}
+@media (max-width: 480px) {
+  .founder-home-image img { height: 300px; }
 }
