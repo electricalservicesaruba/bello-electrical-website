@@ -276,7 +276,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   overflow: hidden;
 }
 .hero-bg { position: absolute; inset: 0; }
-.hero-bg-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.hero-bg-img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(110deg,
@@ -1043,8 +1043,10 @@ p  { color: var(--gray-600); line-height: 1.75; }
   .team-photos-row { grid-template-columns: 1fr 1fr; }
   .team-photo-full img { height: 280px; }
 
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; max-width: 620px; margin-left: auto; margin-right: auto; }
   .form-row { grid-template-columns: 1fr; }
+  .contact-section .section-header { text-align: center; }
+  .contact-info-card { text-align: left; }
 
   .footer-grid  { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
@@ -1060,7 +1062,8 @@ p  { color: var(--gray-600); line-height: 1.75; }
   .values-grid   { grid-template-columns: 1fr; }
   .stats-grid    { grid-template-columns: repeat(2, 1fr); }
   .team-photos-row { grid-template-columns: 1fr; }
-  .contact-form-wrapper { padding: 1.5rem; }
+  .contact-form-wrapper { padding: 1.25rem; }
+  .contact-grid { max-width: 100%; }
   .page-hero { height: 300px; }
   .hero-actions { align-items: center; }
 }

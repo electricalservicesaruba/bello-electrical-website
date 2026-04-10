@@ -163,7 +163,7 @@ ${navbar('/')}
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="/static/images/hero-solar-install.jpg" alt="BES team installing solar panels in Aruba" class="hero-bg-img">
+    <img src="/static/images/hero-solar-aerial.jpg" alt="Solar panel installation Aruba aerial view" class="hero-bg-img">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
