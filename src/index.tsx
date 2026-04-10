@@ -390,7 +390,7 @@ ${navbar('/')}
         <div class="team-card-info">
           <h3>Eliseth Bello</h3>
           <span class="team-role">Managing Director</span>
-          <p>Business partner and co-founder who manages the overall direction, strategy, and operations of BES. Keeps the company running efficiently and professionally every day.</p>
+          <p>Managing Director and co-founder who oversees the company's direction, strategy, and day-to-day operations of BES. Keeps the company running efficiently and professionally every day.</p>
           <div class="team-badges">
             <span><i class="fas fa-briefcase"></i> Business Management</span>
             <span><i class="fas fa-chart-line"></i> Strategy &amp; Growth</span>
@@ -941,7 +941,7 @@ ${navbar('/about')}
         <h2>Luis Bello</h2>
         <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection — giving him a comprehensive view of every project from design to delivery.</p>
         <p>In 2013, Luis expanded his entrepreneurial spirit by opening an aviation school in Aruba. By 2017, he had become a certified Private Pilot — demonstrating the precision, discipline, and commitment to safety that he brings to every electrical project.</p>
-        <p>His wife joined as Business Partner and Business Manager, bringing operational excellence to the company. Together, they have built BES into one of Aruba's most trusted electrical contractors, with an eye toward technological advancement and modern electrical needs.</p>
+        <p>Together with Eliseth Bello as Managing Director, they have built BES into one of Aruba's most trusted electrical contractors — with a shared commitment to quality, reliability, and modern electrical solutions.</p>
         <p>"I started BES because I saw businesses struggling to find a reliable, communicative, professional electrical contractor. That's what we built — and that's what we deliver, every day."</p>
         <div class="founder-credentials">
           <span class="credential-badge"><i class="fas fa-certificate"></i> Certified Electrician</span>
@@ -1040,7 +1040,7 @@ ${navbar('/about')}
         <div class="team-card-info">
           <h3>Eliseth Bello</h3>
           <span class="team-role">Managing Director</span>
-          <p>Co-founder and business partner who oversees the company's strategic direction, daily operations, and team management. Her leadership ensures BES consistently delivers professional, client-first service on every engagement.</p>
+          <p>Managing Director and co-founder who oversees the company's strategic direction, daily operations, and team management. Her leadership ensures BES consistently delivers professional, client-first service on every engagement.</p>
           <div class="team-badges">
             <span><i class="fas fa-briefcase"></i> Business Management</span>
             <span><i class="fas fa-users"></i> Team Leadership</span>
