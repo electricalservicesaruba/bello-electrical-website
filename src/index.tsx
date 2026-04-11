@@ -76,6 +76,24 @@ app.get('/',        (c) => c.html(homePage()))
 app.get('/services',(c) => c.html(servicesPage()))
 app.get('/about',   (c) => c.html(aboutPage()))
 app.get('/contact', (c) => c.html(contactPage()))
+
+// SEO: serve sitemap and robots at root
+app.get('/sitemap.xml', async (c) => {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.electricalservicesaruba.com/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/services</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/about</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/contact</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>`
+  return c.text(sitemap, 200, { 'Content-Type': 'application/xml; charset=UTF-8' })
+})
+
+app.get('/robots.txt', (c) => {
+  const robots = `User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: https://www.electricalservicesaruba.com/sitemap.xml`
+  return c.text(robots, 200, { 'Content-Type': 'text/plain; charset=UTF-8' })
+})
+
 app.notFound((c)   => c.html(`<!DOCTYPE html><html><body><h1>Page not found</h1><a href="/">Go Home</a></body></html>`, 404))
 
 /* ==============================
@@ -90,16 +108,41 @@ const FACEBOOK    = 'https://www.facebook.com/belloelectricalaruba'
 const INSTAGRAM   = 'https://www.instagram.com/electricalservicesaruba'
 const GOOGLE_BIZ  = 'https://share.google/acyUf0XCSQZBAJiIp'
 
-function head(title: string, desc: string) {
+function head(title: string, desc: string, path: string = '', keywords: string = '', ogType: string = 'website') {
+  const canonical = `https://www.electricalservicesaruba.com${path}`
+  const ogImage   = 'https://www.electricalservicesaruba.com/static/images/hero-electrician-panel.jpg'
+  const kw = keywords ||
+    'electrician Aruba, electrical services Aruba, commercial electrician Aruba, residential electrician Aruba, solar panel installation Aruba, NEN 1010 certified, EV charging station Aruba, Bello Electrical Services, BES Aruba, licensed electrician Aruba'
+
   return `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} — Bello Electrical Services</title>
+    <title>${title} — Bello Electrical Services | Aruba</title>
     <meta name="description" content="${desc}">
-    <meta name="keywords" content="electrician Aruba, electrical services Aruba, commercial electrician, solar panel installation Aruba, NEN 1010, BES Aruba">
-    <meta property="og:title" content="${title} — Bello Electrical Services">
+    <meta name="keywords" content="${kw}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Bello Electrical Services">
+    <meta name="geo.region" content="AW">
+    <meta name="geo.placename" content="Aruba">
+    <link rel="canonical" href="${canonical}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="${ogType}">
+    <meta property="og:url" content="${canonical}">
+    <meta property="og:title" content="${title} — Bello Electrical Services | Aruba">
     <meta property="og:description" content="${desc}">
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="${ogImage}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Bello Electrical Services">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${title} — Bello Electrical Services | Aruba">
+    <meta name="twitter:description" content="${desc}">
+    <meta name="twitter:image" content="${ogImage}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -209,7 +252,9 @@ function footer() {
 function homePage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('Home', 'Bello Electrical Services – Licensed, certified & insured electrical contractor in Aruba. Commercial & residential electrical, solar, EV charging. NEN 1010 compliant.')}</head>
+<head>${head('Licensed Electrician', 'Bello Electrical Services – Licensed, certified & insured electrical contractor in Aruba. Commercial & residential electrical, solar panels, EV charging. NEN 1010 compliant. Fast 24-hour response.', '/', 'electrician Aruba, licensed electrician Aruba, residential electrician Aruba, commercial electrician Aruba, solar panel Aruba, EV charging Aruba, NEN 1010, Bello Electrical Services')}
+<link rel="preload" as="image" href="/static/images/hero-electrician-panel.jpg" fetchpriority="high">
+<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"ElectricalContractor","name":"Bello Electrical Services","alternateName":"BES Aruba","url":"https://www.electricalservicesaruba.com","logo":"https://www.electricalservicesaruba.com/static/logo-transparent.png","image":"https://www.electricalservicesaruba.com/static/images/hero-electrician-panel.jpg","description":"Licensed, certified & insured electrical contractor in Aruba offering residential and commercial electrical services, solar panel installation, EV charging, and more since 2019.","telephone":"+2975941089","email":"info@electricalservicesaruba.com","address":{"@type":"PostalAddress","addressLocality":"Aruba","addressCountry":"AW"},"geo":{"@type":"GeoCoordinates","latitude":12.5211,"longitude":-69.9683},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],"sameAs":["https://www.facebook.com/belloelectricalaruba","https://www.instagram.com/electricalservicesaruba"],"priceRange":"$$","areaServed":{"@type":"Island","name":"Aruba"},"hasCredential":[{"@type":"EducationalOccupationalCredential","name":"NEN 1010 Certified"},{"@type":"EducationalOccupationalCredential","name":"Licensed Electrical Contractor"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"6","bestRating":"5"}})}</script></head>
 <body>
 ${navbar('/')}
 
@@ -683,7 +728,8 @@ ${footer()}
 function servicesPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('Services', 'BES offers 8 electrical services in Aruba: installation, solar panels, preventive maintenance, EV charging, battery storage, energy audits, emergency power & troubleshooting. NEN 1010 compliant.')}</head>
+<head>${head('Electrical Services in Aruba', 'Bello Electrical Services offers 8 expert electrical services in Aruba: new installations, solar panels, preventive maintenance, EV charging stations, battery storage, energy audits, emergency power & troubleshooting. NEN 1010 certified.', '/services', 'electrical services Aruba, solar panel installation Aruba, EV charging station Aruba, battery storage Aruba, electrical maintenance Aruba, emergency electrician Aruba, energy audit Aruba, NEN 1010')}
+<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"Service","serviceType":"Electrical Services","provider":{"@type":"ElectricalContractor","name":"Bello Electrical Services","url":"https://www.electricalservicesaruba.com","telephone":"+2975941089"},"areaServed":{"@type":"Island","name":"Aruba"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"BES Electrical Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"New Electrical Installations","description":"Complete wiring and panel upgrades for residential and commercial properties in Aruba."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar Panel Installation","description":"Grid-tied and off-grid solar systems for homes and businesses in Aruba."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV Charging Stations","description":"Level 2 home and commercial EV charger installation in Aruba."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Preventive Maintenance","description":"Scheduled electrical inspections and maintenance for homes and businesses."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Battery Storage Systems","description":"Energy storage installation to maximise solar self-consumption."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Emergency Electrical Services","description":"24/7 emergency electrician available across Aruba."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Energy Audits","description":"Identify energy waste and reduce electricity bills with a professional audit."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Electrical Troubleshooting","description":"Diagnose and fix any electrical faults fast and safely."}}]}})}</script></head>
 <body>
 ${navbar('/services')}
 
@@ -961,7 +1007,8 @@ ${footer()}
 function aboutPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('About Us', 'Learn about Bello Electrical Services – founded in 2019 by Luis Bello in Aruba. 20+ years experience, certified electricians, NEN 1010 compliant.')}</head>
+<head>${head('About Us – Our Story & Team', 'Learn about Bello Electrical Services – founded in 2019 by Luis Bello in Aruba. 20+ years of hands-on experience, a certified team, and NEN 1010 compliant work on every project.', '/about', 'about Bello Electrical Services, Luis Bello electrician Aruba, certified electrician team Aruba, NEN 1010 Aruba, electrical contractor history Aruba')}
+<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"AboutPage","url":"https://www.electricalservicesaruba.com/about","name":"About Bello Electrical Services","description":"Bello Electrical Services was founded in 2019 by Luis Bello in Aruba. The company provides licensed, certified and insured electrical contracting services with 20+ years of experience.","mainEntity":{"@type":"ElectricalContractor","name":"Bello Electrical Services","foundingDate":"2019","founder":{"@type":"Person","name":"Luis Bello","jobTitle":"Director of Operations"},"numberOfEmployees":{"@type":"QuantitativeValue","value":7},"url":"https://www.electricalservicesaruba.com","telephone":"+2975941089","address":{"@type":"PostalAddress","addressLocality":"Aruba","addressCountry":"AW"}}})}</script></head>
 <body>
 ${navbar('/about')}
 
@@ -1236,7 +1283,8 @@ ${footer()}
 function contactPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('Contact', 'Contact Bello Electrical Services in Aruba. Request a quote, call us, or WhatsApp for a fast response. We respond within 24 hours.')}</head>
+<head>${head('Contact Us', 'Contact Bello Electrical Services in Aruba. Send us a message, call +297 594 1089, or WhatsApp for a fast response. We respond within 24 hours, Mon–Fri 8 AM–5 PM.', '/contact', 'contact electrician Aruba, call electrician Aruba, WhatsApp electrician Aruba, electrical quote Aruba, Bello Electrical contact')}
+<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"ContactPage","url":"https://www.electricalservicesaruba.com/contact","name":"Contact Bello Electrical Services","description":"Get in touch with Bello Electrical Services in Aruba. We respond within 24 hours.","mainEntity":{"@type":"ElectricalContractor","name":"Bello Electrical Services","telephone":"+2975941089","email":"info@electricalservicesaruba.com","url":"https://www.electricalservicesaruba.com","contactPoint":[{"@type":"ContactPoint","telephone":"+2975941089","contactType":"customer service","availableLanguage":["English","Spanish","Dutch","Papiamento"],"hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}},{"@type":"ContactPoint","telephone":"+2975941089","contactType":"emergency","hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}}]}})}</script></head>
 <body>
 ${navbar('/contact')}
 

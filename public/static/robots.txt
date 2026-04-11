@@ -1,0 +1,9 @@
+# robots.txt — Bello Electrical Services
+User-agent: *
+Allow: /
+
+# Point search engines to the sitemap
+Sitemap: https://www.electricalservicesaruba.com/sitemap.xml
+
+# Block access to internal/dev paths
+Disallow: /api/
