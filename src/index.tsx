@@ -115,7 +115,7 @@ function footer() {
             <li><a href="/about#team">Our Team</a></li>
             <li><a href="/services">All Services</a></li>
             <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/contact#quote">Free Quote</a></li>
+            <li><a href="/contact#quote">Contact Us</a></li>
           </ul>
         </div>
         <div class="footer-contact">
@@ -129,7 +129,7 @@ function footer() {
           </ul>
           <div class="footer-hours">
             <h5>Business Hours</h5>
-            <p>Mon – Fri: 7:00 AM – 5:00 PM</p>
+            <p>Mon – Fri: 8:00 AM – 5:00 PM</p>
             <p>Emergency Support: 24/7</p>
           </div>
         </div>
@@ -178,7 +178,7 @@ ${navbar('/')}
       BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality. Backed by more than 20 years of hands-on experience.
     </p>
     <div class="hero-actions">
-      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Free Quote</a>
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
       <a href="${WHATSAPP}" target="_blank" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
     </div>
     <div class="hero-stats">
@@ -610,7 +610,7 @@ ${navbar('/')}
   <div class="cta-bg-img"></div>
   <div class="cta-content">
     <h2>Ready to Get Started?</h2>
-    <p>Send us a message or call now for a site visit and free quote. We respond within 24 hours.</p>
+    <p>Send us a message or call now for a site visit and quote. We respond within 24 hours.</p>
     <div class="cta-actions">
       <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
       <a href="${PHONE_LINK}" class="btn btn-white btn-lg"><i class="fas fa-phone"></i> Call ${PHONE}</a>
@@ -650,7 +650,7 @@ ${navbar('/services')}
 <section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">BES Services 2024</div>
+      <div class="section-tag">BES Services</div>
       <h2 class="section-title">Electrical Solutions<br><span>From Small to Large</span></h2>
       <p class="section-subtitle">Whether you're changing a light fixture or installing a full solar system with battery storage — BES has the certification, tools, and team to get it done right in Aruba.</p>
     </div>
@@ -891,7 +891,7 @@ ${navbar('/services')}
     <h2>Not Sure What You Need?</h2>
     <p>Contact us for a free consultation. We'll assess your needs and recommend the most efficient solution.</p>
     <div class="cta-actions">
-      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Get a Free Quote</a>
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Get a Quote</a>
       <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
     </div>
   </div>
@@ -1183,7 +1183,7 @@ ${footer()}
 function contactPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('Contact', 'Contact Bello Electrical Services in Aruba. Request a free quote, call us, or WhatsApp for a fast response. We respond within 24 hours.')}</head>
+<head>${head('Contact', 'Contact Bello Electrical Services in Aruba. Request a quote, call us, or WhatsApp for a fast response. We respond within 24 hours.')}</head>
 <body>
 ${navbar('/contact')}
 
@@ -1192,7 +1192,7 @@ ${navbar('/contact')}
   <div class="page-hero-content">
     <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>Contact</div>
     <h1>Contact Us</h1>
-    <p>Get a free quote or send us a message. We respond within 24 hours.</p>
+    <p>Send us a message or give us a call. We respond within 24 hours.</p>
   </div>
 </section>
 
@@ -1202,8 +1202,8 @@ ${navbar('/contact')}
       <!-- FORM -->
       <div class="contact-form-wrapper">
         <div class="form-header">
-          <h2>Request a Free Quote</h2>
-          <p>Tell us about your project and we'll get back to you within 24 hours with a clear, detailed quote.</p>
+          <h2>Send Us a Message</h2>
+          <p>Tell us about your project and we'll get back to you within 24 hours.</p>
         </div>
         <form class="contact-form" id="contactForm">
           <div class="form-row">
@@ -1298,7 +1298,7 @@ ${navbar('/contact')}
           <div class="contact-hours">
             <h4><i class="fas fa-clock"></i> Business Hours</h4>
             <div class="hours-grid">
-              <div class="hours-row"><span>Monday – Friday</span><span>7:00 AM – 5:00 PM</span></div>
+              <div class="hours-row"><span>Monday – Friday</span><span>8:00 AM – 5:00 PM</span></div>
               <div class="hours-row"><span>Saturday</span><span>By Appointment</span></div>
               <div class="hours-row emergency"><span>Emergency Line</span><span>24/7 Available</span></div>
             </div>
