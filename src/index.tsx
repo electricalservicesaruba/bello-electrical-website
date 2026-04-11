@@ -87,7 +87,7 @@ function footer() {
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="/static/logo-transparent.png" alt="Bello Electrical Services" class="footer-logo">
-          <p class="footer-tagline">Ridiculously Good. Exactly What You Need.</p>
+          <p class="footer-tagline"><i class="fas fa-bolt"></i> Shockingly Good. Watt-Ever You Need.</p>
           <p class="footer-description">Licensed, certified &amp; insured electrical contractor serving Aruba since 2019. NEN 1010 compliant work on every project.</p>
           <div class="footer-social">
             <a href="${FACEBOOK}"   target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -172,6 +172,7 @@ ${navbar('/')}
       Reliable Electrical<br>
       <span class="hero-highlight">Services in Aruba.</span>
     </h1>
+    <p class="hero-slogan"><i class="fas fa-bolt"></i> Shockingly Good. Watt-Ever You Need.</p>
     <p class="hero-subtitle">
       From small repairs to full commercial installations and solar systems,
       BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality. Backed by more than 20 years of hands-on experience.
