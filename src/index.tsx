@@ -266,7 +266,25 @@ function homePage() {
 <html lang="en">
 <head>${head('Electrical Services in Aruba', 'Bello Electrical Services – Certified & insured electrical contractor in Aruba. Commercial & residential electrical, solar panels, EV charging. NEN 1010 compliant. Fast 24-hour response.', '/', 'electrician Aruba, electrical services Aruba, residential electrician Aruba, commercial electrician Aruba, solar panel Aruba, EV charging Aruba, NEN 1010, Bello Electrical Services')}
 <link rel="preload" as="image" href="/static/images/hero-electrician-panel.jpg" fetchpriority="high">
-<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"ElectricalContractor","name":"Bello Electrical Services","alternateName":"BES Aruba","url":"https://www.electricalservicesaruba.com","logo":"https://www.electricalservicesaruba.com/static/logo-transparent.png","image":"https://www.electricalservicesaruba.com/static/images/hero-electrician-panel.jpg","description":"Licensed, certified & insured electrical contractor in Aruba offering residential and commercial electrical services, solar panel installation, EV charging, and more since 2019.","telephone":"+2975941089","email":"info@electricalservicesaruba.com","address":{"@type":"PostalAddress","addressLocality":"Aruba","addressCountry":"AW"},"geo":{"@type":"GeoCoordinates","latitude":12.5211,"longitude":-69.9683},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}],"sameAs":["https://www.facebook.com/belloelectricalaruba","https://www.instagram.com/electricalservicesaruba"],"priceRange":"$$","areaServed":{"@type":"Island","name":"Aruba"},"hasCredential":[{"@type":"EducationalOccupationalCredential","name":"NEN 1010 Certified"},{"@type":"EducationalOccupationalCredential","name":"Licensed Electrical Contractor"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"6","bestRating":"5"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Christian Sanchez"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Same-day fix, great service."},{"@type":"Review","author":{"@type":"Person","name":"Yuraima Wernet"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Exceptional service, highly recommend Bello Electrical."},{"@type":"Review","author":{"@type":"Person","name":"Mitchell Tromp"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Sweet phone support and very professional team."}]})}</script></head>
+<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ElectricalContractor",
+  "name": "Bello Electrical Services",
+  "alternateName": "BES Aruba",
+  "url": "https://www.electricalservicesaruba.com",
+  "logo": "https://www.electricalservicesaruba.com/static/logo-transparent.png",
+  "image": "https://www.electricalservicesaruba.com/static/images/hero-electrician-panel.jpg",
+  "description": "Certified & insured electrical contractor in Aruba offering residential and commercial electrical services, solar panel installation, EV charging, and more since 2019.",
+  "telephone": "+2975941089",
+  "email": "info@electricalservicesaruba.com",
+  "address": {"@type": "PostalAddress", "addressLocality": "Aruba", "addressCountry": "AW"},
+  "geo": {"@type": "GeoCoordinates", "latitude": 12.5211, "longitude": -69.9683},
+  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00"}],
+  "sameAs": ["https://www.facebook.com/belloelectricalaruba", "https://www.instagram.com/electricalservicesaruba"],
+  "priceRange": "$$",
+  "areaServed": {"@type": "Island", "name": "Aruba"},
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "6", "bestRating": "5"}
+})}</script></head>
 <body>
 ${navbar('/')}
 
