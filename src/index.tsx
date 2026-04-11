@@ -5,18 +5,71 @@ const app = new Hono()
 
 app.use('/static/*', serveStatic({ root: './' }))
 
-// Contact form API
+// Contact form API — sends via Web3Forms
+const WEB3FORMS_KEY = 'cf54359d-1332-4b22-b060-c3c8e16f750d'
+
 app.post('/api/contact', async (c) => {
   const body = await c.req.json()
-  const { name, email, phone, service, message } = body
+  const { name, email, phone, company, service, message } = body
+
   if (!name || !email || !message) {
     return c.json({ success: false, error: 'Please fill in all required fields.' }, 400)
   }
-  console.log('Contact form submission:', { name, email, phone, service, message })
-  return c.json({
-    success: true,
-    message: 'Thank you for your message! We will contact you within 24 hours.'
-  })
+
+  // Build email subject and body
+  const subject = service
+    ? `New BES Inquiry — ${service} — ${name}`
+    : `New BES Inquiry from ${name}`
+
+  const emailBody = `
+New contact form submission from the BES website:
+
+Name:     ${name}
+Email:    ${email}
+Phone:    ${phone || 'Not provided'}
+Company:  ${company || 'Not provided'}
+Service:  ${service || 'Not specified'}
+
+Message:
+${message}
+
+---
+Sent from electricalservicesaruba.com
+  `.trim()
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject,
+        from_name: name,
+        email: email,
+        message: emailBody,
+        botcheck: ''
+      })
+    })
+
+    const result = await response.json() as { success: boolean; message?: string }
+
+    if (result.success) {
+      return c.json({
+        success: true,
+        message: 'Thank you for your message! We will get back to you within 24 hours.'
+      })
+    } else {
+      return c.json({
+        success: false,
+        error: 'Failed to send message. Please call us directly at +297 594 1089.'
+      }, 500)
+    }
+  } catch (err) {
+    return c.json({
+      success: false,
+      error: 'Unable to send message. Please call us directly at +297 594 1089.'
+    }, 500)
+  }
 })
 
 app.get('/',        (c) => c.html(homePage()))
