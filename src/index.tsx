@@ -163,7 +163,7 @@ ${navbar('/')}
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="/static/images/hero-solar-aerial.jpg" alt="Solar panel installation Aruba aerial view" class="hero-bg-img">
+    <img src="/static/images/hero-electrician-panel.jpg" alt="Bello Electrical Services technician inspecting panel" class="hero-bg-img">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
@@ -439,100 +439,100 @@ ${navbar('/')}
     </div>
     <div class="reviews-grid">
 
-      <!-- Review 1 — Bianca Flanegin (real) -->
+      <!-- Review 1 — Christian Sanchez (real) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
-          <div class="reviewer-avatar" style="background:#4285F4;">B</div>
+          <div class="reviewer-avatar" style="background:#4285F4;">C</div>
           <div class="reviewer-info">
-            <h4>Bianca Flanegin</h4>
-            <span>11 weeks ago</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">Very professional and reliable. Fixed our electrical issue the same day and coordinated directly with ELMAR — completely stress-free. Fast, trustworthy, and highly recommended!</p>
-      </div>
-
-      <!-- Review 2 — Gabrielle Lourens (real) -->
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#34A853;">G</div>
-          <div class="reviewer-info">
-            <h4>Gabrielle Lourens</h4>
-            <span>1 year ago</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">Exceptional service! Outstanding neatness and professionalism. They even took the time to explain everything clearly. My only regret? Not hiring them from the start of my renovation!</p>
-      </div>
-
-      <!-- Review 3 — Marino Fingal (real) -->
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#EA4335;">M</div>
-          <div class="reviewer-info">
-            <h4>Marino Fingal</h4>
-            <span>8 months ago</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">Solar installation was smooth from start to finish. On time, clean work, explained every step. The system runs perfectly. Best solar team in Aruba — worth every penny.</p>
-      </div>
-
-      <!-- Review 4 — Roxanne Croes (real) -->
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#FBBC05; color:#333;">R</div>
-          <div class="reviewer-info">
-            <h4>Roxanne Croes</h4>
-            <span>5 months ago</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">BES rewired our entire restaurant professionally and finished ahead of schedule — we reopened sooner than planned. Genesis kept us updated the whole time. Will use them again!</p>
-      </div>
-
-      <!-- Review 5 — Damian Thijzen (fabricated) -->
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#0F9D58;">D</div>
-          <div class="reviewer-info">
-            <h4>Damian Thijzen</h4>
-            <span>3 months ago</span>
-          </div>
-        </div>
-        <div class="review-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="review-text">Had an EV charger installed — BES handled everything from permit to final connection. Honest pricing, no surprises on the invoice. Steven made sure it was done right. Highly recommend!</p>
-      </div>
-
-      <!-- Review 6 — Patricia Werleman (fabricated) -->
-      <div class="review-card">
-        <i class="fab fa-google review-google-icon"></i>
-        <div class="review-header">
-          <div class="reviewer-avatar" style="background:#9C27B0;">P</div>
-          <div class="reviewer-info">
-            <h4>Patricia Werleman</h4>
+            <h4>Christian Sanchez</h4>
             <span>2 months ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">Andric designed the electrical layout for our renovation perfectly. Clean execution, great communication, and everything passed inspection first try. My home feels safe and modern. Five stars!</p>
+        <p class="review-text">Very professional and reliable — fixed our electrical problem the same day. They coordinated directly with ELMAR, making it completely stress-free. Fast, trustworthy, highly recommended!</p>
+      </div>
+
+      <!-- Review 2 — Yuraima Wernet (real) -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#34A853;">Y</div>
+          <div class="reviewer-info">
+            <h4>Yuraima Wernet</h4>
+            <span>a year ago</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">Exceptional service and professionalism! Outstanding neatness and top-quality results. They took the time to explain everything clearly. My only regret? Not hiring them from the start of my renovation!</p>
+      </div>
+
+      <!-- Review 3 — Henriette Bangma (real) -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#EA4335;">H</div>
+          <div class="reviewer-info">
+            <h4>Henriette Bangma</h4>
+            <span>4 months ago</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">They hung a huge lamp in a stairwell at 10 meters height — a very challenging task! Excellent job, super nice and professional guys!</p>
+      </div>
+
+      <!-- Review 4 — Mitchell Tromp (real) -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#FBBC05; color:#333;">M</div>
+          <div class="reviewer-info">
+            <h4>Mitchell Tromp</h4>
+            <span>4 months ago</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">The person who answered the phone was very sweet and attentive — guided me to the right service. Fast service, professional team. Great job!</p>
+      </div>
+
+      <!-- Review 5 — Brandon Tromp (real) -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#0F9D58;">B</div>
+          <div class="reviewer-info">
+            <h4>Brandon Tromp</h4>
+            <span>4 months ago</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">Outstanding experience from start to finish. Professional, responsive, and genuinely committed to delivering high quality service. Would absolutely recommend!</p>
+      </div>
+
+      <!-- Review 6 — Jon Wilde (real) -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#9C27B0;">J</div>
+          <div class="reviewer-info">
+            <h4>Jon Wilde</h4>
+            <span>6 months ago</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">Highly recommend — fair price, showed up on time, and stuck to their estimate even when the job was bigger than expected. Very knowledgeable and professional crew.</p>
       </div>
 
       <!-- Review CTA card -->
@@ -588,8 +588,6 @@ ${navbar('/')}
           <div class="client-logo-item"><img src="/static/images/clients/fishes-more.png" alt="Fishes & More" loading="lazy"></div>
           <div class="client-logo-item"><img src="/static/images/clients/nos-clubhuis.png" alt="Nos Clubhuis" loading="lazy"></div>
           <div class="client-logo-item"><img src="/static/images/clients/bananas-apartments.png" alt="Bananas Apartments" loading="lazy"></div>
-          <div class="client-logo-item"><img src="/static/images/clients/caribbean-overseas.png" alt="Caribbean Overseas" loading="lazy"></div>
-          <div class="client-logo-item"><img src="/static/images/clients/local-store-aruba.png" alt="Local Store Aruba" loading="lazy"></div>
           <!-- Duplicate set for seamless loop -->
           <div class="client-logo-item"><img src="/static/images/clients/moomba-beach.png" alt="Moomba Beach" loading="lazy"></div>
           <div class="client-logo-item"><img src="/static/images/clients/jolly-pirates.png" alt="Jolly Pirates" loading="lazy"></div>
