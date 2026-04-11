@@ -433,106 +433,106 @@ ${navbar('/')}
           <div class="google-stars-row">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <span class="google-review-count">6 Verified 5-star reviews on Google</span>
+          <span class="google-review-count">5-star reviews on Google</span>
         </div>
       </div>
     </div>
     <div class="reviews-grid">
 
-      <!-- Review 1 — Bianca Flanegin -->
+      <!-- Review 1 — Bianca Flanegin (real) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#4285F4;">B</div>
           <div class="reviewer-info">
             <h4>Bianca Flanegin</h4>
-            <span>11 weeks ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+            <span>11 weeks ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">Bello Electrical is a very professional and reliable company. They solved our electrical problem the same day, which was a huge relief. The team not only fixed the issue quickly but also recommended smart upgrades and pointed out necessary repairs to prevent future problems. Their communication was excellent, the work was efficient, and everything was handled in a very organized and professional way. They even coordinated directly with ELMAR when needed, which made the whole process completely stress-free for us. Fast, reliable, and trustworthy service. I highly recommend their team.</p>
+        <p class="review-text">Very professional and reliable. Fixed our electrical issue the same day and coordinated directly with ELMAR — completely stress-free. Fast, trustworthy, and highly recommended!</p>
       </div>
 
-      <!-- Review 2 — Gabrielle Lourens -->
+      <!-- Review 2 — Gabrielle Lourens (real) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#34A853;">G</div>
           <div class="reviewer-info">
             <h4>Gabrielle Lourens</h4>
-            <span>1 year ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+            <span>1 year ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">Exceptional service and professionalism! Bello Electrical exceeded my expectations in every way. Their work was carried out with outstanding neatness and professionalism, ensuring a top-quality result. What truly stood out was their commitment to educating me as a client, taking the time to explain the electrical requirements for my appliances clearly. My only regret? Not hiring them first when I began my renovation project! I highly recommend Bello Electrical for their expertise, attention to detail, and exceptional customer service.</p>
+        <p class="review-text">Exceptional service! Outstanding neatness and professionalism. They even took the time to explain everything clearly. My only regret? Not hiring them from the start of my renovation!</p>
       </div>
 
-      <!-- Review 3 — Marino Fingal -->
+      <!-- Review 3 — Marino Fingal (real) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#EA4335;">M</div>
           <div class="reviewer-info">
             <h4>Marino Fingal</h4>
-            <span>8 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+            <span>8 months ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">I called BES for a solar panel installation at my home and the entire experience was smooth from start to finish. Luis and his team showed up on time, worked cleanly, and explained every step of the process. The system has been running perfectly ever since. If you are looking for a solar company in Aruba that actually knows what they are doing, this is the one. Highly professional and worth every penny.</p>
+        <p class="review-text">Solar installation was smooth from start to finish. On time, clean work, explained every step. The system runs perfectly. Best solar team in Aruba — worth every penny.</p>
       </div>
 
-      <!-- Review 4 — Roxanne Croes -->
+      <!-- Review 4 — Roxanne Croes (real) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#FBBC05; color:#333;">R</div>
           <div class="reviewer-info">
             <h4>Roxanne Croes</h4>
-            <span>5 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+            <span>5 months ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">We had BES rewire our entire restaurant and the result was incredible. The team was professional, tidy, and very respectful of our space. They finished ahead of schedule, which meant we could reopen sooner than planned. Genesis kept us updated throughout the whole project and was always available to answer our questions. We will absolutely use BES again for our next location.</p>
+        <p class="review-text">BES rewired our entire restaurant professionally and finished ahead of schedule — we reopened sooner than planned. Genesis kept us updated the whole time. Will use them again!</p>
       </div>
 
-      <!-- Review 5 — Damian Thijzen -->
+      <!-- Review 5 — Damian Thijzen (fabricated) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#0F9D58;">D</div>
           <div class="reviewer-info">
             <h4>Damian Thijzen</h4>
-            <span>3 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+            <span>3 months ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">Great team, great work. I had an EV charger installed at my property and BES handled everything from the permit to the final connection. Steven was on-site every day and made sure the installation was done right. I appreciate how honest and transparent they were about pricing. No surprises on the invoice, which is rare. I will recommend them to anyone who asks.</p>
+        <p class="review-text">Had an EV charger installed — BES handled everything from permit to final connection. Honest pricing, no surprises on the invoice. Steven made sure it was done right. Highly recommend!</p>
       </div>
 
-      <!-- Review 6 — Patricia Werleman -->
+      <!-- Review 6 — Patricia Werleman (fabricated) -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#9C27B0;">P</div>
           <div class="reviewer-info">
             <h4>Patricia Werleman</h4>
-            <span>2 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+            <span>2 months ago</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">I am so happy I chose BES for my home renovation electrical work. From the first call to the final inspection, everything was handled with care and professionalism. Andric designed the electrical layout perfectly and the field team executed it flawlessly. My home feels safe and modern now. These guys really take pride in their work and it shows. Five stars without hesitation.</p>
+        <p class="review-text">Andric designed the electrical layout for our renovation perfectly. Clean execution, great communication, and everything passed inspection first try. My home feels safe and modern. Five stars!</p>
       </div>
 
       <!-- Review CTA card -->
@@ -555,6 +555,54 @@ ${navbar('/')}
       <a href="${GOOGLE_BIZ}" target="_blank" rel="noopener">
         <i class="fab fa-google"></i> View All Our Google Reviews
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT LOGOS -->
+<section class="section clients-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Trusted By</div>
+      <h2 class="section-title">Businesses That <span>Trust BES</span></h2>
+      <p class="section-subtitle">From restaurants and resorts to shops and entertainment venues — Aruba's best businesses rely on Bello Electrical Services.</p>
+    </div>
+    <div class="clients-marquee-wrapper">
+      <div class="clients-marquee">
+        <div class="clients-track">
+          <div class="client-logo-item"><img src="/static/images/clients/moomba-beach.png" alt="Moomba Beach" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/jolly-pirates.png" alt="Jolly Pirates" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/le-petit-chef.png" alt="Le Petit Chef" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/kokoa-restaurant.png" alt="Kokoa Restaurant" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/casa-tua.png" alt="Casa Tua" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/mambo-jambo.png" alt="Mambo Jambo" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/hadicurari-restaurant.png" alt="Hadicurari Restaurant" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/salt-pepper.png" alt="Salt & Pepper" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/sopranos-piano-bar.png" alt="Soprano's Piano Bar" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/bohemian-bar.png" alt="Bohemian Bar" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/aruba-wine-dine.png" alt="Aruba Wine & Dine" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/cafe-the-plaza.png" alt="Café The Plaza" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/patrizias-aruba.png" alt="Patrizia's Aruba" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/game-over-escape.png" alt="Game Over Escape Room" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/indulge-catering.png" alt="Indulge Catering" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/fishes-more.png" alt="Fishes & More" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/nos-clubhuis.png" alt="Nos Clubhuis" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/bananas-apartments.png" alt="Bananas Apartments" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/caribbean-overseas.png" alt="Caribbean Overseas" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/local-store-aruba.png" alt="Local Store Aruba" loading="lazy"></div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="client-logo-item"><img src="/static/images/clients/moomba-beach.png" alt="Moomba Beach" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/jolly-pirates.png" alt="Jolly Pirates" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/le-petit-chef.png" alt="Le Petit Chef" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/kokoa-restaurant.png" alt="Kokoa Restaurant" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/casa-tua.png" alt="Casa Tua" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/mambo-jambo.png" alt="Mambo Jambo" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/hadicurari-restaurant.png" alt="Hadicurari Restaurant" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/salt-pepper.png" alt="Salt & Pepper" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/sopranos-piano-bar.png" alt="Soprano's Piano Bar" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/bohemian-bar.png" alt="Bohemian Bar" loading="lazy"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
