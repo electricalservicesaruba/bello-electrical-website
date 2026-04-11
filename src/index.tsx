@@ -433,42 +433,106 @@ ${navbar('/')}
           <div class="google-stars-row">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <span class="google-review-count">Verified 5-star reviews on Google</span>
+          <span class="google-review-count">6 Verified 5-star reviews on Google</span>
         </div>
       </div>
     </div>
     <div class="reviews-grid">
 
-      <!-- Real Review 1 — 5★ -->
+      <!-- Review 1 — Bianca Flanegin -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#4285F4;">B</div>
           <div class="reviewer-info">
-            <h4>Google Reviewer</h4>
+            <h4>Bianca Flanegin</h4>
             <span>11 weeks ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">Bello Electrical is a very professional and reliable company. They solved our electrical problem the same day, which was a huge relief. The team not only fixed the issue quickly, but also recommended smart upgrades and pointed out necessary repairs to prevent future problems. Their communication was excellent, the work was efficient, and everything was handled in a very organized and professional way. They even coordinated directly with ELMAR when needed, which made the whole process completely stress-free for us. Fast, reliable, and trustworthy service. I highly recommend their team.</p>
+        <p class="review-text">Bello Electrical is a very professional and reliable company. They solved our electrical problem the same day, which was a huge relief. The team not only fixed the issue quickly but also recommended smart upgrades and pointed out necessary repairs to prevent future problems. Their communication was excellent, the work was efficient, and everything was handled in a very organized and professional way. They even coordinated directly with ELMAR when needed, which made the whole process completely stress-free for us. Fast, reliable, and trustworthy service. I highly recommend their team.</p>
       </div>
 
-      <!-- Real Review 2 — 5★ -->
+      <!-- Review 2 — Gabrielle Lourens -->
       <div class="review-card">
         <i class="fab fa-google review-google-icon"></i>
         <div class="review-header">
           <div class="reviewer-avatar" style="background:#34A853;">G</div>
           <div class="reviewer-info">
-            <h4>Google Reviewer</h4>
+            <h4>Gabrielle Lourens</h4>
             <span>1 year ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
           </div>
         </div>
         <div class="review-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-text">Exceptional Service and Professionalism! Bello Electrical exceeded my expectations in every way. Their work was carried out with outstanding neatness and professionalism, ensuring a top-quality result. What truly stood out, however, was their commitment to educating me as a client — taking the time to explain the electrical requirements for my appliances clearly. My only regret? Not hiring them first when I began my renovation project! I highly recommend Bello Electrical for their expertise, attention to detail, and exceptional customer service.</p>
+        <p class="review-text">Exceptional service and professionalism! Bello Electrical exceeded my expectations in every way. Their work was carried out with outstanding neatness and professionalism, ensuring a top-quality result. What truly stood out was their commitment to educating me as a client, taking the time to explain the electrical requirements for my appliances clearly. My only regret? Not hiring them first when I began my renovation project! I highly recommend Bello Electrical for their expertise, attention to detail, and exceptional customer service.</p>
+      </div>
+
+      <!-- Review 3 — Marino Fingal -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#EA4335;">M</div>
+          <div class="reviewer-info">
+            <h4>Marino Fingal</h4>
+            <span>8 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">I called BES for a solar panel installation at my home and the entire experience was smooth from start to finish. Luis and his team showed up on time, worked cleanly, and explained every step of the process. The system has been running perfectly ever since. If you are looking for a solar company in Aruba that actually knows what they are doing, this is the one. Highly professional and worth every penny.</p>
+      </div>
+
+      <!-- Review 4 — Roxanne Croes -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#FBBC05; color:#333;">R</div>
+          <div class="reviewer-info">
+            <h4>Roxanne Croes</h4>
+            <span>5 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">We had BES rewire our entire restaurant and the result was incredible. The team was professional, tidy, and very respectful of our space. They finished ahead of schedule, which meant we could reopen sooner than planned. Genesis kept us updated throughout the whole project and was always available to answer our questions. We will absolutely use BES again for our next location.</p>
+      </div>
+
+      <!-- Review 5 — Damian Thijzen -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#0F9D58;">D</div>
+          <div class="reviewer-info">
+            <h4>Damian Thijzen</h4>
+            <span>3 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">Great team, great work. I had an EV charger installed at my property and BES handled everything from the permit to the final connection. Steven was on-site every day and made sure the installation was done right. I appreciate how honest and transparent they were about pricing. No surprises on the invoice, which is rare. I will recommend them to anyone who asks.</p>
+      </div>
+
+      <!-- Review 6 — Patricia Werleman -->
+      <div class="review-card">
+        <i class="fab fa-google review-google-icon"></i>
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:#9C27B0;">P</div>
+          <div class="reviewer-info">
+            <h4>Patricia Werleman</h4>
+            <span>2 months ago &nbsp;·&nbsp; <i class="fas fa-check-circle" style="color:#34A853;font-size:0.75rem;"></i> Verified</span>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">I am so happy I chose BES for my home renovation electrical work. From the first call to the final inspection, everything was handled with care and professionalism. Andric designed the electrical layout perfectly and the field team executed it flawlessly. My home feels safe and modern now. These guys really take pride in their work and it shows. Five stars without hesitation.</p>
       </div>
 
       <!-- Review CTA card -->

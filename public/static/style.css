@@ -1333,6 +1333,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 .review-card {
   background: white;
