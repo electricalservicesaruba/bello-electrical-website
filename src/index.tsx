@@ -724,7 +724,7 @@ ${navbar('/')}
     <div class="section-header">
       <div class="section-tag">Trusted By</div>
       <h2 class="section-title">Businesses That <span>Trust BES</span></h2>
-      <p class="section-subtitle">From restaurants and resorts to shops and entertainment venues — Aruba's best businesses rely on Bello Electrical Services.</p>
+      <p class="section-subtitle">From restaurants and resorts to shops and entertainment venues. Aruba's best businesses rely on Bello Electrical Services.</p>
     </div>
     <div class="clients-marquee-wrapper">
       <div class="clients-marquee">
@@ -812,7 +812,7 @@ ${navbar('/services')}
     <div class="section-header">
       <div class="section-tag">BES Services</div>
       <h2 class="section-title">Electrical Solutions<br><span>From Small to Large</span></h2>
-      <p class="section-subtitle">Whether you're changing a light fixture or installing a full solar system with battery storage — BES has the certification, tools, and team to get it done right in Aruba.</p>
+      <p class="section-subtitle">Whether you're changing a light fixture or installing a full solar system with battery storage, BES has the certification, tools, and team to get it done right in Aruba.</p>
     </div>
     <div class="trust-container" style="background:var(--navy);border-radius:16px;padding:1.25rem 2rem;justify-content:space-around;">
       <div class="trust-item"><i class="fas fa-certificate"></i><span>NEN 1010 Standard</span></div>
@@ -1092,7 +1092,7 @@ ${navbar('/about')}
       <div class="about-story-content">
         <div class="section-tag">Our Story</div>
         <h2 class="section-title">Built for Aruba.<br><span>Built to Last.</span></h2>
-        <p>Bello Electrical Services and More (BES) was founded in <strong>2019</strong> as a sole proprietorship by Luis Bello — a certified electrician with over 20 years of hands-on experience in electrical wiring, repair, professional drafting, and inspection. In 2024, BES became a Limited Liability Company (LLC), reflecting the company's continued growth and long-term commitment to Aruba.</p>
+        <p>Bello Electrical Services and More (BES) was founded in <strong>2019</strong> as a sole proprietorship by Luis Bello, a certified electrician with over 20 years of hands-on experience in electrical wiring, repair, professional drafting, and inspection. In 2024, BES became a Limited Liability Company (LLC), reflecting the company's continued growth and long-term commitment to Aruba.</p>
         <p>BES was born from a clear need in the Aruban market: businesses and homeowners deserved a reliable electrical partner that combined technical excellence with professional communication and consistent quality. That vision still drives every project we take on today.</p>
         <p>From small residential repairs to complex commercial installations and full solar systems, BES delivers exceptional results. The company has expanded its services across Aruba and Bonaire, with a growing portfolio of residential, commercial, and industrial clients.</p>
         <div class="about-quote">
@@ -1124,7 +1124,7 @@ ${navbar('/about')}
       </div>
       <div class="founder-content">
         <h2>Luis Bello</h2>
-        <p>Luis Bello is a certified electrician and entrepreneur with over 20 years of hands-on experience in Aruba. His background covers electrical wiring and repair, professional drafting, and electrical inspection — giving him the full technical picture from design to final delivery.</p>
+        <p>Luis Bello is a certified electrician and entrepreneur with over 20 years of hands-on experience in Aruba. His background covers electrical wiring and repair, professional drafting, and electrical inspection, giving him the full technical picture from design to final delivery.</p>
         <p>Born and raised in Aruba, Luis built his career by working across residential, commercial, and industrial projects throughout the island. His depth of knowledge and dedication to quality are what sets BES apart.</p>
         <p>"I started BES because I saw businesses struggling to find a reliable, professional electrical contractor. That's what we built and that's what we deliver every single day."</p>
         <div class="founder-credentials">
@@ -1187,7 +1187,7 @@ ${navbar('/about')}
     <div class="section-header">
       <div class="section-tag">Our Team</div>
       <h2 class="section-title">The People Behind <span>Every Project</span></h2>
-      <p class="section-subtitle">Trained electricians, designers, administrators, and field technicians — united by a commitment to quality and safety on every job.</p>
+      <p class="section-subtitle">Trained electricians, designers, administrators, and field technicians united by a commitment to quality and safety on every job.</p>
     </div>
 
     <!-- Leadership cards -->
