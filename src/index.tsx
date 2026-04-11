@@ -303,6 +303,10 @@ function homePage() {
           "closes": "17:00"
         }
       ],
+      "legalName": "Power B Electrical Services VBA",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 6 },
+      "currenciesAccepted": "AWG, USD",
+      "paymentAccepted": "Cash, Bank Transfer",
       "sameAs": [
         "https://www.facebook.com/belloelectricalaruba",
         "https://www.instagram.com/electricalservicesaruba"
