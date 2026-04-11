@@ -1026,7 +1026,7 @@ ${navbar('/about')}
     <div class="section-header">
       <div class="section-tag">Our Team</div>
       <h2 class="section-title">The People Behind <span>Every Project</span></h2>
-      <p class="section-subtitle">Highly trained electricians, designers, administrators, and field technicians — united by a commitment to quality and safety on every job.</p>
+      <p class="section-subtitle">Trained electricians, designers, administrators, and field technicians — united by a commitment to quality and safety on every job.</p>
     </div>
 
     <!-- Leadership cards -->
