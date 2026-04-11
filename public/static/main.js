@@ -66,34 +66,54 @@
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll(); // Run on load
 
-  // ---- CONTACT FORM HANDLER ----
+  // ---- CONTACT FORM HANDLER (Web3Forms — client-side) ----
   const form = document.getElementById('contactForm');
   const statusDiv = document.getElementById('formStatus');
   const submitBtn = document.getElementById('submitBtn');
+
+  const WEB3FORMS_KEY = 'cf54359d-1332-4b22-b060-c3c8e16f750d';
 
   if (form) {
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
       const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        company: formData.get('company'),
-        service: formData.get('service'),
-        message: formData.get('message'),
-      };
+      const name    = formData.get('name')    || '';
+      const email   = formData.get('email')   || '';
+      const phone   = formData.get('phone')   || 'Not provided';
+      const company = formData.get('company') || 'Not provided';
+      const service = formData.get('service') || 'Not specified';
+      const message = formData.get('message') || '';
+
+      const subject = service !== 'Not specified'
+        ? 'New BES Inquiry — ' + service + ' — ' + name
+        : 'New BES Inquiry from ' + name;
+
+      const fullMessage =
+        'Name: '    + name    + '\n' +
+        'Email: '   + email   + '\n' +
+        'Phone: '   + phone   + '\n' +
+        'Company: ' + company + '\n' +
+        'Service: ' + service + '\n\n' +
+        'Message:\n' + message + '\n\n' +
+        '---\nSent from electricalservicesaruba.com';
 
       // Update button state
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
 
       try {
-        const response = await fetch('/api/contact', {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject:    subject,
+            from_name:  name,
+            email:      email,
+            message:    fullMessage,
+            botcheck:   ''
+          })
         });
 
         const result = await response.json();
@@ -101,18 +121,17 @@
         statusDiv.style.display = 'block';
         if (result.success) {
           statusDiv.className = 'form-status success';
-          statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> ' + result.message;
+          statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! We will get back to you within 24 hours.';
           form.reset();
-          // Scroll to status
           statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
           statusDiv.className = 'form-status error';
-          statusDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (result.error || 'Something went wrong. Please try again.');
+          statusDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Something went wrong. Please call us at +297 594 1089.';
         }
       } catch (err) {
         statusDiv.style.display = 'block';
         statusDiv.className = 'form-status error';
-        statusDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Unable to send message. Please call us directly.';
+        statusDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Unable to send. Please call us at +297 594 1089.';
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Send Message</span>';
