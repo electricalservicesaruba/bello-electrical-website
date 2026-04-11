@@ -775,9 +775,22 @@ p  { color: var(--gray-600); line-height: 1.75; }
   font-weight: 600;
 }
 .team-photos-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.team-photo-item { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition); }
+.team-photo-item { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition); position: relative; }
 .team-photo-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.team-photo-item img { width: 100%; height: 220px; object-fit: cover; object-position: top; }
+.team-photo-item img { width: 100%; height: 300px; object-fit: cover; object-position: center 30%; display: block; }
+.team-photo-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(11,11,90,0.82) 0%, transparent 100%);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1.25rem 1rem 0.85rem;
+  text-align: center;
+}
 .team-member-info { padding: 1rem; background: white; }
 .team-member-info h4 { font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--navy); }
 .team-member-info p  { font-size: 0.8rem; color: var(--gray-400); }

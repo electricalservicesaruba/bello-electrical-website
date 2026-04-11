@@ -369,10 +369,12 @@ ${navbar('/')}
     <!-- Group photos -->
     <div class="team-photos-row">
       <div class="team-photo-item">
-        <img src="/static/images/team-full-van.jpg" alt="BES full team Aruba" loading="lazy">
+        <img src="/static/images/team-5-van.jpg" alt="BES technical field team Aruba" loading="lazy">
+        <div class="team-photo-label">Field Team</div>
       </div>
       <div class="team-photo-item">
-        <img src="/static/images/team-full-van2.jpg" alt="BES team ready for work" loading="lazy">
+        <img src="/static/images/team-full-van.jpg" alt="BES full team Aruba" loading="lazy">
+        <div class="team-photo-label">The Full Team</div>
       </div>
     </div>
 
