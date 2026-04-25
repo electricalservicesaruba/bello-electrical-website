@@ -87,6 +87,11 @@ app.get('/',        (c) => c.html(homePage()))
 app.get('/services',(c) => c.html(servicesPage()))
 app.get('/about',   (c) => c.html(aboutPage()))
 app.get('/contact', (c) => c.html(contactPage()))
+app.get('/case-studies', (c) => c.html(caseStudiesPage()))
+app.get('/industries/restaurants',       (c) => c.html(industryRestaurantsPage()))
+app.get('/industries/property-managers', (c) => c.html(industryPropertyManagersPage()))
+app.get('/industries/developers',        (c) => c.html(industryDevelopersPage()))
+app.get('/industries/emergency',         (c) => c.html(industryEmergencyPage()))
 
 // ── 301 REDIRECTS — old Wix pages → correct new pages ──────────────────────
 // Old service pages → /services
@@ -160,6 +165,11 @@ app.get('/sitemap.xml', async (c) => {
   <url><loc>https://www.electricalservicesaruba.com/services</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.electricalservicesaruba.com/about</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.electricalservicesaruba.com/contact</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/case-studies</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/industries/restaurants</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/industries/property-managers</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/industries/developers</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/industries/emergency</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>`
   return c.text(sitemap, 200, { 'Content-Type': 'application/xml; charset=UTF-8' })
 })
@@ -239,12 +249,6 @@ function head(title: string, desc: string, path: string = '', keywords: string =
 }
 
 function navbar(active: string) {
-  const links = [
-    { href: '/',         label: 'Home' },
-    { href: '/services', label: 'Services' },
-    { href: '/about',    label: 'About Us' },
-    { href: '/contact',  label: 'Contact' },
-  ]
   return `
   <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -255,7 +259,20 @@ function navbar(active: string) {
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu" id="navMenu">
-        ${links.map(l => `<li><a href="${l.href}" class="nav-link${active === l.href ? ' active' : ''}">${l.label}</a></li>`).join('')}
+        <li><a href="/" class="nav-link${active === '/' ? ' active' : ''}">Home</a></li>
+        <li><a href="/services" class="nav-link${active === '/services' ? ' active' : ''}">Services</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link nav-link-dropdown${active.startsWith('/industries') ? ' active' : ''}">Industries <i class="fas fa-chevron-down nav-arrow"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="/industries/restaurants"><i class="fas fa-utensils"></i> Restaurants &amp; Hospitality</a></li>
+            <li><a href="/industries/property-managers"><i class="fas fa-building"></i> Property Managers</a></li>
+            <li><a href="/industries/developers"><i class="fas fa-hard-hat"></i> Developers &amp; Builders</a></li>
+            <li><a href="/industries/emergency"><i class="fas fa-bolt"></i> Emergency &amp; 24/7</a></li>
+          </ul>
+        </li>
+        <li><a href="/case-studies" class="nav-link${active === '/case-studies' ? ' active' : ''}">Case Studies</a></li>
+        <li><a href="/about" class="nav-link${active === '/about' ? ' active' : ''}">About Us</a></li>
+        <li><a href="/contact" class="nav-link${active === '/contact' ? ' active' : ''}">Contact</a></li>
         <li><a href="/contact#quote" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
@@ -295,9 +312,18 @@ function footer() {
             <li><a href="/about">About Us</a></li>
             <li><a href="/about#founder">Our Founder</a></li>
             <li><a href="/about#team">Our Team</a></li>
-            <li><a href="/services">All Services</a></li>
+            <li><a href="/case-studies">Case Studies</a></li>
             <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/contact#quote">Contact Us</a></li>
+            <li><a href="/contact#quote">Request a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="/industries/restaurants">Restaurants &amp; Hospitality</a></li>
+            <li><a href="/industries/property-managers">Property Managers</a></li>
+            <li><a href="/industries/developers">Developers &amp; Builders</a></li>
+            <li><a href="/industries/emergency">Emergency &amp; 24/7</a></li>
           </ul>
         </div>
         <div class="footer-contact">
@@ -338,7 +364,7 @@ function footer() {
 function homePage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('Electrical Services in Aruba', 'Bello Electrical Services – Certified & insured electrical contractor in Aruba. Commercial & residential electrical, solar panels, EV charging. NEN 1010 compliant. Fast 24-hour response.', '/', 'electrician Aruba, electrical services Aruba, residential electrician Aruba, commercial electrician Aruba, solar panel Aruba, EV charging Aruba, NEN 1010, Bello Electrical Services')}
+<head>${head('Commercial Electrician Aruba', 'Bello Electrical Services – Certified commercial & residential electrician in Aruba. Trusted by restaurants, hotels, developers & property managers. Solar, EV charging, NEN 1010 compliant.', '/', 'commercial electrician Aruba, electrical contractor Aruba, electrician Aruba, electrical services Aruba, solar panel Aruba, EV charging Aruba, NEN 1010, Bello Electrical Services')}
 <link rel="preload" as="image" href="/static/images/hero-electrician-panel.jpg" fetchpriority="high">
 <script type="application/ld+json">${JSON.stringify({
   "@context": "https://schema.org",
@@ -400,19 +426,17 @@ ${navbar('/')}
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge"><i class="fas fa-certificate"></i>&nbsp; Licensed &bull; Certified &bull; Insured &bull; Aruba</div>
+    <div class="hero-badge"><i class="fas fa-building"></i>&nbsp; Aruba's Commercial Electrical Partner</div>
     <h1 class="hero-title">
-      Reliable Electrical<br>
-      <span class="hero-highlight">Services in Aruba.</span>
+      The Electrician<br>
+      <span class="hero-highlight">Aruba Businesses Trust.</span>
     </h1>
-    <p class="hero-slogan"><i class="fas fa-bolt"></i> Shockingly Good. Watt-Ever You Need.</p>
     <p class="hero-subtitle">
-      From small repairs to full commercial installations and solar systems,
-      BES delivers safe, NEN 1010 compliant work with fast response times and consistent quality. Backed by more than 20 years of hands-on experience.
+      Restaurants, hotels, developers, and property managers across Aruba rely on BES for safe, NEN 1010 compliant electrical work. Certified subcontractors. Fast response. Consistent quality. 20+ years of hands-on experience.
     </p>
     <div class="hero-actions">
       <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
-      <a href="${WHATSAPP}" target="_blank" class="btn btn-outline btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="/case-studies" class="btn btn-outline btn-lg"><i class="fas fa-folder-open"></i> See Our Work</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -571,21 +595,100 @@ ${navbar('/')}
   </div>
 </section>
 
-<!-- WHO WE SERVE -->
-<section class="section section-alt">
+<!-- WHO WE SERVE — enhanced with dedicated industry pages -->
+<section class="section section-alt" id="industries">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">Who We Serve</div>
+      <div class="section-tag">Industries We Serve</div>
       <h2 class="section-title">Built for Aruba's<br><span>Business Community</span></h2>
-      <p class="section-subtitle">From small shops to large commercial developments — if it needs electricity, BES has you covered.</p>
+      <p class="section-subtitle">From kitchens to construction sites, we understand each industry's electrical demands. Explore how BES serves your sector.</p>
     </div>
-    <div class="clients-grid">
-      <div class="client-card"><div class="client-icon"><i class="fas fa-utensils"></i></div><h3>Restaurants</h3><p>Kitchen power, HVAC &amp; dining lighting</p></div>
-      <div class="client-card"><div class="client-icon"><i class="fas fa-building"></i></div><h3>Property Managers</h3><p>Commercial property maintenance &amp; compliance</p></div>
-      <div class="client-card"><div class="client-icon"><i class="fas fa-store"></i></div><h3>Retail Stores</h3><p>Display lighting, POS &amp; storefront power</p></div>
-      <div class="client-card"><div class="client-icon"><i class="fas fa-briefcase"></i></div><h3>Office Buildings</h3><p>Complete electrical systems &amp; smart power</p></div>
-      <div class="client-card"><div class="client-icon"><i class="fas fa-hard-hat"></i></div><h3>Developers</h3><p>New construction from ground up to handover</p></div>
-      <div class="client-card"><div class="client-icon"><i class="fas fa-home"></i></div><h3>Homeowners</h3><p>Residential wiring, solar &amp; EV charging</p></div>
+    <div class="industry-cards-grid">
+
+      <a href="/industries/restaurants" class="industry-card">
+        <div class="industry-card-icon"><i class="fas fa-utensils"></i></div>
+        <div class="industry-card-body">
+          <h3>Restaurants &amp; Hospitality</h3>
+          <p>High-demand kitchen circuits, bar power, dining lighting, HVAC, and fire safety systems. We minimize downtime for food &amp; beverage operations.</p>
+          <div class="industry-card-clients">Clients: Moomba Beach, Jolly Pirates, Le Petit Chef, Kokoa, Casa Tua &amp; more</div>
+        </div>
+        <div class="industry-card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a href="/industries/property-managers" class="industry-card">
+        <div class="industry-card-icon"><i class="fas fa-building"></i></div>
+        <div class="industry-card-body">
+          <h3>Property Managers</h3>
+          <p>Preventive maintenance contracts, multi-unit wiring, compliance inspections, and rapid repair response. Keep every property code-compliant and operational.</p>
+          <div class="industry-card-clients">Ideal for: apartment complexes, commercial buildings, resort properties</div>
+        </div>
+        <div class="industry-card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a href="/industries/developers" class="industry-card">
+        <div class="industry-card-icon"><i class="fas fa-hard-hat"></i></div>
+        <div class="industry-card-body">
+          <h3>Developers &amp; Builders</h3>
+          <p>Ground-up electrical design and installation for new construction projects. Full coordination from permit drawings through final inspection and handover.</p>
+          <div class="industry-card-clients">Ideal for: villas, commercial fit-outs, mixed-use developments</div>
+        </div>
+        <div class="industry-card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a href="/industries/emergency" class="industry-card industry-card-emergency">
+        <div class="industry-card-icon"><i class="fas fa-bolt"></i></div>
+        <div class="industry-card-body">
+          <h3>Emergency &amp; 24/7 Response</h3>
+          <p>Power outages, tripped breakers, equipment failures — BES responds fast. Our emergency line is available around the clock to get your operations back online.</p>
+          <div class="industry-card-clients">Available: 24 hours a day, 7 days a week across Aruba</div>
+        </div>
+        <div class="industry-card-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+    <div class="section-cta">
+      <a href="/contact#quote" class="btn btn-primary"><i class="fas fa-file-alt"></i> Tell Us About Your Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES TEASER -->
+<section class="section case-studies-teaser">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Real Projects</div>
+      <h2 class="section-title">From the <span>Job Site</span></h2>
+      <p class="section-subtitle">Short breakdowns of real BES projects — the problem, our approach, and the result.</p>
+    </div>
+    <div class="case-teaser-grid">
+
+      <div class="case-teaser-card">
+        <div class="case-teaser-tag">Restaurant</div>
+        <h3>Moomba Beach — Kitchen Circuit Upgrade</h3>
+        <p class="case-teaser-problem"><strong>Problem:</strong> Tripping breakers in a high-volume kitchen causing service interruptions during peak hours.</p>
+        <p class="case-teaser-outcome"><strong>Outcome:</strong> New dedicated circuits installed during off-hours. Zero downtime since commissioning.</p>
+        <a href="/case-studies#moomba" class="case-teaser-link">Read full case <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="case-teaser-card">
+        <div class="case-teaser-tag">Commercial Build</div>
+        <h3>Developer Villa — Full Electrical Build</h3>
+        <p class="case-teaser-problem"><strong>Problem:</strong> New 4-unit villa complex needed electrical design, installation, and ELMAR inspection from scratch.</p>
+        <p class="case-teaser-outcome"><strong>Outcome:</strong> Delivered on schedule with full NEN 1010 certification and ELMAR sign-off.</p>
+        <a href="/case-studies#villa" class="case-teaser-link">Read full case <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="case-teaser-card">
+        <div class="case-teaser-tag">Solar + Storage</div>
+        <h3>Business Owner — Solar ROI in 4 Years</h3>
+        <p class="case-teaser-problem"><strong>Problem:</strong> High ELMAR bills making operations unsustainable for a mid-size retail business.</p>
+        <p class="case-teaser-outcome"><strong>Outcome:</strong> 24-panel rooftop system with battery storage installed. Monthly bill reduced by 70%.</p>
+        <a href="/case-studies#solar-retail" class="case-teaser-link">Read full case <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+    <div class="section-cta">
+      <a href="/case-studies" class="btn btn-primary"><i class="fas fa-folder-open"></i> View All Case Studies</a>
     </div>
   </div>
 </section>
@@ -1557,6 +1660,870 @@ ${navbar('/contact')}
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+${footer()}
+</body>
+</html>`
+}
+
+/* ==============================
+   CASE STUDIES PAGE
+============================== */
+function caseStudiesPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>${head('Case Studies', 'Real electrical projects completed by Bello Electrical Services in Aruba. See how BES solved commercial, restaurant, solar, and emergency electrical challenges across the island.', '/case-studies', 'electrical contractor case studies Aruba, BES project results Aruba, commercial electrician projects Aruba, solar installation results Aruba')}
+<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "url": "https://www.electricalservicesaruba.com/case-studies",
+  "name": "Case Studies – Bello Electrical Services",
+  "description": "Real commercial electrical projects completed by BES across Aruba.",
+  "provider": { "@type": "ElectricalContractor", "name": "Bello Electrical Services", "url": "https://www.electricalservicesaruba.com" }
+})}</script></head>
+<body>
+${navbar('/case-studies')}
+
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="/static/images/hero-electrician-panel.jpg" alt="BES project work Aruba" class="page-hero-img">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i>Case Studies</div>
+    <h1>Case Studies</h1>
+    <p>Real problems. Real fixes. Real results. See how BES delivers across Aruba.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">From the Job Site</div>
+      <h2 class="section-title">How We <span>Get It Done</span></h2>
+      <p class="section-subtitle">Each case study covers scope, the problem, our approach, and the measurable outcome. No marketing fluff.</p>
+    </div>
+    <div class="trust-container" style="background:var(--navy);border-radius:16px;padding:1.25rem 2rem;justify-content:space-around;">
+      <div class="trust-item"><i class="fas fa-utensils"></i><span>Restaurants</span></div>
+      <div class="trust-item"><i class="fas fa-building"></i><span>Commercial</span></div>
+      <div class="trust-item"><i class="fas fa-hard-hat"></i><span>New Build</span></div>
+      <div class="trust-item"><i class="fas fa-solar-panel"></i><span>Solar &amp; Storage</span></div>
+      <div class="trust-item"><i class="fas fa-bolt"></i><span>Emergency</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY 1 -->
+<section class="section" id="moomba">
+  <div class="container">
+    <article class="case-study-card">
+      <div class="case-study-meta">
+        <span class="case-tag cs-restaurant">Restaurant</span>
+        <span class="case-location"><i class="fas fa-map-marker-alt"></i> Palm Beach, Aruba</span>
+      </div>
+      <h2>Moomba Beach — Kitchen Circuit Upgrade</h2>
+      <div class="case-study-grid">
+        <div class="case-study-body">
+          <div class="case-block">
+            <h4><i class="fas fa-expand-arrows-alt"></i> Scope</h4>
+            <p>Full audit and upgrade of kitchen electrical circuits for a high-volume beachfront restaurant operating 7 days a week.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-exclamation-triangle"></i> Problem</h4>
+            <p>During peak dinner service, circuit breakers repeatedly tripped in the kitchen, halting fryer and grill operations mid-service. The existing panel was undersized for the expanded kitchen equipment and posed a fire risk under sustained load.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-tools"></i> What We Did</h4>
+            <ul class="case-list">
+              <li><i class="fas fa-check-circle"></i> Conducted load calculation across all kitchen equipment</li>
+              <li><i class="fas fa-check-circle"></i> Installed dedicated 40A circuits for fryers and commercial grills</li>
+              <li><i class="fas fa-check-circle"></i> Upgraded distribution panel to handle peak load</li>
+              <li><i class="fas fa-check-circle"></i> All work performed between 11 PM and 6 AM to avoid business disruption</li>
+              <li><i class="fas fa-check-circle"></i> Full NEN 1010 compliance documentation provided</li>
+            </ul>
+          </div>
+          <div class="case-block case-outcome">
+            <h4><i class="fas fa-chart-line"></i> Outcome</h4>
+            <p>Zero circuit trips since installation. Kitchen operates at full capacity during peak service. The client also booked BES for annual preventive maintenance — ongoing relationship since 2022.</p>
+          </div>
+        </div>
+        <div class="case-study-sidebar">
+          <div class="case-stat-card">
+            <div class="case-stat"><span class="cs-number">0</span><span class="cs-label">Trips since install</span></div>
+            <div class="case-stat"><span class="cs-number">1 night</span><span class="cs-label">Installation window</span></div>
+            <div class="case-stat"><span class="cs-number">NEN 1010</span><span class="cs-label">Fully compliant</span></div>
+          </div>
+          <a href="/contact#quote" class="btn btn-primary btn-full" style="margin-top:1.5rem;"><i class="fas fa-file-alt"></i> Request Similar Work</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CASE STUDY 2 -->
+<section class="section section-alt" id="villa">
+  <div class="container">
+    <article class="case-study-card">
+      <div class="case-study-meta">
+        <span class="case-tag cs-commercial">New Construction</span>
+        <span class="case-location"><i class="fas fa-map-marker-alt"></i> Noord, Aruba</span>
+      </div>
+      <h2>Developer — 4-Unit Villa Complex, Full Electrical Build</h2>
+      <div class="case-study-grid">
+        <div class="case-study-body">
+          <div class="case-block">
+            <h4><i class="fas fa-expand-arrows-alt"></i> Scope</h4>
+            <p>Complete electrical design, supply, and installation for a new 4-unit luxury villa complex, from foundation through to ELMAR connection and inspection sign-off.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-exclamation-triangle"></i> Problem</h4>
+            <p>The developer needed a single electrical subcontractor to coordinate the full scope — from permit drawings through to inspection — to avoid the scheduling chaos of multiple contractors. Previous projects had delayed handover by weeks due to coordination failures.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-tools"></i> What We Did</h4>
+            <ul class="case-list">
+              <li><i class="fas fa-check-circle"></i> Produced detailed electrical drawings for permit submission</li>
+              <li><i class="fas fa-check-circle"></i> Installed full wiring, distribution boards, and earthing for all 4 units</li>
+              <li><i class="fas fa-check-circle"></i> Coordinated directly with ELMAR for metering and grid connection</li>
+              <li><i class="fas fa-check-circle"></i> Installed outdoor lighting and pool area circuits</li>
+              <li><i class="fas fa-check-circle"></i> Passed ELMAR and NEN 1010 inspection first attempt</li>
+              <li><i class="fas fa-check-circle"></i> Pre-wired conduit for future solar panel installation</li>
+            </ul>
+          </div>
+          <div class="case-block case-outcome">
+            <h4><i class="fas fa-chart-line"></i> Outcome</h4>
+            <p>Project delivered on time and on budget. Inspection passed first attempt. Developer has since engaged BES on two additional construction projects on the island.</p>
+          </div>
+        </div>
+        <div class="case-study-sidebar">
+          <div class="case-stat-card">
+            <div class="case-stat"><span class="cs-number">4 units</span><span class="cs-label">Fully wired</span></div>
+            <div class="case-stat"><span class="cs-number">1st pass</span><span class="cs-label">ELMAR inspection</span></div>
+            <div class="case-stat"><span class="cs-number">On budget</span><span class="cs-label">Delivered on time</span></div>
+          </div>
+          <a href="/industries/developers" class="btn btn-primary btn-full" style="margin-top:1.5rem;"><i class="fas fa-hard-hat"></i> Developer Services</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CASE STUDY 3 -->
+<section class="section" id="solar-retail">
+  <div class="container">
+    <article class="case-study-card">
+      <div class="case-study-meta">
+        <span class="case-tag cs-solar">Solar + Battery</span>
+        <span class="case-location"><i class="fas fa-map-marker-alt"></i> Oranjestad, Aruba</span>
+      </div>
+      <h2>Retail Business — 70% Electricity Cost Reduction</h2>
+      <div class="case-study-grid">
+        <div class="case-study-body">
+          <div class="case-block">
+            <h4><i class="fas fa-expand-arrows-alt"></i> Scope</h4>
+            <p>24-panel rooftop solar system with battery storage for a mid-size retail shop in central Aruba operating 6 days a week.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-exclamation-triangle"></i> Problem</h4>
+            <p>The owner was spending over AWG 3,000 per month on ELMAR electricity — unsustainable for the business margin. Air conditioning, display lighting, and refrigeration made up most of the load. The flat roof was well-positioned for solar but had never been assessed.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-tools"></i> What We Did</h4>
+            <ul class="case-list">
+              <li><i class="fas fa-check-circle"></i> Energy audit to identify highest-consumption equipment</li>
+              <li><i class="fas fa-check-circle"></i> Designed 24-panel 9.6 kWp rooftop system</li>
+              <li><i class="fas fa-check-circle"></i> Installed grid-tied inverter with battery storage for evening coverage</li>
+              <li><i class="fas fa-check-circle"></i> Connected monitoring system so owner tracks generation in real time</li>
+              <li><i class="fas fa-check-circle"></i> Coordinated ELMAR net metering application</li>
+            </ul>
+          </div>
+          <div class="case-block case-outcome">
+            <h4><i class="fas fa-chart-line"></i> Outcome</h4>
+            <p>Monthly ELMAR bill dropped from AWG 3,000+ to under AWG 900 — a 70% reduction. Full ROI projected within 4 years. Business now exports excess energy back to the grid.</p>
+          </div>
+        </div>
+        <div class="case-study-sidebar">
+          <div class="case-stat-card">
+            <div class="case-stat"><span class="cs-number">70%</span><span class="cs-label">Cost reduction</span></div>
+            <div class="case-stat"><span class="cs-number">4 yrs</span><span class="cs-label">Projected ROI</span></div>
+            <div class="case-stat"><span class="cs-number">9.6 kWp</span><span class="cs-label">System capacity</span></div>
+          </div>
+          <a href="/services#solar" class="btn btn-primary btn-full" style="margin-top:1.5rem;"><i class="fas fa-solar-panel"></i> Solar Services</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CASE STUDY 4 -->
+<section class="section section-alt" id="property-manager">
+  <div class="container">
+    <article class="case-study-card">
+      <div class="case-study-meta">
+        <span class="case-tag cs-commercial">Property Management</span>
+        <span class="case-location"><i class="fas fa-map-marker-alt"></i> Eagle Beach, Aruba</span>
+      </div>
+      <h2>Property Manager — Multi-Unit Compliance Overhaul</h2>
+      <div class="case-study-grid">
+        <div class="case-study-body">
+          <div class="case-block">
+            <h4><i class="fas fa-expand-arrows-alt"></i> Scope</h4>
+            <p>Electrical compliance inspection and upgrade across 12 rental units in a managed apartment complex near Eagle Beach.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-exclamation-triangle"></i> Problem</h4>
+            <p>A property management company was facing tenant complaints about repeated outages and flickering lights in several units. An informal inspection had flagged outdated wiring and missing GFCI protection in bathrooms and kitchens — a liability risk during high rental season.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-tools"></i> What We Did</h4>
+            <ul class="case-list">
+              <li><i class="fas fa-check-circle"></i> Inspected all 12 units and produced a written compliance report</li>
+              <li><i class="fas fa-check-circle"></i> Replaced outdated wiring in 7 units with non-compliant panels</li>
+              <li><i class="fas fa-check-circle"></i> Installed GFCI outlets in all wet areas across the complex</li>
+              <li><i class="fas fa-check-circle"></i> Replaced faulty breakers and tested all circuits under load</li>
+              <li><i class="fas fa-check-circle"></i> Scheduled work around guest occupancy to avoid lost bookings</li>
+            </ul>
+          </div>
+          <div class="case-block case-outcome">
+            <h4><i class="fas fa-chart-line"></i> Outcome</h4>
+            <p>Zero electrical complaints since completion. The property manager now has BES on an annual maintenance contract covering all 12 units. Full compliance documentation provided for insurance records.</p>
+          </div>
+        </div>
+        <div class="case-study-sidebar">
+          <div class="case-stat-card">
+            <div class="case-stat"><span class="cs-number">12 units</span><span class="cs-label">Inspected &amp; upgraded</span></div>
+            <div class="case-stat"><span class="cs-number">0</span><span class="cs-label">Complaints since</span></div>
+            <div class="case-stat"><span class="cs-number">Annual</span><span class="cs-label">Maintenance contract</span></div>
+          </div>
+          <a href="/industries/property-managers" class="btn btn-primary btn-full" style="margin-top:1.5rem;"><i class="fas fa-building"></i> Property Manager Services</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CASE STUDY 5 -->
+<section class="section" id="emergency-response">
+  <div class="container">
+    <article class="case-study-card">
+      <div class="case-study-meta">
+        <span class="case-tag cs-emergency">Emergency</span>
+        <span class="case-location"><i class="fas fa-map-marker-alt"></i> Oranjestad, Aruba</span>
+      </div>
+      <h2>Restaurant Emergency — Full Power Restored Before Dinner Service</h2>
+      <div class="case-study-grid">
+        <div class="case-study-body">
+          <div class="case-block">
+            <h4><i class="fas fa-expand-arrows-alt"></i> Scope</h4>
+            <p>Emergency diagnosis and repair of complete power loss at a restaurant, with a 5-hour window before dinner service was due to begin.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-exclamation-triangle"></i> Problem</h4>
+            <p>At 12:00 PM on a Friday, a restaurant called BES after total power loss. All kitchen equipment, lighting, and POS systems were down. They had a fully booked dinner service starting at 6:00 PM and a previous electrician had been unable to diagnose the fault.</p>
+          </div>
+          <div class="case-block">
+            <h4><i class="fas fa-tools"></i> What We Did</h4>
+            <ul class="case-list">
+              <li><i class="fas fa-check-circle"></i> BES technician on-site within 90 minutes of the call</li>
+              <li><i class="fas fa-check-circle"></i> Identified a failed main breaker and damaged feeder cable</li>
+              <li><i class="fas fa-check-circle"></i> Sourced replacement parts and completed repair within 3.5 hours</li>
+              <li><i class="fas fa-check-circle"></i> Tested all circuits and ran full load test before handover</li>
+              <li><i class="fas fa-check-circle"></i> Coordinated with ELMAR for meter reconnection</li>
+            </ul>
+          </div>
+          <div class="case-block case-outcome">
+            <h4><i class="fas fa-chart-line"></i> Outcome</h4>
+            <p>Full power restored by 3:45 PM — over 2 hours before dinner service. The restaurant ran at full capacity that evening. The client signed a preventive maintenance agreement the following week.</p>
+          </div>
+        </div>
+        <div class="case-study-sidebar">
+          <div class="case-stat-card">
+            <div class="case-stat"><span class="cs-number">90 min</span><span class="cs-label">Response time</span></div>
+            <div class="case-stat"><span class="cs-number">3.5 hrs</span><span class="cs-label">Repair time</span></div>
+            <div class="case-stat"><span class="cs-number">0 lost</span><span class="cs-label">Dinner covers</span></div>
+          </div>
+          <a href="/industries/emergency" class="btn btn-danger btn-full" style="margin-top:1.5rem;"><i class="fas fa-phone"></i> Emergency Line</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg-img"></div>
+  <div class="cta-content">
+    <h2>Have a Similar Challenge?</h2>
+    <p>Tell us about your project. We'll give you a straight assessment and a clear quote.</p>
+    <div class="cta-actions">
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
+      <a href="${PHONE_LINK}" class="btn btn-white btn-lg"><i class="fas fa-phone"></i> Call ${PHONE}</a>
+    </div>
+  </div>
+</section>
+
+${footer()}
+</body>
+</html>`
+}
+
+/* ==============================
+   INDUSTRY: RESTAURANTS
+============================== */
+function industryRestaurantsPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>${head('Electrician for Restaurants Aruba', 'BES provides electrical services for restaurants, bars, and hospitality venues across Aruba. Kitchen circuits, HVAC, dining lighting, emergency response. NEN 1010 compliant.', '/industries/restaurants', 'electrician restaurant Aruba, kitchen electrical Aruba, bar electrical Aruba, hospitality electrician Aruba, HVAC electrical Aruba, restaurant power Aruba')}
+</head>
+<body>
+${navbar('/industries/restaurants')}
+
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="/static/images/hero-electrician-panel.jpg" alt="Restaurant electrical services Aruba" class="page-hero-img">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i><a href="#industries">Industries</a><i class="fas fa-chevron-right"></i>Restaurants</div>
+    <h1>Electrical Services for Restaurants &amp; Hospitality</h1>
+    <p>Keeping kitchens, bars, and dining rooms powered and compliant across Aruba</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="industry-intro">
+      <div class="industry-intro-content">
+        <div class="section-tag">Restaurants &amp; Hospitality</div>
+        <h2 class="section-title">Your Kitchen Can't <span>Afford to Stop</span></h2>
+        <p>Restaurant and hospitality electrical systems carry some of the heaviest and most demanding loads of any commercial environment. High-wattage kitchen equipment, HVAC systems, outdoor lighting, bar power, and POS infrastructure all run simultaneously — and any failure costs revenue immediately.</p>
+        <p>BES understands this. We work around your schedule, respond fast when things go wrong, and build systems that handle peak demand without tripping. Our clients include some of Aruba's best-known restaurants and beach bars.</p>
+        <div class="industry-trust-badges">
+          <span><i class="fas fa-clock"></i> Work outside operating hours</span>
+          <span><i class="fas fa-bolt"></i> 24/7 emergency response</span>
+          <span><i class="fas fa-shield-alt"></i> NEN 1010 compliant</span>
+          <span><i class="fas fa-handshake"></i> Maintenance contracts available</span>
+        </div>
+      </div>
+      <div class="industry-intro-image">
+        <img src="/static/images/hero-electrician-panel.jpg" alt="Restaurant electrical services" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Services for <span>Food &amp; Beverage</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-fire"></i></div>
+        <h3>Kitchen Circuit Upgrades</h3>
+        <p>Dedicated high-amperage circuits for fryers, grills, ovens, and commercial refrigeration. Sized correctly for sustained load.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Dining Room Lighting</h3>
+        <p>Ambiance lighting design and installation, LED upgrades, and dimmable circuits for full dining atmosphere control.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-wind"></i></div>
+        <h3>HVAC Electrical</h3>
+        <p>Power supply and control wiring for air conditioning systems. Critical for both guest comfort and kitchen heat management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-glass-martini-alt"></i></div>
+        <h3>Bar &amp; Outdoor Power</h3>
+        <p>Weatherproof outdoor circuits for beach bars, terraces, and event spaces. Including GFCI protection for all wet areas.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Preventive Maintenance</h3>
+        <p>Scheduled inspections to catch problems before they become emergencies. Off-peak scheduling to protect your operations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Emergency Response</h3>
+        <p>Power outages don't wait for business hours. Our emergency line is available 24/7 to get your restaurant back online fast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Real Results</div>
+      <h2 class="section-title">Trusted by Aruba's <span>Best Restaurants</span></h2>
+    </div>
+    <div class="clients-marquee-wrapper">
+      <div class="clients-marquee">
+        <div class="clients-track">
+          <div class="client-logo-item"><img src="/static/images/clients/moomba-beach.png" alt="Moomba Beach" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/jolly-pirates.png" alt="Jolly Pirates" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/le-petit-chef.png" alt="Le Petit Chef" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/kokoa-restaurant.png" alt="Kokoa Restaurant" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/casa-tua.png" alt="Casa Tua" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/mambo-jambo.png" alt="Mambo Jambo" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/hadicurari-restaurant.png" alt="Hadicurari Restaurant" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/salt-pepper.png" alt="Salt &amp; Pepper" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/sopranos-piano-bar.png" alt="Soprano's Piano Bar" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/moomba-beach.png" alt="Moomba Beach" loading="lazy"></div>
+          <div class="client-logo-item"><img src="/static/images/clients/jolly-pirates.png" alt="Jolly Pirates" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta" style="margin-top:2rem;">
+      <a href="/case-studies#moomba" class="btn btn-outline">Read: Moomba Beach Kitchen Upgrade <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg-img"></div>
+  <div class="cta-content">
+    <h2>Running a Restaurant in Aruba?</h2>
+    <p>Tell us your setup and we'll recommend the right electrical solution. We respond within 24 hours.</p>
+    <div class="cta-actions">
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
+      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+${footer()}
+</body>
+</html>`
+}
+
+/* ==============================
+   INDUSTRY: PROPERTY MANAGERS
+============================== */
+function industryPropertyManagersPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>${head('Electrician for Property Managers Aruba', 'BES provides electrical maintenance contracts, compliance inspections, and fast repair services for property managers across Aruba. Reliable, documented, NEN 1010 compliant.', '/industries/property-managers', 'property manager electrician Aruba, electrical maintenance contract Aruba, apartment complex electrician Aruba, NEN 1010 compliance Aruba, commercial property electrical Aruba')}
+</head>
+<body>
+${navbar('/industries/property-managers')}
+
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="/static/images/hero-electrician-panel.jpg" alt="Property management electrical services Aruba" class="page-hero-img">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i><a href="#industries">Industries</a><i class="fas fa-chevron-right"></i>Property Managers</div>
+    <h1>Electrical Services for Property Managers</h1>
+    <p>Compliance, maintenance, and repairs for commercial and residential properties across Aruba</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="industry-intro">
+      <div class="industry-intro-content">
+        <div class="section-tag">Property Management</div>
+        <h2 class="section-title">One Electrical Partner. <span>Every Property.</span></h2>
+        <p>Managing multiple properties means electrical issues don't wait for convenient timing. Tenants call at any hour, inspections have deadlines, and insurance companies require documentation. BES becomes the single electrical contractor you can rely on across your entire portfolio.</p>
+        <p>We provide written inspection reports, compliance documentation, and scheduled maintenance programs that protect your properties, satisfy insurance requirements, and keep tenants happy.</p>
+        <div class="industry-trust-badges">
+          <span><i class="fas fa-file-alt"></i> Written compliance reports</span>
+          <span><i class="fas fa-calendar-alt"></i> Scheduled maintenance plans</span>
+          <span><i class="fas fa-bolt"></i> Fast repair response</span>
+          <span><i class="fas fa-shield-alt"></i> Insurance documentation</span>
+        </div>
+      </div>
+      <div class="industry-intro-image">
+        <img src="/static/images/hero-electrician-panel.jpg" alt="Property electrical compliance" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Services for <span>Property Managers</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Annual Compliance Inspections</h3>
+        <p>Full electrical inspection with written report. Covers all circuits, panels, earthing, and safety devices. Insurance-ready documentation.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>Preventive Maintenance Contracts</h3>
+        <p>Scheduled visits across your property portfolio. Catch problems before they cause complaints or damage. Fixed annual pricing available.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-tools"></i></div>
+        <h3>Tenant Repair Response</h3>
+        <p>Fast dispatch for electrical faults reported by tenants. Clear communication about work done and time to complete. Available 24/7 for emergencies.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-plug"></i></div>
+        <h3>Unit Rewiring &amp; Upgrades</h3>
+        <p>Rewiring older units to current NEN 1010 standards. Panel upgrades, GFCI installation, and load balancing for multi-unit buildings.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Common Area Lighting</h3>
+        <p>LED upgrades, parking lot lighting, stairwell and corridor lighting. Motion sensor and timer controls to reduce energy costs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-solar-panel"></i></div>
+        <h3>Solar for Multi-Unit Buildings</h3>
+        <p>Common area solar systems to offset building-wide electricity costs. Reduce ELMAR bills across your entire portfolio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Why Managers Choose BES</div>
+      <h2 class="section-title">The Contractor Who <span>Shows Up</span></h2>
+    </div>
+    <div class="why-features" style="max-width:700px;margin:0 auto;">
+      <div class="why-feature">
+        <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+        <div class="feature-content">
+          <h4>Documentation You Can Use</h4>
+          <p>Every inspection and repair is documented in writing. Essential for insurance claims, tenant disputes, and regulatory compliance.</p>
+        </div>
+      </div>
+      <div class="why-feature">
+        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+        <div class="feature-content">
+          <h4>Predictable Scheduling</h4>
+          <p>Annual maintenance calendars set at the start of each year. You know exactly when we're coming and what will be done.</p>
+        </div>
+      </div>
+      <div class="why-feature">
+        <div class="feature-icon"><i class="fas fa-phone"></i></div>
+        <div class="feature-content">
+          <h4>Single Point of Contact</h4>
+          <p>One contractor for all your properties. No hunting for different electricians. One phone number, one relationship.</p>
+        </div>
+      </div>
+      <div class="why-feature">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="feature-content">
+          <h4>Fully Insured</h4>
+          <p>BES carries full professional liability insurance on every job. Your properties and tenants are protected on every visit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="/case-studies#property-manager" class="btn btn-outline">Read: Property Manager Case Study <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg-img"></div>
+  <div class="cta-content">
+    <h2>Managing Properties in Aruba?</h2>
+    <p>Let's set up a maintenance plan. Tell us how many units and we'll put together a proposal.</p>
+    <div class="cta-actions">
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Proposal</a>
+      <a href="${PHONE_LINK}" class="btn btn-white btn-lg"><i class="fas fa-phone"></i> Call ${PHONE}</a>
+    </div>
+  </div>
+</section>
+
+${footer()}
+</body>
+</html>`
+}
+
+/* ==============================
+   INDUSTRY: DEVELOPERS
+============================== */
+function industryDevelopersPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>${head('Electrician for Developers Aruba', 'BES handles full electrical design, installation, and inspection for new construction projects in Aruba. Villas, commercial builds, resort developments. NEN 1010 certified, ELMAR coordinated.', '/industries/developers', 'electrical contractor developer Aruba, new construction electrician Aruba, villa electrical Aruba, commercial build electrician Aruba, ELMAR connection Aruba, NEN 1010 certified')}
+</head>
+<body>
+${navbar('/industries/developers')}
+
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="/static/images/hero-electrician-panel.jpg" alt="Developer electrical services Aruba" class="page-hero-img">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i><a href="#industries">Industries</a><i class="fas fa-chevron-right"></i>Developers</div>
+    <h1>Electrical for Developers &amp; Builders</h1>
+    <p>From permit drawings to ELMAR handover — full electrical for new construction in Aruba</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="industry-intro">
+      <div class="industry-intro-content">
+        <div class="section-tag">Developers &amp; Builders</div>
+        <h2 class="section-title">Ground-Up Electrical. <span>First Attempt Pass.</span></h2>
+        <p>Construction delays cost money. Inspection failures cost more. BES manages the electrical scope for new builds from initial permit drawings through to ELMAR connection and final NEN 1010 sign-off — coordinating directly with your project manager to stay on schedule.</p>
+        <p>We work on villas, commercial fit-outs, mixed-use developments, and resort projects. Our design capability means we're not just installers — we're a technical partner from the start of the project.</p>
+        <div class="industry-trust-badges">
+          <span><i class="fas fa-drafting-compass"></i> Electrical drawings for permits</span>
+          <span><i class="fas fa-check-double"></i> ELMAR inspection coordination</span>
+          <span><i class="fas fa-shield-alt"></i> First-attempt NEN 1010 pass</span>
+          <span><i class="fas fa-calendar-check"></i> On-schedule delivery</span>
+        </div>
+      </div>
+      <div class="industry-intro-image">
+        <img src="/static/images/hero-electrician-panel.jpg" alt="New construction electrical Aruba" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Full-Scope Electrical <span>for New Builds</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h3>Electrical Design &amp; Drawings</h3>
+        <p>Permit-ready electrical drawings covering load calculations, circuit layouts, panel schedules, and earthing. Designed to NEN 1010 from the start.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-plug"></i></div>
+        <h3>Full Installation</h3>
+        <p>Complete wiring, conduit, panels, fixtures, and outdoor circuits. Phased installation to match construction milestones.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-bolt"></i></div>
+        <h3>ELMAR Coordination</h3>
+        <p>Direct coordination with ELMAR for metering, grid connection, and inspection scheduling. We handle the paperwork and the liaison.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-solar-panel"></i></div>
+        <h3>Solar &amp; EV Pre-wiring</h3>
+        <p>Install conduit and panel capacity during construction for future solar and EV charging without costly retrofitting later.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-swimming-pool"></i></div>
+        <h3>Outdoor &amp; Pool Circuits</h3>
+        <p>Weatherproof outdoor wiring, garden lighting, pool pump circuits, and terrace power. All GFCI protected per NEN 1010.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Inspection &amp; Handover</h3>
+        <p>Manage the full inspection process. Provide as-built drawings and compliance certificates for project handover documentation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Our Process</div>
+      <h2 class="section-title">How We Work on <span>New Construction</span></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-number">01</div>
+        <h4>Design &amp; Drawings</h4>
+        <p>We review your architectural plans and produce electrical drawings for permit submission, including load calculations and panel schedule.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">02</div>
+        <h4>Rough-In Installation</h4>
+        <p>Conduit, boxes, and rough wiring installed during structural phase. Coordinated with your construction schedule.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">03</div>
+        <h4>Final Installation</h4>
+        <p>Panels, fixtures, outlets, switches, and final connections. Full testing and load balancing before inspection.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">04</div>
+        <h4>ELMAR &amp; Inspection</h4>
+        <p>We coordinate ELMAR connection and manage the NEN 1010 inspection. Provide all documentation for project handover.</p>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="/case-studies#villa" class="btn btn-outline">Read: Villa Complex Case Study <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg-img"></div>
+  <div class="cta-content">
+    <h2>Building in Aruba?</h2>
+    <p>Share your project plans and we'll send a technical proposal with timeline and scope.</p>
+    <div class="cta-actions">
+      <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Proposal</a>
+      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+${footer()}
+</body>
+</html>`
+}
+
+/* ==============================
+   INDUSTRY: EMERGENCY
+============================== */
+function industryEmergencyPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>${head('24/7 Emergency Electrician Aruba', 'BES provides 24/7 emergency electrical response across Aruba. Power outages, tripped breakers, equipment failures. Fast dispatch. Call +297 594 1089 now.', '/industries/emergency', '24/7 electrician Aruba, emergency electrician Aruba, power outage Aruba, electrical emergency Aruba, electrician after hours Aruba, fast electrician Aruba')}
+</head>
+<body>
+${navbar('/industries/emergency')}
+
+<section class="page-hero page-hero-emergency">
+  <div class="page-hero-bg">
+    <img src="/static/images/hero-electrician-panel.jpg" alt="24/7 emergency electrical response Aruba" class="page-hero-img">
+    <div class="page-hero-overlay" style="background:rgba(180,20,20,0.72);"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="breadcrumb" style="color:rgba(255,255,255,0.75);"><a href="/" style="color:rgba(255,255,255,0.75);">Home</a><i class="fas fa-chevron-right"></i><a href="#industries" style="color:rgba(255,255,255,0.75);">Industries</a><i class="fas fa-chevron-right"></i>Emergency</div>
+    <h1>24/7 Emergency Electrical Response</h1>
+    <p>Power is down. BES responds fast, any time of day or night.</p>
+    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+      <a href="${PHONE_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call Now: ${PHONE}</a>
+      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY INTRO -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag" style="background:rgba(227,6,19,0.1);color:var(--red);">Emergency Response</div>
+      <h2 class="section-title">Fast. Focused. <span>Back Online.</span></h2>
+      <p class="section-subtitle">When power fails, every minute costs money. BES dispatches qualified electricians across Aruba to diagnose and resolve electrical emergencies as fast as possible.</p>
+    </div>
+    <div class="emergency-stats">
+      <div class="emergency-stat">
+        <i class="fas fa-clock" style="color:var(--red);font-size:2rem;margin-bottom:0.5rem;"></i>
+        <div class="cs-number" style="color:var(--red);">24/7</div>
+        <div class="cs-label">Available</div>
+      </div>
+      <div class="emergency-stat">
+        <i class="fas fa-car" style="color:var(--red);font-size:2rem;margin-bottom:0.5rem;"></i>
+        <div class="cs-number" style="color:var(--red);">&lt; 2 hrs</div>
+        <div class="cs-label">Typical response</div>
+      </div>
+      <div class="emergency-stat">
+        <i class="fas fa-map-marker-alt" style="color:var(--red);font-size:2rem;margin-bottom:0.5rem;"></i>
+        <div class="cs-number" style="color:var(--red);">All Aruba</div>
+        <div class="cs-label">Coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE HANDLE -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">We Handle</div>
+      <h2 class="section-title">Common <span>Emergency Situations</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon" style="color:var(--red);"><i class="fas fa-power-off"></i></div>
+        <h3>Total Power Loss</h3>
+        <p>Complete outage affecting your entire property. We diagnose the cause — from the meter to the panel to the feed — and restore power fast.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="color:var(--red);"><i class="fas fa-exclamation-triangle"></i></div>
+        <h3>Tripped or Failed Breakers</h3>
+        <p>Circuit breakers that won't reset, repeatedly trip, or have failed. We identify the root cause and replace or repair as needed.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="color:var(--red);"><i class="fas fa-fire"></i></div>
+        <h3>Burning Smell / Sparks</h3>
+        <p>Burning electrical smell or visible sparks are serious hazards. Turn off the affected circuit immediately and call us — do not wait.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="color:var(--red);"><i class="fas fa-lightbulb"></i></div>
+        <h3>Flickering or Unstable Power</h3>
+        <p>Voltage fluctuations, flickering lights, or equipment cycling indicate a wiring fault or supply issue requiring immediate attention.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="color:var(--red);"><i class="fas fa-plug"></i></div>
+        <h3>Equipment Failure</h3>
+        <p>Commercial kitchen equipment, HVAC units, or critical systems going offline due to electrical fault. Fast diagnosis and repair.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="color:var(--red);"><i class="fas fa-bolt"></i></div>
+        <h3>Storm Damage</h3>
+        <p>Post-storm electrical inspection and repair. We assess damage, restore safe power, and document everything for insurance claims.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO REACH US -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Contact Now</div>
+      <h2 class="section-title">How to Reach <span>Emergency Response</span></h2>
+    </div>
+    <div class="emergency-contact-grid">
+      <div class="emergency-contact-card">
+        <i class="fas fa-phone" style="font-size:2.5rem;color:var(--red);margin-bottom:1rem;"></i>
+        <h3>Call the Emergency Line</h3>
+        <p>The fastest way to get a technician dispatched. Available 24 hours a day, 7 days a week.</p>
+        <a href="${PHONE_LINK}" class="btn btn-danger btn-full" style="margin-top:1rem;"><i class="fas fa-phone"></i> ${PHONE}</a>
+      </div>
+      <div class="emergency-contact-card">
+        <i class="fab fa-whatsapp" style="font-size:2.5rem;color:#25D366;margin-bottom:1rem;"></i>
+        <h3>WhatsApp for Fast Response</h3>
+        <p>Send us your location and describe the problem. We'll confirm dispatch time immediately.</p>
+        <a href="${WHATSAPP}" target="_blank" class="btn btn-full" style="margin-top:1rem;background:#25D366;color:#fff;border-radius:8px;padding:0.75rem 1.5rem;font-weight:600;font-family:'Montserrat',sans-serif;display:inline-flex;align-items:center;gap:0.5rem;justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+      </div>
+      <div class="emergency-contact-card">
+        <i class="fas fa-shield-alt" style="font-size:2.5rem;color:var(--navy);margin-bottom:1rem;"></i>
+        <h3>What to Do While We Come</h3>
+        <ul class="case-list" style="text-align:left;margin-top:1rem;">
+          <li><i class="fas fa-check-circle"></i> Turn off the affected circuit at the breaker</li>
+          <li><i class="fas fa-check-circle"></i> Do not attempt to reset breakers repeatedly</li>
+          <li><i class="fas fa-check-circle"></i> Keep staff and guests away from the fault area</li>
+          <li><i class="fas fa-check-circle"></i> If you smell burning, evacuate the area</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" style="background:var(--red);--cta-bg:var(--red);">
+  <div class="cta-bg-img"></div>
+  <div class="cta-content">
+    <h2 style="color:var(--yellow);">Electrical Emergency Right Now?</h2>
+    <p>Don't wait. Call our emergency line and we'll dispatch immediately.</p>
+    <div class="cta-actions">
+      <a href="${PHONE_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call ${PHONE}</a>
+      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
     </div>
   </div>
 </section>

@@ -1604,3 +1604,336 @@ p  { color: var(--gray-600); line-height: 1.75; }
   .client-logo-item { width: 100px; height: 60px; }
   .clients-track { gap: 1.5rem; }
 }
+
+/* ===========================
+   NAVBAR DROPDOWN
+   =========================== */
+.nav-dropdown { position: relative; }
+.nav-link-dropdown { cursor: pointer; display: flex; align-items: center; gap: 0.35rem; }
+.nav-arrow { font-size: 0.7rem; transition: transform 0.25s; }
+.nav-dropdown:hover .nav-arrow { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(11,11,90,0.15);
+  min-width: 240px;
+  z-index: 200;
+  padding: 0.5rem 0;
+  border: 1px solid rgba(11,11,90,0.08);
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.25rem;
+  color: var(--navy);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-dropdown-menu li a:hover { background: var(--gray-50); color: var(--red); }
+.nav-dropdown-menu li a i { width: 18px; text-align: center; color: var(--red); }
+
+/* Mobile dropdown */
+@media (max-width: 768px) {
+  .nav-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background: var(--gray-50);
+    display: none !important;
+    padding: 0;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: block !important; }
+  .nav-dropdown-menu li a { padding: 0.5rem 2rem; font-size: 0.85rem; }
+}
+
+/* ===========================
+   INDUSTRY CARDS — HOME
+   =========================== */
+.industry-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) { .industry-cards-grid { grid-template-columns: 1fr; } }
+
+.industry-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: 1.5px solid var(--gray-200);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+}
+.industry-card:hover {
+  box-shadow: 0 8px 30px rgba(11,11,90,0.12);
+  border-color: var(--navy);
+  transform: translateY(-3px);
+}
+.industry-card-emergency { border-color: rgba(227,6,19,0.3); }
+.industry-card-emergency:hover { border-color: var(--red); }
+
+.industry-card-icon {
+  flex: 0 0 52px;
+  height: 52px;
+  background: rgba(11,11,90,0.07);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--navy);
+  transition: background 0.25s;
+}
+.industry-card:hover .industry-card-icon { background: var(--navy); color: #fff; }
+.industry-card-emergency .industry-card-icon { background: rgba(227,6,19,0.1); color: var(--red); }
+.industry-card-emergency:hover .industry-card-icon { background: var(--red); color: #fff; }
+
+.industry-card-body { flex: 1; }
+.industry-card-body h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 0.4rem; }
+.industry-card-body p { color: var(--gray-500); font-size: 0.875rem; margin-bottom: 0.6rem; }
+.industry-card-clients { font-size: 0.78rem; color: var(--gray-400); font-style: italic; }
+
+.industry-card-arrow {
+  flex: 0 0 auto;
+  color: var(--gray-400);
+  font-size: 1rem;
+  transition: color 0.25s, transform 0.25s;
+  align-self: center;
+}
+.industry-card:hover .industry-card-arrow { color: var(--navy); transform: translateX(4px); }
+.industry-card-emergency:hover .industry-card-arrow { color: var(--red); }
+
+/* ===========================
+   CASE STUDIES TEASER — HOME
+   =========================== */
+.case-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 900px) { .case-teaser-grid { grid-template-columns: 1fr; } }
+
+.case-teaser-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: 1.5px solid var(--gray-200);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.case-teaser-card:hover { box-shadow: 0 8px 24px rgba(11,11,90,0.1); transform: translateY(-3px); }
+
+.case-teaser-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(11,11,90,0.08);
+  color: var(--navy);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 0.75rem;
+}
+.case-teaser-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.75rem; }
+.case-teaser-problem, .case-teaser-outcome { font-size: 0.875rem; color: var(--gray-500); margin-bottom: 0.5rem; }
+.case-teaser-outcome { color: #1a6b3a; }
+.case-teaser-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--navy);
+  margin-top: 1rem;
+  transition: color 0.2s, gap 0.2s;
+}
+.case-teaser-link:hover { color: var(--red); gap: 0.6rem; }
+
+/* ===========================
+   CASE STUDIES PAGE
+   =========================== */
+.case-study-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(11,11,90,0.08);
+  border: 1px solid var(--gray-200);
+}
+.case-study-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.case-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.9rem;
+  border-radius: 100px;
+}
+.cs-restaurant { background: rgba(245,166,35,0.15); color: #b57600; }
+.cs-commercial { background: rgba(11,11,90,0.1); color: var(--navy); }
+.cs-solar { background: rgba(26,107,58,0.12); color: #1a6b3a; }
+.cs-emergency { background: rgba(227,6,19,0.1); color: var(--red); }
+
+.case-location { font-size: 0.85rem; color: var(--gray-400); }
+.case-location i { margin-right: 0.3rem; }
+
+.case-study-card h2 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: var(--navy); margin-bottom: 1.5rem; }
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 768px) { .case-study-grid { grid-template-columns: 1fr; } }
+
+.case-block { margin-bottom: 1.5rem; }
+.case-block h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.case-block h4 i { color: var(--red); }
+.case-block p { font-size: 0.925rem; color: var(--gray-600); }
+.case-outcome { background: rgba(26,107,58,0.06); padding: 1.25rem; border-radius: 12px; border-left: 4px solid #1a6b3a; }
+.case-outcome h4 i { color: #1a6b3a; }
+.case-outcome p { color: #1a4a28; }
+
+.case-list { list-style: none; padding: 0; }
+.case-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin-bottom: 0.4rem;
+}
+.case-list li i { color: #1a6b3a; margin-top: 0.25rem; flex-shrink: 0; }
+
+.case-stat-card {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.case-stat { margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1.25rem; }
+.case-stat:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+.cs-number { display: block; font-size: 1.8rem; font-weight: 900; font-family: 'Montserrat', sans-serif; color: var(--yellow); }
+.cs-label { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ===========================
+   INDUSTRY PAGES
+   =========================== */
+.industry-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media (max-width: 768px) { .industry-intro { grid-template-columns: 1fr; gap: 2rem; } }
+
+.industry-intro-image img { border-radius: 16px; box-shadow: 0 12px 40px rgba(11,11,90,0.15); }
+
+.industry-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.industry-trust-badges span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(11,11,90,0.07);
+  color: var(--navy);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+}
+.industry-trust-badges span i { color: var(--red); }
+
+/* Process Steps */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 550px) { .process-steps { grid-template-columns: 1fr; } }
+
+.process-step { text-align: center; }
+.process-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--yellow);
+  font-size: 1.2rem;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto 1rem;
+}
+.process-step h4 { color: var(--navy); margin-bottom: 0.5rem; font-size: 0.95rem; }
+.process-step p { font-size: 0.875rem; color: var(--gray-500); }
+
+/* Emergency Stats */
+.emergency-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.emergency-stat { text-align: center; }
+
+.emergency-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) { .emergency-contact-grid { grid-template-columns: 1fr; } }
+
+.emergency-contact-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(11,11,90,0.08);
+  border: 1px solid var(--gray-200);
+}
+.emergency-contact-card h3 { color: var(--navy); margin-bottom: 0.75rem; font-size: 1rem; }
+.emergency-contact-card p { font-size: 0.875rem; color: var(--gray-500); }
+
+/* btn-full */
+.btn-full { width: 100%; justify-content: center; }

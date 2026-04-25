@@ -58,8 +58,21 @@
 
   // Close menu on nav link click
   if (navMenu) {
-    navMenu.querySelectorAll('a').forEach(link => {
+    navMenu.querySelectorAll('a:not(.nav-link-dropdown)').forEach(link => {
       link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // ---- MOBILE DROPDOWN TOGGLE ----
+  if (navMenu) {
+    navMenu.querySelectorAll('.nav-link-dropdown').forEach(link => {
+      link.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const parent = this.closest('.nav-dropdown');
+          if (parent) parent.classList.toggle('open');
+        }
+      });
     });
   }
 
@@ -175,17 +188,22 @@
   animateOnScroll('.why-feature', 'visible');
   animateOnScroll('.stat-card', 'visible');
   animateOnScroll('.team-photo-item', 'visible');
+  animateOnScroll('.industry-card', 'visible');
+  animateOnScroll('.case-teaser-card', 'visible');
+  animateOnScroll('.case-study-card', 'visible');
 
   // ---- SERVICE CARDS STAGGER ANIMATION ----
   const style = document.createElement('style');
   style.textContent = `
-    .service-card, .client-card, .value-card, .why-feature, .stat-card, .team-photo-item {
+    .service-card, .client-card, .value-card, .why-feature, .stat-card, .team-photo-item,
+    .industry-card, .case-teaser-card, .case-study-card {
       opacity: 0;
       transform: translateY(25px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .service-card.visible, .client-card.visible, .value-card.visible,
-    .why-feature.visible, .stat-card.visible, .team-photo-item.visible {
+    .why-feature.visible, .stat-card.visible, .team-photo-item.visible,
+    .industry-card.visible, .case-teaser-card.visible, .case-study-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
