@@ -190,6 +190,7 @@ const PHONE_LINK           = 'tel:+2975941089'
 const PHONE_EMERGENCY      = '+297 594 0104'
 const PHONE_EMERGENCY_LINK = 'tel:+2975940104'
 const WHATSAPP             = 'https://wa.me/2975941089'
+const WHATSAPP_EMERGENCY   = 'https://wa.me/2975940104'
 const EMAIL       = 'info@electricalservicesaruba.com'
 const WEBSITE     = 'www.electricalservicesaruba.com'
 const FACEBOOK    = 'https://www.facebook.com/belloelectricalaruba'
@@ -2417,9 +2418,9 @@ ${navbar('/industries/emergency')}
     <div class="breadcrumb" style="color:rgba(255,255,255,0.75);"><a href="/" style="color:rgba(255,255,255,0.75);">Home</a><i class="fas fa-chevron-right"></i><a href="#industries" style="color:rgba(255,255,255,0.75);">Industries</a><i class="fas fa-chevron-right"></i>Emergency</div>
     <h1>24/7 Emergency Electrical Response</h1>
     <p>Power is down. BES responds fast, any time of day or night.</p>
-    <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-      <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call Now: ${PHONE_EMERGENCY}</a>
-      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+    <div class="emergency-hero-actions">
+      <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-yellow btn-lg"><i class="fas fa-phone"></i> Call Now: ${PHONE_EMERGENCY}</a>
+      <a href="${WHATSAPP_EMERGENCY}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
     </div>
   </div>
 </section>
@@ -2512,7 +2513,7 @@ ${navbar('/industries/emergency')}
         <i class="fab fa-whatsapp" style="font-size:2.5rem;color:#25D366;margin-bottom:1rem;"></i>
         <h3>WhatsApp for Fast Response</h3>
         <p>Send us your location and describe the problem. We'll confirm dispatch time immediately.</p>
-        <a href="${WHATSAPP}" target="_blank" class="btn btn-full" style="margin-top:1rem;background:#25D366;color:#fff;border-radius:8px;padding:0.75rem 1.5rem;font-weight:600;font-family:'Montserrat',sans-serif;display:inline-flex;align-items:center;gap:0.5rem;justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+        <a href="${WHATSAPP_EMERGENCY}" target="_blank" class="btn btn-whatsapp btn-full" style="margin-top:1rem;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
       </div>
       <div class="emergency-contact-card">
         <i class="fas fa-shield-alt" style="font-size:2.5rem;color:var(--navy);margin-bottom:1rem;"></i>
@@ -2535,7 +2536,7 @@ ${navbar('/industries/emergency')}
     <p>Don't wait. Call our emergency line and we'll dispatch immediately.</p>
     <div class="cta-actions">
       <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call ${PHONE_EMERGENCY}</a>
-      <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+      <a href="${WHATSAPP_EMERGENCY}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
     </div>
   </div>
 </section>

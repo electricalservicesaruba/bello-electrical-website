@@ -1937,3 +1937,55 @@ p  { color: var(--gray-600); line-height: 1.75; }
 
 /* btn-full */
 .btn-full { width: 100%; justify-content: center; }
+
+/* ===========================
+   EMERGENCY HERO ACTIONS — mobile-safe
+   =========================== */
+.emergency-hero-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  width: 100%;
+}
+.emergency-hero-actions .btn {
+  flex: 0 1 auto;
+  min-width: 200px;
+  text-align: center;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  .emergency-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+  }
+  .emergency-hero-actions .btn {
+    width: 100%;
+    min-width: unset;
+    font-size: 1rem;
+  }
+}
+
+/* ===========================
+   WHATSAPP BUTTON — standalone style
+   =========================== */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #25D366;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-whatsapp:hover { background: #1ebe5d; color: #fff; }
