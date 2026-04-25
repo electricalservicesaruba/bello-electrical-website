@@ -88,14 +88,78 @@ app.get('/services',(c) => c.html(servicesPage()))
 app.get('/about',   (c) => c.html(aboutPage()))
 app.get('/contact', (c) => c.html(contactPage()))
 
+// ── 301 REDIRECTS — old Wix pages → correct new pages ──────────────────────
+// Old service pages → /services
+const serviceRedirects = [
+  '/service-page/home-repair-service',
+  '/service-page/electrician',
+  '/service-page/solar-panel-installation',
+  '/service-page/ev-charging',
+  '/service-page/electrical-maintenance',
+  '/service-page/energy-audit',
+  '/service-page/emergency-power',
+  '/service-page/battery-storage',
+  '/services-1',
+  '/services-2',
+  '/our-services',
+]
+serviceRedirects.forEach(path => {
+  app.get(path, (c) => c.redirect('/services', 301))
+})
+
+// Old contact/booking pages → /contact
+const contactRedirects = [
+  '/book-online',
+  '/booking',
+  '/book',
+  '/quote',
+  '/get-a-quote',
+  '/free-quote',
+  '/request-quote',
+]
+contactRedirects.forEach(path => {
+  app.get(path, (c) => c.redirect('/contact', 301))
+})
+
+// Old about/team/careers pages → /about
+const aboutRedirects = [
+  '/about-us',
+  '/about-1',
+  '/team',
+  '/our-team',
+  '/careers',
+  '/jobs',
+  '/vacancies',
+]
+aboutRedirects.forEach(path => {
+  app.get(path, (c) => c.redirect('/about', 301))
+})
+
+// Old project/portfolio pages → home
+const homeRedirects = [
+  '/projects',
+  '/projects-1',
+  '/projects-8',
+  '/portfolio',
+  '/gallery',
+  '/blank-1',
+  '/blank-2',
+  '/blog',
+  '/news',
+  '/faq',
+]
+homeRedirects.forEach(path => {
+  app.get(path, (c) => c.redirect('/', 301))
+})
+
 // SEO: serve sitemap and robots at root
 app.get('/sitemap.xml', async (c) => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.electricalservicesaruba.com/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.electricalservicesaruba.com/services</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.electricalservicesaruba.com/about</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.electricalservicesaruba.com/contact</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/</loc><lastmod>2026-04-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/services</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/about</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.electricalservicesaruba.com/contact</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>`
   return c.text(sitemap, 200, { 'Content-Type': 'application/xml; charset=UTF-8' })
 })
@@ -105,7 +169,8 @@ app.get('/robots.txt', (c) => {
   return c.text(robots, 200, { 'Content-Type': 'text/plain; charset=UTF-8' })
 })
 
-app.notFound((c)   => c.html(`<!DOCTYPE html><html><body><h1>Page not found</h1><a href="/">Go Home</a></body></html>`, 404))
+// Branded 404 — noindex so Google drops old cached pages fast
+app.notFound((c) => c.html(notFoundPage(), 404))
 
 /* ==============================
    SHARED HELPERS
@@ -1497,6 +1562,147 @@ ${navbar('/contact')}
 </section>
 
 ${footer()}
+</body>
+</html>`
+}
+
+/* ==============================
+   404 PAGE
+============================== */
+function notFoundPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Page Not Found — Bello Electrical Services | Aruba</title>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WYHXCJX8E7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WYHXCJX8E7');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" type="image/png" href="/static/logo-transparent.png">
+  <style>
+    .not-found-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: #f8f9fc;
+    }
+    .not-found-logo { width: 160px; margin-bottom: 2rem; }
+    .not-found-code {
+      font-size: 7rem;
+      font-weight: 900;
+      color: #f5a623;
+      line-height: 1;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .not-found-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0a1931;
+      margin: 0.5rem 0 1rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .not-found-text {
+      color: #6b7280;
+      font-size: 1rem;
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .not-found-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .not-found-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .not-found-links a.primary {
+      background: #f5a623;
+      color: #0a1931;
+    }
+    .not-found-links a.primary:hover { background: #e09516; }
+    .not-found-links a.secondary {
+      background: #0a1931;
+      color: #fff;
+    }
+    .not-found-links a.secondary:hover { background: #162a4a; }
+    .not-found-links a.outline {
+      border: 2px solid #0a1931;
+      color: #0a1931;
+    }
+    .not-found-links a.outline:hover { background: #0a1931; color: #fff; }
+    .not-found-divider {
+      margin: 2.5rem 0 1.5rem;
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+    .not-found-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .not-found-contact a {
+      color: #0a1931;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .not-found-contact a:hover { color: #f5a623; }
+  </style>
+</head>
+<body>
+<div class="not-found-page">
+  <img src="/static/logo-transparent.png" alt="Bello Electrical Services" class="not-found-logo">
+  <div class="not-found-code">404</div>
+  <h1 class="not-found-title">Page Not Found</h1>
+  <p class="not-found-text">
+    This page no longer exists or has been moved. 
+    Use the links below to find what you're looking for.
+  </p>
+  <div class="not-found-links">
+    <a href="/" class="primary"><i class="fas fa-home"></i> Go Home</a>
+    <a href="/services" class="secondary"><i class="fas fa-bolt"></i> Our Services</a>
+    <a href="/contact" class="outline"><i class="fas fa-envelope"></i> Contact Us</a>
+  </div>
+  <p class="not-found-divider">Or reach us directly</p>
+  <div class="not-found-contact">
+    <a href="tel:+2975941089"><i class="fas fa-phone"></i> +297 594 1089</a>
+    <a href="https://wa.me/2975941089" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="mailto:info@electricalservicesaruba.com"><i class="fas fa-envelope"></i> Email Us</a>
+  </div>
+</div>
 </body>
 </html>`
 }
