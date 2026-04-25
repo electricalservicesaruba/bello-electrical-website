@@ -72,13 +72,13 @@ Sent from electricalservicesaruba.com
     } else {
       return c.json({
         success: false,
-        error: 'Failed to send message. Please call us directly at +297 594 1089.'
+        error: 'Failed to send message. Please call our office at +297 594 1089.'
       }, 500)
     }
   } catch (err) {
     return c.json({
       success: false,
-      error: 'Unable to send message. Please call us directly at +297 594 1089.'
+      error: 'Unable to send message. Please call our office at +297 594 1089.'
     }, 500)
   }
 })
@@ -185,9 +185,11 @@ app.notFound((c) => c.html(notFoundPage(), 404))
 /* ==============================
    SHARED HELPERS
 ============================== */
-const PHONE       = '+297 594 1089'
-const PHONE_LINK  = 'tel:+2975941089'
-const WHATSAPP    = 'https://wa.me/2975941089'
+const PHONE                = '+297 594 1089'
+const PHONE_LINK           = 'tel:+2975941089'
+const PHONE_EMERGENCY      = '+297 594 0104'
+const PHONE_EMERGENCY_LINK = 'tel:+2975940104'
+const WHATSAPP             = 'https://wa.me/2975941089'
 const EMAIL       = 'info@electricalservicesaruba.com'
 const WEBSITE     = 'www.electricalservicesaruba.com'
 const FACEBOOK    = 'https://www.facebook.com/belloelectricalaruba'
@@ -330,7 +332,8 @@ function footer() {
           <h4>Contact</h4>
           <ul class="footer-contact-list">
             <li><i class="fas fa-map-marker-alt"></i><span>Aruba, ABC Islands</span></li>
-            <li><i class="fas fa-phone"></i><a href="${PHONE_LINK}">${PHONE}</a></li>
+            <li><i class="fas fa-phone"></i><a href="${PHONE_LINK}">${PHONE} (Office)</a></li>
+            <li><i class="fas fa-phone-alt"></i><a href="${PHONE_EMERGENCY_LINK}">${PHONE_EMERGENCY} (Emergency)</a></li>
             <li><i class="fab fa-whatsapp"></i><a href="${WHATSAPP}" target="_blank">WhatsApp Us</a></li>
             <li><i class="fas fa-envelope"></i><a href="mailto:${EMAIL}">${EMAIL}</a></li>
             <li><i class="fas fa-globe"></i><a href="https://${WEBSITE}" target="_blank">${WEBSITE}</a></li>
@@ -1214,7 +1217,7 @@ ${navbar('/services')}
         </ul>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
           <a href="/contact#quote" class="btn btn-primary">Request a Quote</a>
-          <a href="${PHONE_LINK}" class="btn btn-danger"><i class="fas fa-phone"></i> Emergency Line</a>
+          <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-danger"><i class="fas fa-phone"></i> Emergency: ${PHONE_EMERGENCY}</a>
         </div>
       </div>
     </div>
@@ -1521,7 +1524,7 @@ ${footer()}
 function contactPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('Contact Us', 'Contact Bello Electrical Services in Aruba. Send us a message, call +297 594 1089, or WhatsApp for a fast response. We respond within 24 hours, Mon–Fri 8 AM–5 PM.', '/contact', 'contact electrician Aruba, call electrician Aruba, WhatsApp electrician Aruba, electrical quote Aruba, Bello Electrical contact')}
+<head>${head('Contact Us', 'Contact Bello Electrical Services in Aruba. Office: +297 594 1089. Emergency 24/7: +297 594 0104. Send a message or WhatsApp for a fast response within 24 hours.', '/contact', 'contact electrician Aruba, call electrician Aruba, WhatsApp electrician Aruba, electrical quote Aruba, Bello Electrical contact')}
 <script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"ContactPage","url":"https://www.electricalservicesaruba.com/contact","name":"Contact Bello Electrical Services","description":"Get in touch with Bello Electrical Services in Aruba. We respond within 24 hours.","mainEntity":{"@type":"ElectricalContractor","name":"Bello Electrical Services","telephone":"+2975941089","email":"info@electricalservicesaruba.com","url":"https://www.electricalservicesaruba.com","contactPoint":[{"@type":"ContactPoint","telephone":"+2975941089","contactType":"customer service","availableLanguage":["English","Spanish","Dutch","Papiamento"],"hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"17:00"}},{"@type":"ContactPoint","telephone":"+2975941089","contactType":"emergency","hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}}]}})}</script></head>
 <body>
 ${navbar('/contact')}
@@ -1608,8 +1611,17 @@ ${navbar('/contact')}
             <div class="contact-info-item">
               <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
               <div class="contact-info-content">
-                <h4>Phone</h4>
+                <h4>Office Hours</h4>
                 <a href="${PHONE_LINK}">${PHONE}</a>
+                <p style="font-size:0.8rem;color:var(--gray-400);margin-top:0.2rem;">Mon–Fri 8 AM–5 PM</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon" style="background:rgba(227,6,19,0.1);color:var(--red);"><i class="fas fa-phone-alt"></i></div>
+              <div class="contact-info-content">
+                <h4>Emergency Line <span style="font-size:0.75rem;background:var(--red);color:#fff;padding:0.15rem 0.5rem;border-radius:100px;font-family:'Montserrat',sans-serif;font-weight:700;">24/7</span></h4>
+                <a href="${PHONE_EMERGENCY_LINK}" style="color:var(--red);font-weight:700;">${PHONE_EMERGENCY}</a>
+                <p style="font-size:0.8rem;color:var(--gray-400);margin-top:0.2rem;">Power outages &amp; urgent faults</p>
               </div>
             </div>
             <div class="contact-info-item">
@@ -1639,7 +1651,7 @@ ${navbar('/contact')}
             <div class="hours-grid">
               <div class="hours-row"><span>Monday – Friday</span><span>8:00 AM – 5:00 PM</span></div>
               <div class="hours-row"><span>Saturday</span><span>By Appointment</span></div>
-              <div class="hours-row emergency"><span>Emergency Line</span><span>24/7 Available</span></div>
+              <div class="hours-row emergency"><span>Emergency Line</span><span><a href="${PHONE_EMERGENCY_LINK}" style="color:inherit;font-weight:700;">${PHONE_EMERGENCY}</a></span></div>
             </div>
           </div>
           <div class="contact-social">
@@ -2391,7 +2403,7 @@ ${footer()}
 function industryEmergencyPage() {
   return `<!DOCTYPE html>
 <html lang="en">
-<head>${head('24/7 Emergency Electrician Aruba', 'BES provides 24/7 emergency electrical response across Aruba. Power outages, tripped breakers, equipment failures. Fast dispatch. Call +297 594 1089 now.', '/industries/emergency', '24/7 electrician Aruba, emergency electrician Aruba, power outage Aruba, electrical emergency Aruba, electrician after hours Aruba, fast electrician Aruba')}
+<head>${head('24/7 Emergency Electrician Aruba', 'BES provides 24/7 emergency electrical response across Aruba. Power outages, tripped breakers, equipment failures. Fast dispatch. Call +297 594 0104 now.', '/industries/emergency', '24/7 electrician Aruba, emergency electrician Aruba, power outage Aruba, electrical emergency Aruba, electrician after hours Aruba, fast electrician Aruba')}
 </head>
 <body>
 ${navbar('/industries/emergency')}
@@ -2406,7 +2418,7 @@ ${navbar('/industries/emergency')}
     <h1>24/7 Emergency Electrical Response</h1>
     <p>Power is down. BES responds fast, any time of day or night.</p>
     <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-      <a href="${PHONE_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call Now: ${PHONE}</a>
+      <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call Now: ${PHONE_EMERGENCY}</a>
       <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
     </div>
   </div>
@@ -2494,7 +2506,7 @@ ${navbar('/industries/emergency')}
         <i class="fas fa-phone" style="font-size:2.5rem;color:var(--red);margin-bottom:1rem;"></i>
         <h3>Call the Emergency Line</h3>
         <p>The fastest way to get a technician dispatched. Available 24 hours a day, 7 days a week.</p>
-        <a href="${PHONE_LINK}" class="btn btn-danger btn-full" style="margin-top:1rem;"><i class="fas fa-phone"></i> ${PHONE}</a>
+        <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-danger btn-full" style="margin-top:1rem;"><i class="fas fa-phone"></i> ${PHONE_EMERGENCY}</a>
       </div>
       <div class="emergency-contact-card">
         <i class="fab fa-whatsapp" style="font-size:2.5rem;color:#25D366;margin-bottom:1rem;"></i>
@@ -2522,7 +2534,7 @@ ${navbar('/industries/emergency')}
     <h2 style="color:var(--yellow);">Electrical Emergency Right Now?</h2>
     <p>Don't wait. Call our emergency line and we'll dispatch immediately.</p>
     <div class="cta-actions">
-      <a href="${PHONE_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call ${PHONE}</a>
+      <a href="${PHONE_EMERGENCY_LINK}" class="btn btn-yellow btn-lg" style="font-size:1.1rem;"><i class="fas fa-phone"></i> Call ${PHONE_EMERGENCY}</a>
       <a href="${WHATSAPP}" target="_blank" class="btn btn-white btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
     </div>
   </div>
@@ -2665,7 +2677,7 @@ function notFoundPage() {
   </div>
   <p class="not-found-divider">Or reach us directly</p>
   <div class="not-found-contact">
-    <a href="tel:+2975941089"><i class="fas fa-phone"></i> +297 594 1089</a>
+    <a href="tel:+2975941089"><i class="fas fa-phone"></i> Office: +297 594 1089</a>
     <a href="https://wa.me/2975941089" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     <a href="mailto:info@electricalservicesaruba.com"><i class="fas fa-envelope"></i> Email Us</a>
   </div>
