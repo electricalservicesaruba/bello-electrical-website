@@ -904,7 +904,7 @@ ${navbar('/')}
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Trusted By</div>
-      <h2 class="section-title">Businesses That <span>Trust BES</span></h2>
+      <h2 class="section-title">Who We <span>Work With</span></h2>
       <p class="section-subtitle">From restaurants and resorts to shops and entertainment venues. Aruba's best businesses rely on Bello Electrical Services.</p>
     </div>
     <div class="clients-marquee-wrapper">
