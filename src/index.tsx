@@ -436,7 +436,7 @@ ${navbar('/')}
       <span class="hero-highlight">Aruba Businesses Trust.</span>
     </h1>
     <p class="hero-subtitle">
-      Restaurants, hotels, developers, and property managers across Aruba rely on BES for safe, NEN 1010 compliant electrical work. Certified subcontractors. Fast response. Consistent quality. 20+ years of hands-on experience.
+      Restaurants, hotels, developers, and property managers across Aruba rely on BES for safe, compliant electrical work. Certified subcontractors. Fast response. Consistent quality. 20+ years of hands-on experience.
     </p>
     <div class="hero-actions">
       <a href="/contact#quote" class="btn btn-yellow btn-lg"><i class="fas fa-file-alt"></i> Request a Quote</a>
@@ -464,17 +464,17 @@ ${navbar('/')}
       </div>
     </div>
   </div>
-  <a href="#trust" class="hero-scroll"><i class="fas fa-chevron-down"></i></a>
+  <a href="#services" class="hero-scroll"><i class="fas fa-chevron-down"></i></a>
 </section>
 
 <!-- TRUST BAR -->
-<section class="trust-bar" id="trust">
+<section class="trust-bar">
   <div class="trust-container">
     <div class="trust-item"><i class="fas fa-certificate"></i><span>Registered &amp; Licensed</span></div>
-    <div class="trust-item"><i class="fas fa-shield-alt"></i><span>NEN 1010 Compliant</span></div>
     <div class="trust-item"><i class="fas fa-clock"></i><span>Fast Response Times</span></div>
     <div class="trust-item"><i class="fas fa-hard-hat"></i><span>Certified Electricians</span></div>
     <div class="trust-item"><i class="fas fa-handshake"></i><span>Long-Term Partnerships</span></div>
+    <div class="trust-item"><i class="fas fa-map-marker-alt"></i><span>Aruba &amp; Bonaire</span></div>
   </div>
 </section>
 
@@ -484,7 +484,7 @@ ${navbar('/')}
     <div class="section-header">
       <div class="section-tag">Our Services</div>
       <h2 class="section-title">Everything Electrical,<br><span>Done Right.</span></h2>
-      <p class="section-subtitle">From installation to maintenance, solar to EV charging, BES handles it all for residential and commercial clients across Aruba.</p>
+      <p class="section-subtitle">From installation to maintenance, solar to EV charging, BES handles it all for businesses and property owners across Aruba.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
@@ -561,8 +561,8 @@ ${navbar('/')}
       </div>
       <div class="why-us-content">
         <div class="section-tag">Why Choose BES?</div>
-        <h2 class="section-title">The Electrical Partner<br><span>Businesses Trust</span></h2>
-        <p class="section-subtitle" style="text-align:left;max-width:none;">While others compete on price, BES stands apart through fast response, clean work and clear communication. We don't just complete jobs. We build lasting relationships.</p>
+        <h2 class="section-title">Why Businesses Keep<br><span>Calling Us Back</span></h2>
+        <p class="section-subtitle" style="text-align:left;max-width:none;">Price gets you a first call. Showing up on time, doing clean work, and keeping clients informed is what gets you the next five. That's the BES standard on every job.</p>
         <div class="why-features">
           <div class="why-feature">
             <div class="feature-icon"><i class="fas fa-certificate"></i></div>
@@ -742,7 +742,6 @@ ${navbar('/')}
         <p>Luis Bello is a certified electrician and entrepreneur who has been serving Aruba for over 20 years. His expertise spans electrical wiring and repair, professional drafting, and electrical inspection, giving him a full view of every project from design to delivery.</p>
         <div class="founder-home-creds">
           <span><i class="fas fa-certificate"></i> Certified Electrician</span>
-          <span><i class="fas fa-plane"></i> Private Pilot</span>
           <span><i class="fas fa-hard-hat"></i> 20+ Yrs Experience</span>
           <span><i class="fas fa-shield-alt"></i> NEN 1010 Specialist</span>
           <span><i class="fas fa-solar-panel"></i> Solar Certified</span>
@@ -1306,11 +1305,10 @@ ${navbar('/about')}
       <div class="founder-content">
         <h2>Luis Bello</h2>
         <p>Luis Bello is a certified electrician and entrepreneur with over 20 years of hands-on experience in Aruba. His background covers electrical wiring and repair, professional drafting, and electrical inspection, giving him the full technical picture from design to final delivery.</p>
-        <p>Born and raised in Aruba, Luis built his career by working across residential, commercial, and industrial projects throughout the island. His depth of knowledge and dedication to quality are what sets BES apart.</p>
+        <p>Born and raised in Aruba, Luis built his career by working across residential, commercial, and industrial projects throughout the island. His depth of knowledge and dedication to quality are what sets BES apart. Away from the job site, he's a certified private pilot — a discipline that, like electrical work, leaves zero room for shortcuts.</p>
         <p>"I started BES because I saw businesses struggling to find a reliable, professional electrical contractor. That's what we built and that's what we deliver every single day."</p>
         <div class="founder-credentials">
           <span class="credential-badge"><i class="fas fa-certificate"></i> Certified Electrician</span>
-          <span class="credential-badge"><i class="fas fa-plane"></i> Certified Private Pilot</span>
           <span class="credential-badge"><i class="fas fa-hard-hat"></i> 20+ Years Experience</span>
           <span class="credential-badge"><i class="fas fa-shield-alt"></i> NEN 1010 Specialist</span>
           <span class="credential-badge"><i class="fas fa-solar-panel"></i> Solar Certified</span>
@@ -1385,7 +1383,6 @@ ${navbar('/about')}
           <p>Founder and certified electrician with 20+ years of industry experience. Luis leads all project operations, maintains NEN 1010 standards, and drives BES's expansion across Aruba and Bonaire.</p>
           <div class="team-badges">
             <span><i class="fas fa-certificate"></i> Certified Electrician</span>
-            <span><i class="fas fa-plane"></i> Private Pilot</span>
             <span><i class="fas fa-hard-hat"></i> 20+ Yrs</span>
             <span><i class="fas fa-shield-alt"></i> NEN 1010</span>
           </div>
