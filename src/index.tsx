@@ -563,7 +563,7 @@ ${navbar('/')}
       <div class="why-us-content">
         <div class="section-tag">Why Choose BES?</div>
         <h2 class="section-title">Why Businesses Keep<br><span>Calling Us Back</span></h2>
-        <p class="section-subtitle" style="text-align:left;max-width:none;">Price gets you a first call. Showing up on time, doing clean work, and keeping clients informed is what gets you the next five. That's the BES standard on every job.</p>
+        <p class="section-subtitle" style="text-align:left;max-width:none;">Price gets you a first call. Showing up on time, doing the job right, and keeping clients informed is what gets you the next five. That's the BES standard on every job.</p>
         <div class="why-features">
           <div class="why-feature">
             <div class="feature-icon"><i class="fas fa-certificate"></i></div>
