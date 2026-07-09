@@ -1572,7 +1572,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f7f8fc;
+  background: #ffffff;
   border: 1px solid #e8edf5;
   border-radius: 12px;
   padding: 0.75rem 1rem;
@@ -1588,8 +1588,8 @@ p  { color: var(--gray-600); line-height: 1.75; }
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(60%);
-  opacity: 0.85;
+  filter: grayscale(20%);
+  opacity: 1;
   transition: filter 0.25s, opacity 0.25s;
 }
 .client-logo-item:hover img {
