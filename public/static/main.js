@@ -63,18 +63,62 @@
     });
   }
 
-  // ---- MOBILE DROPDOWN TOGGLE ----
-  if (navMenu) {
-    navMenu.querySelectorAll('.nav-link-dropdown').forEach(link => {
-      link.addEventListener('click', function (e) {
+  // ---- DROPDOWN TOGGLE (desktop hover + mobile click) ----
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+
+  dropdowns.forEach(function (dropdown) {
+    const trigger = dropdown.querySelector('.nav-link-dropdown');
+    let closeTimer = null;
+
+    function openDropdown() {
+      clearTimeout(closeTimer);
+      // Close any other open dropdowns first
+      dropdowns.forEach(function (d) { if (d !== dropdown) d.classList.remove('open'); });
+      dropdown.classList.add('open');
+    }
+
+    function scheduleClose() {
+      closeTimer = setTimeout(function () {
+        dropdown.classList.remove('open');
+      }, 150);
+    }
+
+    function cancelClose() {
+      clearTimeout(closeTimer);
+    }
+
+    // Desktop: hover on the whole dropdown li keeps it open
+    dropdown.addEventListener('mouseenter', function () {
+      if (window.innerWidth > 768) openDropdown();
+    });
+    dropdown.addEventListener('mouseleave', function () {
+      if (window.innerWidth > 768) scheduleClose();
+    });
+
+    // Cancel close when re-entering the menu itself
+    const menu = dropdown.querySelector('.nav-dropdown-menu');
+    if (menu) {
+      menu.addEventListener('mouseenter', cancelClose);
+      menu.addEventListener('mouseleave', scheduleClose);
+    }
+
+    // Mobile: click trigger to toggle
+    if (trigger) {
+      trigger.addEventListener('click', function (e) {
         if (window.innerWidth <= 768) {
           e.preventDefault();
-          const parent = this.closest('.nav-dropdown');
-          if (parent) parent.classList.toggle('open');
+          dropdown.classList.toggle('open');
         }
       });
-    });
-  }
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      dropdowns.forEach(function (d) { d.classList.remove('open'); });
+    }
+  });
 
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll(); // Run on load

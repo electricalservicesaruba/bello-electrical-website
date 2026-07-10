@@ -1607,21 +1607,30 @@ p  { color: var(--gray-600); line-height: 1.75; }
 .nav-dropdown { position: relative; }
 .nav-link-dropdown { cursor: pointer; display: flex; align-items: center; gap: 0.35rem; }
 .nav-arrow { font-size: 0.7rem; transition: transform 0.25s; }
-.nav-dropdown:hover .nav-arrow { transform: rotate(180deg); }
+.nav-dropdown.open .nav-arrow { transform: rotate(180deg); }
 .nav-dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: 100%;
   left: 0;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(11,11,90,0.15);
   min-width: 240px;
-  z-index: 200;
-  padding: 0.5rem 0;
+  z-index: 1000;
+  padding: 0.75rem 0 0.5rem;
   border: 1px solid rgba(11,11,90,0.08);
 }
-.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+/* Bridge gap so mouse moving from trigger to menu doesn't close it */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+.nav-dropdown.open .nav-dropdown-menu { display: block; }
 .nav-dropdown-menu li a {
   display: flex;
   align-items: center;
@@ -1632,6 +1641,7 @@ p  { color: var(--gray-600); line-height: 1.75; }
   font-weight: 500;
   font-family: 'Montserrat', sans-serif;
   transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
 }
 .nav-dropdown-menu li a:hover { background: var(--gray-50); color: var(--red); }
 .nav-dropdown-menu li a i { width: 18px; text-align: center; color: var(--red); }
@@ -1643,12 +1653,17 @@ p  { color: var(--gray-600); line-height: 1.75; }
     box-shadow: none;
     border: none;
     border-radius: 0;
-    background: var(--gray-50);
-    display: none !important;
+    background: rgba(255,255,255,0.06);
     padding: 0;
   }
-  .nav-dropdown.open .nav-dropdown-menu { display: block !important; }
-  .nav-dropdown-menu li a { padding: 0.5rem 2rem; font-size: 0.85rem; }
+  .nav-dropdown-menu::before { display: none; }
+  .nav-dropdown-menu li a {
+    padding: 0.6rem 2.5rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .nav-dropdown-menu li a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .nav-dropdown-menu li a i { color: var(--yellow); }
 }
 
 /* ===========================
