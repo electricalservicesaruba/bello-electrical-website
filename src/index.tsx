@@ -471,7 +471,6 @@ ${navbar('/')}
 <!-- TRUST BAR -->
 <section class="trust-bar">
   <div class="trust-container">
-    <div class="trust-item"><i class="fas fa-certificate"></i><span>Registered &amp; Licensed</span></div>
     <div class="trust-item"><i class="fas fa-clock"></i><span>Fast Response Times</span></div>
     <div class="trust-item"><i class="fas fa-hard-hat"></i><span>Certified Electricians</span></div>
     <div class="trust-item"><i class="fas fa-handshake"></i><span>Long-Term Partnerships</span></div>
